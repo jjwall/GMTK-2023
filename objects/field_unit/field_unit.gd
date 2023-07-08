@@ -12,7 +12,7 @@ const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SPEED = randf_range(75, 150)
+	SPEED = randf_range(75, 125)
 	process_type_update()
 
 
