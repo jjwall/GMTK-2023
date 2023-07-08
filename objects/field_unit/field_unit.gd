@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 @export var type = 'rock' # | 'paper' | 'scissors'
+@export var field_units_group: Node2D = null
 
-const SPEED = 300.0
+const SPEED = 5
 var random_x_pos = randf_range(-200, 200)
 var random_y_pos = randf_range(-200, 200)
+var target = null
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
@@ -15,9 +17,12 @@ func _ready():
 	process_type_update()
 
 
-func _physics_process(delta):
-	velocity.x = move_toward(velocity.x, random_x_pos, SPEED)
-	velocity.y = move_toward(velocity.y, random_y_pos, SPEED)
+func _physics_process(delta):	
+	if !target:
+		locate_target()
+		
+	velocity.x = move_toward(velocity.x, target.position.x, SPEED)
+	velocity.y = move_toward(velocity.y, target.position.y, SPEED)
 
 	move_and_slide()
 	var last_slide_collision = get_last_slide_collision()
@@ -34,8 +39,21 @@ func _physics_process(delta):
 				type = 'rock'
 				process_type_update()
 	
-func _process(delta):
-	pass
+func locate_target():
+	print(field_units_group.get_child_count())
+	var children = field_units_group.get_children()
+	children.shuffle()
+	for i in range(0, field_units_group.get_child_count() - 1):
+		if children[i].type == 'rock':
+			if self.type == 'paper':
+				target = children[i]
+		if children[i].type == 'paper':
+			if self.type == 'scissors':
+				target = children[i]
+		if children[i].type == 'scissors':
+			if self.type == 'rock':
+				target = children[i]
+			
 
 func process_type_update():
 	if type == 'rock':
@@ -44,3 +62,5 @@ func process_type_update():
 		$Sprite2D.texture = paper_texture
 	else:
 		$Sprite2D.texture = scissors_texture
+		
+	locate_target()
