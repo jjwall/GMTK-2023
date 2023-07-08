@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl5ohr5jenewt"]
+[gd_scene load_steps=4 format=3 uid="uid://dl5ohr5jenewt"]
 
+[ext_resource type="Script" path="res://objects/field_unit/field_unit.gd" id="1_hm76p"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="1_iijh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jur7"]
 size = Vector2(56, 54)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_hm76p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
