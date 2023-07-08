@@ -6,18 +6,18 @@ const SPEED = 300.0
 var random_x_pos = randf_range(-200, 200)
 var random_y_pos = randf_range(-200, 200)
 
-const paper = preload("res://assets/textures/paper_emoji.png")
-const rock = preload("res://assets/textures/rock_emoji.png")
-const scissors = preload("res://assets/textures/scissors_emoji.png")
+const paper_texture = preload("res://assets/textures/paper_emoji.png")
+const rock_texture = preload("res://assets/textures/rock_emoji.png")
+const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if type == 'rock':
-		$Sprite2D.texture = rock
+		$Sprite2D.texture = rock_texture
 	elif type == 'paper':
-		$Sprite2D.texture = paper
+		$Sprite2D.texture = paper_texture
 	else:
-		$Sprite2D.texture = scissors
+		$Sprite2D.texture = scissors_texture
 
 
 func _physics_process(delta):
