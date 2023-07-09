@@ -10,9 +10,12 @@ const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
+var sprite : Sprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SPEED = randf_range(75, 125)
+	sprite = $Sprite2D
 	process_type_update()
 
 
@@ -45,7 +48,6 @@ func locate_target():
 				target = children[i]
 
 func process_collision(colliding_entity: CharacterBody2D):
-	locate_target()
 	if type == 'rock' && colliding_entity.type == 'paper':
 		type = 'paper'
 		process_type_update()
@@ -57,9 +59,10 @@ func process_collision(colliding_entity: CharacterBody2D):
 		process_type_update()
 
 func process_type_update():
+	locate_target()
 	if type == 'rock':
-		$Sprite2D.texture = rock_texture
+		sprite.texture = rock_texture
 	elif type == 'paper':
-		$Sprite2D.texture = paper_texture
+		sprite.texture = paper_texture
 	else:
-		$Sprite2D.texture = scissors_texture
+		sprite.texture = scissors_texture
