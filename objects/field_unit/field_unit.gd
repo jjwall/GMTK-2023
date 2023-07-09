@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @export var type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
@@ -11,6 +11,7 @@ const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 var sprite : Sprite2D
+var velocity : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,21 +19,22 @@ func _ready():
 	sprite = $Sprite2D
 	process_type_update()
 
-
 func _physics_process(delta):	
 	if !target:
 		locate_target()
-		
+	
 	var direction = global_position.direction_to(target.position)
 	velocity = direction * SPEED
+	
+#	move_and_slide()
+	position += velocity * delta
+#	var last_slide_collision = get_last_slide_collision()
+	
+#	if last_slide_collision:
+#		if last_slide_collision.get_collider().is_in_group("field_units"):
+#			process_collision(last_slide_collision.get_collider())
+	
 
-	move_and_slide()
-	var last_slide_collision = get_last_slide_collision()
-	
-	if last_slide_collision:
-		if last_slide_collision.get_collider().is_in_group("field_units"):
-			process_collision(last_slide_collision.get_collider())
-	
 func locate_target():
 	var children = field_units_group.get_children()
 	children.shuffle()
@@ -47,7 +49,7 @@ func locate_target():
 			if self.type == 'rock':
 				target = children[i]
 
-func process_collision(colliding_entity: CharacterBody2D):
+func process_collision(colliding_entity: Area2D):
 	if type == 'rock' && colliding_entity.type == 'paper':
 		type = 'paper'
 		process_type_update()
@@ -66,3 +68,8 @@ func process_type_update():
 		sprite.texture = paper_texture
 	else:
 		sprite.texture = scissors_texture
+
+
+func _on_area_entered(area):
+	if area.is_in_group("field_units"):
+		process_collision(area)
