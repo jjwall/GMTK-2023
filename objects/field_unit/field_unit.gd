@@ -2,7 +2,7 @@ extends Area2D
 
 @export var type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
-@export var trigger_distance = 500
+@export var trigger_distance = 100
 
 var SPEED = 75
 var target : Area2D = null
@@ -22,8 +22,8 @@ func _ready():
 	aimless_direction = Vector2(randf(), randf())
 
 func _physics_process(delta):	
-	if !target:
-		locate_target()
+#	if !target:
+	locate_target()
 	
 	var direction = global_position.direction_to(target.position)
 	
@@ -43,17 +43,40 @@ func _physics_process(delta):
 
 func locate_target():
 	var children = field_units_group.get_children()
-	children.shuffle()
+	var min_distance = 999999
+	var min_node : Area2D = target
+	var current_distance = 9999999
 	for i in range(0, field_units_group.get_child_count() - 1):
 		if children[i].type == 'rock':
 			if self.type == 'paper':
-				target = children[i]
+				current_distance = position.distance_squared_to(children[i].position)
+				if current_distance < min_distance:
+					min_distance = current_distance
+					min_node = children[i]
 		if children[i].type == 'paper':
 			if self.type == 'scissors':
-				target = children[i]
+				current_distance = position.distance_squared_to(children[i].position)
+				if current_distance < min_distance:
+					min_distance = current_distance
+					min_node = children[i]
 		if children[i].type == 'scissors':
 			if self.type == 'rock':
-				target = children[i]
+				current_distance = position.distance_squared_to(children[i].position)
+				if current_distance < min_distance:
+					min_distance = current_distance
+					min_node = children[i]
+	target = min_node
+#	children.shuffle()
+#	for i in range(0, field_units_group.get_child_count() - 1):
+#		if children[i].type == 'rock':
+#			if self.type == 'paper':
+#				target = children[i]
+#		if children[i].type == 'paper':
+#			if self.type == 'scissors':
+#				target = children[i]
+#		if children[i].type == 'scissors':
+#			if self.type == 'rock':
+#				target = children[i]
 
 func process_collision(colliding_entity: Area2D):
 	if type == 'rock' && colliding_entity.type == 'paper':
