@@ -16,12 +16,14 @@ const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 var sprite : Sprite2D
 var target_search : Area2D
+var sfx : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SPEED = randf_range(75, 125)
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
+	sfx = $AudioStreamPlayer
 	process_type_update()
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
@@ -89,6 +91,7 @@ func process_collision(colliding_entity: Area2D):
 func process_type_update():
 	target = null
 	locate_target()
+	sfx.play()
 	if type == 'rock':
 		sprite.texture = rock_texture
 	elif type == 'paper':

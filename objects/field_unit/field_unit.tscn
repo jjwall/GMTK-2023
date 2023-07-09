@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl5ohr5jenewt"]
+[gd_scene load_steps=6 format=3 uid="uid://dl5ohr5jenewt"]
 
 [ext_resource type="Script" path="res://objects/field_unit/field_unit.gd" id="1_hm76p"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="1_iijh2"]
+[ext_resource type="AudioStream" uid="uid://df8f3okee88wq" path="res://assets/ui_menu_popup_01.wav" id="3_x7yr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jur7"]
 size = Vector2(24, 24)
@@ -24,5 +25,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetSearchArea"]
 scale = Vector2(25, 25)
 shape = SubResource("CircleShape2D_60lcc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_x7yr3")
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
