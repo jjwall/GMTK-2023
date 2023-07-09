@@ -2,38 +2,44 @@ extends Area2D
 
 @export var type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
+@export var trigger_distance = 500
 
 var SPEED = 75
-var target = null
+var target : Area2D = null
+var aimless_direction = null
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 var sprite : Sprite2D
-var velocity : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SPEED = randf_range(75, 125)
 	sprite = $Sprite2D
 	process_type_update()
+	aimless_direction = Vector2(randf(), randf())
 
 func _physics_process(delta):	
 	if !target:
 		locate_target()
 	
 	var direction = global_position.direction_to(target.position)
-	velocity = direction * SPEED
 	
-#	move_and_slide()
-	position += velocity * delta
-#	var last_slide_collision = get_last_slide_collision()
+	if (position - target.position).length() < trigger_distance:
+		position += direction * SPEED * delta
+	else:
+		position += aimless_direction * SPEED * delta
 	
-#	if last_slide_collision:
-#		if last_slide_collision.get_collider().is_in_group("field_units"):
-#			process_collision(last_slide_collision.get_collider())
-	
+	if position.x > 1280:
+		position.x = 0
+	elif position.x < 0:
+		position.x = 1280
+	if position.y > 720:
+		position.y = 0
+	elif position.y < 0:
+		position.y = 720
 
 func locate_target():
 	var children = field_units_group.get_children()
