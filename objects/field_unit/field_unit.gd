@@ -1,4 +1,9 @@
 extends Area2D
+# TODO: Levels
+# TODO: Spawn clumping
+# TODO: Player char unit
+# TODO: Mobile view
+# TODO: Click and drag wall creation
 
 @export var type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
@@ -13,6 +18,9 @@ var aimless_direction = null
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
+
+var resolution_width = ProjectSettings.get_setting("display/window/size/viewport_width")
+var resolution_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 var sprite : Sprite2D
 var target_search : Area2D
@@ -39,14 +47,17 @@ func _physics_process(delta):
 	else:
 		position += aimless_direction * SPEED * delta
 	
-	if position.x > 1280:
+	wrap_position()
+
+func wrap_position():
+	if position.x > resolution_width:
 		position.x = 0
 	elif position.x < 0:
-		position.x = 1280
-	if position.y > 720:
+		position.x = resolution_width
+	if position.y > resolution_height:
 		position.y = 0
 	elif position.y < 0:
-		position.y = 720
+		position.y = resolution_height
 
 func locate_target():
 #	var children = field_units_group.get_children()
