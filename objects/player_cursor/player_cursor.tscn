@@ -9,4 +9,4 @@ script = ExtResource("1_uuwth")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

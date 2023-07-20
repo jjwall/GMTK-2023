@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 # TODO: Levels
 # TODO: Spawn clumping
 # TODO: Player char unit
@@ -12,7 +12,7 @@ extends Area2D
 var check_num = 0
 
 var SPEED = 75
-var target : Area2D = null
+var target : RigidBody2D = null
 var aimless_direction = null
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
@@ -28,6 +28,8 @@ var sfx : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	connect("body_entered", Callable(self, "_on_body_entered"))
+#	add_collision_exception_with(self)
 	SPEED = randf_range(75, 125)
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
@@ -43,9 +45,11 @@ func _physics_process(delta):
 	
 	if target:
 		var direction = global_position.direction_to(target.position)
-		position += direction * SPEED * delta
+#		position += direction * SPEED * delta
+		move_and_collide(direction * SPEED * delta)
 	else:
-		position += aimless_direction * SPEED * delta
+#		position += aimless_direction * SPEED * delta
+		move_and_collide(aimless_direction * SPEED * delta)
 	
 	wrap_position()
 
@@ -61,14 +65,14 @@ func wrap_position():
 
 func locate_target():
 #	var children = field_units_group.get_children()
-	var children: Array[Area2D] = target_search.get_overlapping_areas()
+	var children: Array[Node2D] = target_search.get_overlapping_bodies()
 	if children.size() < 1:
 		return
 	var min_distance = 999999
-	var min_node : Area2D = null
+	var min_node : RigidBody2D = null
 	var current_distance = 9999999
 	for i in range(0, children.size() - 1):
-		if children[i].is_in_group("field_units_group"):
+#		if children[i].is_in_group("field_units_group"):
 			if children[i].unit_type == 'rock':
 				if self.unit_type == 'paper':
 					current_distance = position.distance_squared_to(children[i].position)
@@ -89,7 +93,9 @@ func locate_target():
 						min_node = children[i]
 	target = min_node
 
-func process_collision(colliding_entity: Area2D):
+
+func process_collision(colliding_entity: RigidBody2D):
+	add_collision_exception_with(colliding_entity)
 	if unit_type == 'rock' && colliding_entity.unit_type == 'paper':
 		unit_type = 'paper'
 		process_type_update()
@@ -111,7 +117,18 @@ func process_type_update():
 	else:
 		sprite.texture = scissors_texture
 
+#func on_collision(body):
+#	print(body)
+#	if body.is_in_group("field_units"):
+#		process_collision(body)
+#
+#func _on_area_entered(area):
+#	if area.is_in_group("field_units"):
+#		process_collision(area)
 
-func _on_area_entered(area):
-	if area.is_in_group("field_units"):
-		process_collision(area)
+
+func _on_body_entered(body):
+	if body.is_in_group("line_points"):
+		print("hi")
+	if body.is_in_group("field_units"):
+		process_collision(body)

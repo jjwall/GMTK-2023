@@ -45,7 +45,6 @@ func _input(event):
 	# Print the size of the viewport.
 #	print("Viewport Resolution is: ", get_viewport_rect().size)
 
-
-func _on_area_entered(area):
-	print("hi?")
-	pass # Replace with function body.
+func _on_body_entered(body):
+	if body.is_in_group("field_units"):
+		print("hello?")
