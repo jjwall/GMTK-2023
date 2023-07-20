@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" path="res://objects/player_cursor/player_cursor.gd" id="1_uuwth"]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Area2D"]
 script = ExtResource("1_uuwth")
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

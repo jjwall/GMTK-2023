@@ -5,7 +5,7 @@ extends Area2D
 # TODO: Mobile view
 # TODO: Click and drag wall creation
 
-@export var type = 'rock' # | 'paper' | 'scissors'
+@export var unit_type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
 
 @export var imprecision = 4 #increase this number for more performance
@@ -61,51 +61,52 @@ func wrap_position():
 
 func locate_target():
 #	var children = field_units_group.get_children()
-	var children = target_search.get_overlapping_areas()
+	var children: Array[Area2D] = target_search.get_overlapping_areas()
 	if children.size() < 1:
 		return
 	var min_distance = 999999
 	var min_node : Area2D = null
 	var current_distance = 9999999
 	for i in range(0, children.size() - 1):
-		if children[i].type == 'rock':
-			if self.type == 'paper':
-				current_distance = position.distance_squared_to(children[i].position)
-				if current_distance < min_distance:
-					min_distance = current_distance
-					min_node = children[i]
-		if children[i].type == 'paper':
-			if self.type == 'scissors':
-				current_distance = position.distance_squared_to(children[i].position)
-				if current_distance < min_distance:
-					min_distance = current_distance
-					min_node = children[i]
-		if children[i].type == 'scissors':
-			if self.type == 'rock':
-				current_distance = position.distance_squared_to(children[i].position)
-				if current_distance < min_distance:
-					min_distance = current_distance
-					min_node = children[i]
+		if children[i].is_in_group("field_units_group"):
+			if children[i].unit_type == 'rock':
+				if self.unit_type == 'paper':
+					current_distance = position.distance_squared_to(children[i].position)
+					if current_distance < min_distance:
+						min_distance = current_distance
+						min_node = children[i]
+			if children[i].unit_type == 'paper':
+				if self.unit_type == 'scissors':
+					current_distance = position.distance_squared_to(children[i].position)
+					if current_distance < min_distance:
+						min_distance = current_distance
+						min_node = children[i]
+			if children[i].unit_type == 'scissors':
+				if self.unit_type == 'rock':
+					current_distance = position.distance_squared_to(children[i].position)
+					if current_distance < min_distance:
+						min_distance = current_distance
+						min_node = children[i]
 	target = min_node
 
 func process_collision(colliding_entity: Area2D):
-	if type == 'rock' && colliding_entity.type == 'paper':
-		type = 'paper'
+	if unit_type == 'rock' && colliding_entity.unit_type == 'paper':
+		unit_type = 'paper'
 		process_type_update()
-	if type == 'paper' && colliding_entity.type == 'scissors':
-		type = 'scissors'
+	if unit_type == 'paper' && colliding_entity.unit_type == 'scissors':
+		unit_type = 'scissors'
 		process_type_update()
-	if type == 'scissors' && colliding_entity.type == 'rock':
-		type = 'rock'
+	if unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
+		unit_type = 'rock'
 		process_type_update()
 
 func process_type_update():
 	target = null
 	locate_target()
 	sfx.play()
-	if type == 'rock':
+	if unit_type == 'rock':
 		sprite.texture = rock_texture
-	elif type == 'paper':
+	elif unit_type == 'paper':
 		sprite.texture = paper_texture
 	else:
 		sprite.texture = scissors_texture

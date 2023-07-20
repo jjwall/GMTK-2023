@@ -13,7 +13,7 @@ func spawn_units():
 	var rng = RandomNumberGenerator.new()
 	for i in range(0, rock_count):
 		var new_rock_unit = field_unit_scene.instantiate()
-		new_rock_unit.type = 'rock'
+		new_rock_unit.unit_type = 'rock'
 		new_rock_unit.field_units_group = %field_unit_container
 #		new_rock_unit.linear_velocity = Vector2(rng.randf_range(-75, 0), rng.randf_range(-75, 75))
 		new_rock_unit.position = Vector2(rng.randf_range(0, 1280), rng.randf_range(0, 720))
@@ -21,7 +21,7 @@ func spawn_units():
 		%field_unit_container.call_deferred("add_child", new_rock_unit)
 	for i in range(0, scissors_count):
 		var new_scissors_unit = field_unit_scene.instantiate()
-		new_scissors_unit.type = 'scissors'
+		new_scissors_unit.unit_type = 'scissors'
 		new_scissors_unit.field_units_group = %field_unit_container
 #		new_scissors_unit.linear_velocity = Vector2(rng.randf_range(-75, 0), rng.randf_range(-75, 75))
 		new_scissors_unit.position = Vector2(rng.randf_range(0, 1280), rng.randf_range(0, 720))
@@ -29,7 +29,7 @@ func spawn_units():
 		%field_unit_container.call_deferred("add_child", new_scissors_unit)
 	for i in range(0, paper_count):
 		var new_paper_unit = field_unit_scene.instantiate()
-		new_paper_unit.type = 'paper'
+		new_paper_unit.unit_type = 'paper'
 		new_paper_unit.field_units_group = %field_unit_container
 #		new_paper_unit.linear_velocity = Vector2(rng.randf_range(-75, 0), rng.randf_range(-75, 75))
 		new_paper_unit.position = Vector2(rng.randf_range(0, 1280), rng.randf_range(0, 720))
