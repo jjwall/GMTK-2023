@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=4 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Texture2D" uid="uid://dcrcg1ifcc2qn" path="res://assets/textures/background.png" id="1_mscw1"]
 [ext_resource type="Script" path="res://scenes/gameplay/field_unit_spawner.gd" id="3_44jnp"]
+[ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
 
 [node name="gameplay" type="Node2D"]
 
@@ -15,3 +16,5 @@ unique_name_in_owner = true
 
 [node name="field_unit_spawner" type="Node" parent="."]
 script = ExtResource("3_44jnp")
+
+[node name="Node" parent="." instance=ExtResource("3_84hl8")]
