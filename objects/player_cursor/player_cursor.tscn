@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4c1qvlq6een6"]
+[gd_scene load_steps=3 format=3 uid="uid://b4c1qvlq6een6"]
 
 [ext_resource type="Script" path="res://objects/player_cursor/player_cursor.gd" id="1_uuwth"]
 
-[node name="Node" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_73b1j"]
+
+[node name="Node" type="RigidBody2D"]
+disable_mode = 1
+gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_uuwth")
 
 [node name="Line2D" type="Line2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_73b1j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

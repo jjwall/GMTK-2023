@@ -23,6 +23,7 @@ texture = ExtResource("1_iijh2")
 shape = SubResource("RectangleShape2D_6jur7")
 
 [node name="TargetSearchArea" type="Area2D" parent="."]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetSearchArea"]

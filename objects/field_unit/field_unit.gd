@@ -71,8 +71,9 @@ func locate_target():
 	var min_distance = 999999
 	var min_node : RigidBody2D = null
 	var current_distance = 9999999
+	print(children.size())
 	for i in range(0, children.size() - 1):
-#		if children[i].is_in_group("field_units_group"):
+		if !children[i].is_in_group("field_units_group"):
 			if children[i].unit_type == 'rock':
 				if self.unit_type == 'paper':
 					current_distance = position.distance_squared_to(children[i].position)
@@ -117,18 +118,8 @@ func process_type_update():
 	else:
 		sprite.texture = scissors_texture
 
-#func on_collision(body):
-#	print(body)
-#	if body.is_in_group("field_units"):
-#		process_collision(body)
-#
-#func _on_area_entered(area):
-#	if area.is_in_group("field_units"):
-#		process_collision(area)
-
-
 func _on_body_entered(body):
-	if body.is_in_group("line_points"):
-		print("hi")
+#	if body.is_in_group("line_points"):
+#		print("hi")
 	if body.is_in_group("field_units"):
 		process_collision(body)
