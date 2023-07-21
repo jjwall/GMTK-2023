@@ -5,6 +5,8 @@ var line_points = PackedVector2Array()
 # Reference to the CollisionPolygon2D node
 var collision_polygon
 
+var collision_children: Array[CollisionShape2D] = []
+
 # Reference to the Line2D node
 var line_node
 
@@ -28,6 +30,7 @@ func _input(event):
 			collision_polygon.shape = CircleShape2D.new()
 			collision_polygon.position = event.position
 			self.add_child(collision_polygon)
+			collision_children.append(collision_polygon)
 			# Update the Line2D node with the new points
 			# Update the CollisionPolygon2D node with the new points
 #			collision_polygon.polygon = line_points
@@ -39,8 +42,14 @@ func _input(event):
 		# Reset the line_points array when the left mouse button is pressed
 		line_points.clear()
 		line_node.points = line_points
+		delete_children(collision_children)
 #		collision_polygon.polygon = line_points
 
+func delete_children(node: Array[CollisionShape2D]):
+	for n in range(node.size()):
+		node[n].queue_free()
+#		node.remove_at(n)
+	collision_children = []
 
 
 #func _input(event):
