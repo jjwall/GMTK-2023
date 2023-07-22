@@ -26,11 +26,17 @@ func _input(event):
 		# Add the current mouse position to the line_points array
 			line_points.append(event.position)
 			line_node.points = line_points
-			collision_polygon = CollisionShape2D.new()
-			collision_polygon.shape = CircleShape2D.new()
-			collision_polygon.position = event.position
-			self.add_child(collision_polygon)
-			collision_children.append(collision_polygon)
+			
+			if line_points.size() > 1:
+				var collision_line = SegmentShape2D.new()
+				collision_line.a = line_points[line_points.size() - 2]
+				collision_line.b = line_points[line_points.size() - 1]
+				var shape = CollisionShape2D.new()
+				shape.shape = collision_line
+	#			collision_polygon.shape = CircleShape2D.new()
+	#			collision_polygon.position = event.position
+				self.add_child(shape)
+				collision_children.append(shape)
 			# Update the Line2D node with the new points
 			# Update the CollisionPolygon2D node with the new points
 #			collision_polygon.polygon = line_points
