@@ -6,13 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://df8f3okee88wq" path="res://assets/ui_menu_popup_01.wav" id="3_x7yr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6jur7"]
-size = Vector2(34, 32)
+size = Vector2(56, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60lcc"]
-radius = 6.84047
+radius = 9.28862
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2n0pf"]
-radius = 20.025
+radius = 34.0
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["field_units"]]
 collision_mask = 2
@@ -24,17 +24,17 @@ lock_rotation = true
 script = ExtResource("1_hm76p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_iijh2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6jur7")
 
 [node name="TargetSearchArea" type="Area2D" parent="."]
-visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetSearchArea"]
+visible = false
 scale = Vector2(25, 25)
 shape = SubResource("CircleShape2D_60lcc")
 

@@ -12,6 +12,8 @@ extends RigidBody2D
 var check_num = 0
 
 var SPEED = 50
+var speed_min = 65
+var speed_max = 115
 var target : RigidBody2D = null
 var aimless_direction: Vector2 = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
@@ -28,7 +30,7 @@ var sfx : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SPEED = randf_range(50, 100)
+	SPEED = randf_range(speed_min, speed_max)
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
 	sfx = $AudioStreamPlayer
