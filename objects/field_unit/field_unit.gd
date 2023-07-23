@@ -1,9 +1,9 @@
-extends Area2D
+extends RigidBody2D
 # TODO: Levels
 # TODO: Spawn clumping
 # TODO: Player char unit
 # TODO: Mobile view
-# TODO: Click and drag wall creation
+# TODO: (Done) Click and drag wall creation
 
 @export var unit_type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
@@ -11,9 +11,9 @@ extends Area2D
 @export var imprecision = 4 #increase this number for more performance
 var check_num = 0
 
-var SPEED = 75
-var target : Area2D = null
-var aimless_direction = null
+var SPEED = 50
+var target : RigidBody2D = null
+var aimless_direction: Vector2 = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
@@ -28,11 +28,11 @@ var sfx : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SPEED = randf_range(75, 125)
+	SPEED = randf_range(50, 100)
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
 	sfx = $AudioStreamPlayer
-	process_type_update()
+	process_type_update(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
 func _physics_process(delta):
@@ -43,9 +43,14 @@ func _physics_process(delta):
 	
 	if target:
 		var direction = global_position.direction_to(target.position)
-		position += direction * SPEED * delta
+		self.linear_velocity = direction * SPEED
+#		position += direction * SPEED * delta
+		move_and_collide(direction * SPEED * delta)
 	else:
-		position += aimless_direction * SPEED * delta
+#		position += aimless_direction * SPEED * delta
+#		move_and_collide(aimless_direction * SPEED * delta)
+#		aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
+		self.linear_velocity = aimless_direction * SPEED
 	
 	wrap_position()
 
@@ -61,14 +66,14 @@ func wrap_position():
 
 func locate_target():
 #	var children = field_units_group.get_children()
-	var children: Array[Area2D] = target_search.get_overlapping_areas()
+	var children: Array[Node2D] = target_search.get_overlapping_bodies()
 	if children.size() < 1:
 		return
 	var min_distance = 999999
-	var min_node : Area2D = null
+	var min_node : RigidBody2D = null
 	var current_distance = 9999999
 	for i in range(0, children.size() - 1):
-		if children[i].is_in_group("field_units_group"):
+		if children[i].is_in_group("field_units"):
 			if children[i].unit_type == 'rock':
 				if self.unit_type == 'paper':
 					current_distance = position.distance_squared_to(children[i].position)
@@ -89,18 +94,36 @@ func locate_target():
 						min_node = children[i]
 	target = min_node
 
-func process_collision(colliding_entity: Area2D):
-	if unit_type == 'rock' && colliding_entity.unit_type == 'paper':
-		unit_type = 'paper'
-		process_type_update()
-	if unit_type == 'paper' && colliding_entity.unit_type == 'scissors':
-		unit_type = 'scissors'
-		process_type_update()
-	if unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
-		unit_type = 'rock'
-		process_type_update()
+func get_random_target():
+	var children = field_units_group.get_children()
+#	var children: Array[Node2D] = target_search.get_overlapping_bodies()
+	if children.size() < 1:
+		return
+	
+	children.shuffle()
+	for i in range(0, children.size() - 1):
+		if !children[i].is_in_group("field_units_group"):
+			if children[i].unit_type == 'rock':
+				if self.unit_type == 'paper':
+					target = children[i]
+			if children[i].unit_type == 'paper':
+				if self.unit_type == 'scissors':
+					target = children[i]
+			if children[i].unit_type == 'scissors':
+				if self.unit_type == 'rock':
+					target = children[i]
 
-func process_type_update():
+
+func process_collision(colliding_entity: RigidBody2D):
+	if unit_type == 'rock' && colliding_entity.unit_type == 'paper':
+		process_type_update('paper')
+	elif unit_type == 'paper' && colliding_entity.unit_type == 'scissors':
+		process_type_update('scissors')
+	elif unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
+		process_type_update('rock')
+
+func process_type_update(new_unit_type: String):
+	unit_type = new_unit_type
 	target = null
 	locate_target()
 	sfx.play()
@@ -111,7 +134,6 @@ func process_type_update():
 	else:
 		sprite.texture = scissors_texture
 
-
-func _on_area_entered(area):
-	if area.is_in_group("field_units"):
-		process_collision(area)
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("field_units"):
+		process_collision(body)

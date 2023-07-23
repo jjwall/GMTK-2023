@@ -1,8 +1,8 @@
 extends Node
 
-@export var rock_count: int = 50
-@export var scissors_count: int = 50
-@export var paper_count: int = 50
+@export var rock_count: int = 25
+@export var scissors_count: int = 25
+@export var paper_count: int = 25
 
 var field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
 
