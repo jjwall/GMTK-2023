@@ -1,9 +1,29 @@
 extends RigidBody2D
+# 07/22 Get To-Do List:
+# TODO: Main Menu (Story / Survival / How-To-Play)
+# -> Story levels UI level 1-30 panels (locked 2-30) 1-3 star rank system UI
+# TODO: Draw Meter UI
+# -> Progress bar that that allows you to draw a certain length of line
+# before preventing you from drawing anymore
+# TODO: Timer on ink/
+# -> As soon as you start drawing, line has a time limit. Indicated by
+# transitioning from white to red coloring and fading before disappearing
 # TODO: Levels
-# TODO: Spawn clumping
-# TODO: Player char unit
-# TODO: Mobile view
-# TODO: (Done) Click and drag wall creation
+# -> 30 "Story" levels and a survival mode (infinite levels)
+# -> Will be based on a seed system to develop levels, seeds won't change
+# for Story levels, but will be random for infinite survival mode
+# TODO: Local db store for saving player level data
+# TODO: Polish -> win with winning emoji popping up and stars fluttering around
+# -> loss shows winning emoji with angry squigly above (charley brown thing)
+# -> SFX for drawing line, scissors snip, rock crush, paper cover
+# TODO: 3D infinite backgrounds (think Maiden & Spell)
+# -> If not this at least an improved version of what we have
+# TODO: Anthropomorphic RPS anime chars b/c why not?
+
+# Ideas:
+# Player char unit
+# Cool down on lines
+# Tutorial level? -> Level 1?
 
 @export var unit_type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null

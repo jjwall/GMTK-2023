@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/player_cursor/player_cursor.gd" id="1_uuwth"]
 [ext_resource type="PhysicsMaterial" uid="uid://c2swnpbhr7tlw" path="res://assets/physics_materials/ice.tres" id="1_yoejj"]
 
-[node name="Node" type="RigidBody2D"]
+[node name="player_cursor" type="RigidBody2D"]
 disable_mode = 1
 collision_layer = 2
 collision_mask = 0

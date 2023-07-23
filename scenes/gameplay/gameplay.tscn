@@ -17,4 +17,4 @@ unique_name_in_owner = true
 [node name="field_unit_spawner" type="Node" parent="."]
 script = ExtResource("3_44jnp")
 
-[node name="Node" parent="." instance=ExtResource("3_84hl8")]
+[node name="player_cursor" parent="." instance=ExtResource("3_84hl8")]
