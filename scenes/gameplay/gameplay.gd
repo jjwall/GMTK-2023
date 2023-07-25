@@ -25,6 +25,7 @@ func _ready():
 	GameplayVars.current_rock_count = rock_count
 	GameplayVars.current_paper_count = paper_count
 	GameplayVars.current_scissors_count = scissors_count
+	$unit_wins_label.visible = false
 	spawn_units()
 
 func spawn_units():
@@ -46,10 +47,16 @@ func create_field_unit(unit_type: String, pos: Vector2):
 		
 func _on_field_unit_type_update():
 	if GameplayVars.current_scissors_count == total_units_count:
+		$unit_wins_label.visible = true
+		$unit_wins_label.text = "Scissors Wins"
 		print("Scissors Wins")
 	
 	if GameplayVars.current_paper_count == total_units_count:
+		$unit_wins_label.visible = true
+		$unit_wins_label.text = "Paper Wins"
 		print("Paper Wins")
 		
 	if GameplayVars.current_rock_count == total_units_count:
+		$unit_wins_label.visible = true
+		$unit_wins_label.text = "Rock Wins"
 		print("Rock Wins")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=5 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_8gahn"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="4_amhjt"]
 
 [node name="gameplay" type="Node2D"]
 script = ExtResource("1_u5fet")
@@ -16,3 +17,12 @@ texture = ExtResource("1_8gahn")
 unique_name_in_owner = true
 
 [node name="player_cursor" parent="." instance=ExtResource("3_84hl8")]
+
+[node name="unit_wins_label" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 703.0
+offset_right = 964.0
+offset_bottom = 966.0
+theme = ExtResource("4_amhjt")
+text = "Rock Wins!"
+horizontal_alignment = 1
