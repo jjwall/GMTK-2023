@@ -54,7 +54,7 @@ bg_color = Color(0.286275, 0.0705882, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ouru"]
 
 [resource]
-Button/font_sizes/font_size = 19
+Button/font_sizes/font_size = 190
 Button/fonts/font = ExtResource("1_qqmai")
 Button/styles/focus = SubResource("StyleBoxFlat_3ndf0")
 Button/styles/hover = SubResource("StyleBoxFlat_e38c6")
