@@ -15,5 +15,5 @@ func change_to_gameplay_scene():
 	get_tree().change_scene_to_file(gameplay_scene)
 
 
-func _on_play_button_pressed():
+func _on_survival_button_pressed():
 	change_to_gameplay_scene()

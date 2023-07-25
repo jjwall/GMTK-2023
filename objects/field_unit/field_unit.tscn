@@ -5,14 +5,14 @@
 [ext_resource type="PhysicsMaterial" uid="uid://c2swnpbhr7tlw" path="res://assets/physics_materials/ice.tres" id="1_wymvl"]
 [ext_resource type="AudioStream" uid="uid://df8f3okee88wq" path="res://assets/ui_menu_popup_01.wav" id="3_x7yr3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jur7"]
-size = Vector2(56, 54)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ilb3"]
+radius = 34.0147
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60lcc"]
 radius = 9.28862
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2n0pf"]
-radius = 34.0
+radius = 29.0172
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["field_units"]]
 collision_mask = 2
@@ -28,7 +28,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_iijh2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6jur7")
+shape = SubResource("CircleShape2D_5ilb3")
 
 [node name="TargetSearchArea" type="Area2D" parent="."]
 monitorable = false

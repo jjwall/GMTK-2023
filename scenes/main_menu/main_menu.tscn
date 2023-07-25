@@ -19,13 +19,29 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_e4b4u")
 
-[node name="play_button" type="Button" parent="."]
+[node name="survival_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 283.0
-offset_top = 892.0
-offset_right = 792.0
-offset_bottom = 1105.0
+offset_left = 256.0
+offset_top = 1002.0
+offset_right = 765.0
+offset_bottom = 1215.0
 theme = ExtResource("2_w36fx")
-text = "Play"
+text = "Survival"
 
-[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[node name="missions_button" type="Button" parent="."]
+offset_left = 260.0
+offset_top = 686.0
+offset_right = 769.0
+offset_bottom = 899.0
+theme = ExtResource("2_w36fx")
+text = "Missions"
+
+[node name="tutorial_button" type="Button" parent="."]
+offset_left = 273.0
+offset_top = 1317.0
+offset_right = 782.0
+offset_bottom = 1530.0
+theme = ExtResource("2_w36fx")
+text = "Tutorial"
+
+[connection signal="pressed" from="survival_button" to="." method="_on_survival_button_pressed"]
