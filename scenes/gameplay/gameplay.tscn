@@ -26,3 +26,13 @@ offset_bottom = 966.0
 theme = ExtResource("4_amhjt")
 text = "Rock Wins!"
 horizontal_alignment = 1
+
+[node name="restart_button" type="Button" parent="."]
+offset_left = 287.0
+offset_top = 866.0
+offset_right = 792.0
+offset_bottom = 1054.0
+theme = ExtResource("4_amhjt")
+text = "Restart"
+
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
