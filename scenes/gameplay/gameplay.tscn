@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=6 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_8gahn"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="4_amhjt"]
+[ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="5_hdu3p"]
 
 [node name="gameplay" type="Node2D"]
 script = ExtResource("1_u5fet")
@@ -22,9 +23,9 @@ unique_name_in_owner = true
 offset_left = 144.0
 offset_top = 703.0
 offset_right = 964.0
-offset_bottom = 966.0
+offset_bottom = 868.0
 theme = ExtResource("4_amhjt")
-text = "Rock Wins!"
+text = "Scissors Wins!"
 horizontal_alignment = 1
 
 [node name="restart_button" type="Button" parent="."]
@@ -34,5 +35,12 @@ offset_right = 792.0
 offset_bottom = 1054.0
 theme = ExtResource("4_amhjt")
 text = "Restart"
+
+[node name="winning_unit" type="TextureRect" parent="."]
+offset_left = 402.0
+offset_top = 460.0
+offset_right = 642.0
+offset_bottom = 700.0
+texture = ExtResource("5_hdu3p")
 
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]

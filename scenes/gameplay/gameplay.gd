@@ -19,12 +19,17 @@ var rand_paper_x_max = 1080
 var rand_paper_y_min = 0
 var rand_paper_y_max = 1920
 
-var field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
+const field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
+
+const paper_texture = preload("res://assets/textures/paper_emoji.png")
+const rock_texture = preload("res://assets/textures/rock_emoji.png")
+const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 func _ready():
 	GameplayVars.current_rock_count = rock_count
 	GameplayVars.current_paper_count = paper_count
 	GameplayVars.current_scissors_count = scissors_count
+	$winning_unit.visible = false
 	$unit_wins_label.visible = false
 	$restart_button.visible = false
 	spawn_units()
@@ -48,15 +53,19 @@ func create_field_unit(unit_type: String, pos: Vector2):
 		
 func _on_field_unit_type_update():
 	if GameplayVars.current_scissors_count == total_units_count:
+		$winning_unit.texture = scissors_texture
 		set_win_state("Scissors Wins")
 	
 	if GameplayVars.current_paper_count == total_units_count:
+		$winning_unit.texture = paper_texture
 		set_win_state("Paper Wins")
 	
 	if GameplayVars.current_rock_count == total_units_count:
+		$winning_unit.texture = rock_texture
 		set_win_state("Rock Wins")
 
 func set_win_state(unit_wins_text: String):
+	$winning_unit.visible = true
 	$unit_wins_label.visible = true
 	$restart_button.visible = true
 	$unit_wins_label.text = unit_wins_text
