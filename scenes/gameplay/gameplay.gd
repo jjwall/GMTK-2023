@@ -71,8 +71,20 @@ func set_win_state(unit_wins_text: String):
 	$unit_wins_label.text = unit_wins_text
 	print(unit_wins_text)
 
+func delete_field_units():
+	for unit in $field_unit_container.get_children():
+		$field_unit_container.remove_child(unit)
+		unit.queue_free()
+
 func reset_game_state():
-	pass
+	delete_field_units()
+	spawn_units()
+	GameplayVars.current_rock_count = rock_count
+	GameplayVars.current_paper_count = paper_count
+	GameplayVars.current_scissors_count = scissors_count
+	$winning_unit.visible = false
+	$unit_wins_label.visible = false
+	$restart_button.visible = false
 
 func _on_restart_button_pressed():
-	print("restart")
+	reset_game_state()
