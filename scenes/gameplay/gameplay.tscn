@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_8gahn"]
-[ext_resource type="Script" path="res://scenes/gameplay/field_unit_spawner.gd" id="3_44jnp"]
+[ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
 
 [node name="gameplay" type="Node2D"]
+script = ExtResource("1_u5fet")
 
 [node name="background" type="TextureRect" parent="."]
 offset_right = 1080.0
@@ -13,8 +14,5 @@ texture = ExtResource("1_8gahn")
 
 [node name="field_unit_container" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="field_unit_spawner" type="Node" parent="."]
-script = ExtResource("3_44jnp")
 
 [node name="player_cursor" parent="." instance=ExtResource("3_84hl8")]

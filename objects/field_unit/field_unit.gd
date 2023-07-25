@@ -24,6 +24,7 @@ extends RigidBody2D
 # Player char unit
 # Cool down on lines
 # Tutorial level? -> Level 1?
+signal field_unit_type_update()
 
 @export var unit_type = 'rock' # | 'paper' | 'scissors'
 @export var field_units_group: Node2D = null
@@ -143,6 +144,8 @@ func process_collision(colliding_entity: RigidBody2D):
 		process_type_update('scissors')
 	elif unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
 		process_type_update('rock')
+		
+	
 
 func process_type_update(new_unit_type: String):
 	unit_type = new_unit_type
@@ -150,11 +153,19 @@ func process_type_update(new_unit_type: String):
 	locate_target()
 	sfx.play()
 	if unit_type == 'rock':
+		GameplayVars.current_rock_count += 1
+		GameplayVars.current_scissors_count -= 1
 		sprite.texture = rock_texture
 	elif unit_type == 'paper':
+		GameplayVars.current_paper_count += 1
+		GameplayVars.current_rock_count -= 1
 		sprite.texture = paper_texture
 	else:
+		GameplayVars.current_scissors_count += 1
+		GameplayVars.current_paper_count -= 1
 		sprite.texture = scissors_texture
+		
+	field_unit_type_update.emit()
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("field_units"):

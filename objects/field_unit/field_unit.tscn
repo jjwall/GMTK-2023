@@ -14,7 +14,7 @@ radius = 9.28862
 [sub_resource type="CircleShape2D" id="CircleShape2D_2n0pf"]
 radius = 29.0172
 
-[node name="RigidBody2D" type="RigidBody2D" groups=["field_units"]]
+[node name="field_unit" type="RigidBody2D" groups=["field_units"]]
 collision_mask = 2
 physics_material_override = ExtResource("1_wymvl")
 gravity_scale = 0.0
