@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d0c8q")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -45,3 +45,4 @@ theme = ExtResource("2_w36fx")
 text = "Tutorial"
 
 [connection signal="pressed" from="survival_button" to="." method="_on_survival_button_pressed"]
+[connection signal="pressed" from="missions_button" to="." method="_on_missions_button_pressed"]

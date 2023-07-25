@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqj5bolv6rn1t"]
+
+[ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_6217p"]
+[ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_mn1s7"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_47f14"]
+
+[node name="mission_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mn1s7")
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6217p")
+
+[node name="mission_01" type="Button" parent="."]
+offset_left = 84.0
+offset_top = 85.0
+offset_right = 317.0
+offset_bottom = 298.0
+theme = ExtResource("3_47f14")
+text = "01"
+
+[connection signal="pressed" from="mission_01" to="." method="_on_mission_01_pressed"]
