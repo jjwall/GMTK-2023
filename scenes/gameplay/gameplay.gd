@@ -1,9 +1,14 @@
 extends Node2D
 
+# Have target win condition (pick a unit to win)
+# (Done) ink meter
+
 @export var rock_count: int = 25
 @export var scissors_count: int = 25
 @export var paper_count: int = 25
 var total_units_count = rock_count + scissors_count + paper_count
+
+const full_ink_meter_value = 1000
 
 # vars for seed maniputation
 var rand_rock_x_min = 0
@@ -26,13 +31,7 @@ const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 func _ready():
-	GameplayVars.current_rock_count = rock_count
-	GameplayVars.current_paper_count = paper_count
-	GameplayVars.current_scissors_count = scissors_count
-	$winning_unit.visible = false
-	$unit_wins_label.visible = false
-	$restart_button.visible = false
-	spawn_units()
+	reset_game_state()
 
 func spawn_units():
 	var rng = RandomNumberGenerator.new()
@@ -44,12 +43,12 @@ func spawn_units():
 		create_field_unit('paper', Vector2(rng.randf_range(rand_paper_x_min, rand_paper_x_max), rng.randf_range(rand_paper_y_min, rand_paper_y_max)))
 
 func create_field_unit(unit_type: String, pos: Vector2):
-		var new_field_unit = field_unit_scene.instantiate()
-		new_field_unit.unit_type = unit_type
-		new_field_unit.field_units_group = %field_unit_container
-		new_field_unit.position = pos
-		new_field_unit.field_unit_type_update.connect(_on_field_unit_type_update)
-		%field_unit_container.call_deferred("add_child", new_field_unit)
+	var new_field_unit = field_unit_scene.instantiate()
+	new_field_unit.unit_type = unit_type
+	new_field_unit.field_units_group = %field_unit_container
+	new_field_unit.position = pos
+	new_field_unit.field_unit_type_update.connect(_on_field_unit_type_update)
+	%field_unit_container.call_deferred("add_child", new_field_unit)
 		
 func _on_field_unit_type_update():
 	if GameplayVars.current_scissors_count == total_units_count:
@@ -77,8 +76,9 @@ func delete_field_units():
 		unit.queue_free()
 
 func reset_game_state():
-	delete_field_units()
 	spawn_units()
+	$ink_meter.value = full_ink_meter_value
+	GameplayVars.ink_meter_value = full_ink_meter_value
 	GameplayVars.current_rock_count = rock_count
 	GameplayVars.current_paper_count = paper_count
 	GameplayVars.current_scissors_count = scissors_count
@@ -87,4 +87,13 @@ func reset_game_state():
 	$restart_button.visible = false
 
 func _on_restart_button_pressed():
+	delete_field_units()
 	reset_game_state()
+
+func _on_player_cursor_draw_ink(amount):
+	GameplayVars.ink_meter_value -= amount
+	$ink_meter.value -= amount
+
+func _on_player_cursor_reset_ink_meter():
+	GameplayVars.ink_meter_value = full_ink_meter_value
+	$ink_meter.value = full_ink_meter_value

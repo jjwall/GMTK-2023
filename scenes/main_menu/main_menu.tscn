@@ -29,6 +29,7 @@ theme = ExtResource("2_w36fx")
 text = "Survival"
 
 [node name="missions_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 260.0
 offset_top = 686.0
 offset_right = 769.0
@@ -37,6 +38,7 @@ theme = ExtResource("2_w36fx")
 text = "Missions"
 
 [node name="tutorial_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 273.0
 offset_top = 1317.0
 offset_right = 782.0

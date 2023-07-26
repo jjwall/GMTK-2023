@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b4i4qyx8hd1tk"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b4i4qyx8hd1tk"]
 
 [ext_resource type="FontFile" uid="uid://ycvucvnenn27" path="res://assets/fonts/Silver_nodescent.ttf" id="1_qqmai"]
 
@@ -36,6 +36,9 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1pml"]
+bg_color = Color(0, 0.666667, 0.552941, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj2m5"]
 bg_color = Color(0.666667, 0.666667, 0.666667, 1)
 
@@ -65,6 +68,7 @@ Label/fonts/font = ExtResource("1_qqmai")
 LineEdit/font_sizes/font_size = 19
 LineEdit/fonts/font = null
 Panel/styles/panel = SubResource("StyleBoxFlat_qdg4x")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_n1pml")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hj2m5")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_hkog1")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_p6d5v")

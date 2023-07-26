@@ -1,4 +1,6 @@
 extends RigidBody2D
+signal draw_ink(amount: float)
+signal reset_ink_meter()
 
 # Notes:
 # Player_Cursor could be a regular node
@@ -15,9 +17,8 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		# Check if the left mouse button is pressed
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		# Add the current mouse position to the line_points array
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and GameplayVars.ink_meter_value > 0:
+			# Add the current mouse position to the line_points array
 			line_points.append(event.position)
 			line_node.points = line_points
 			
@@ -29,9 +30,11 @@ func _input(event):
 				shape.shape = collision_line
 				self.add_child(shape)
 				collision_children.append(shape)
-		
+				draw_ink.emit(collision_line.a.distance_to(collision_line.b))
+				
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		# Reset the line_points array when the left mouse button is pressed
+		reset_ink_meter.emit()
 		line_points.clear()
 		line_node.points = line_points
 		delete_collision_children()

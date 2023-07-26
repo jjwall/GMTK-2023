@@ -14,11 +14,13 @@ grow_vertical = 2
 script = ExtResource("1_mn1s7")
 
 [node name="background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_6217p")
 
 [node name="mission_01" type="Button" parent="."]
+layout_mode = 0
 offset_left = 84.0
 offset_top = 85.0
 offset_right = 317.0
