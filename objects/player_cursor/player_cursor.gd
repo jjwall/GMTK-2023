@@ -13,7 +13,7 @@ var line_node: Line2D
 var tween: Tween
 var line_is_on_screen = false
 
-# TODO: Temporary ink lines (fade to red over time)
+# TODO: (Done) Temporary ink lines (fade to red over time)
 
 func _ready():
 	# Get the reference to the Line2D and CollisionPolygon2D nodes
@@ -64,20 +64,23 @@ func init_line_timer():
 	if !line_is_on_screen:
 		line_is_on_screen = true
 #		set_tween() # not necessary
-		$line_timer.start()
+		$init_line_tween_timer.start()
 
 func set_tween():
 	tween = get_tree().create_tween()
 	tween.tween_property(line_node, "modulate", Color.RED, 1)
+	tween.tween_callback(on_line_expires) #.set_delay(1) -> this extends delay
 	tween.pause()
+
+func on_line_expires():
+	if line_is_on_screen:
+		reset_line()
 
 func reset_tween():
 	line_node.modulate = Color(1, 1, 1, 1)
 	tween.stop()
 #	tween.kill() # kill or stop?
-	tween = get_tree().create_tween()
-	tween.tween_property(line_node, "modulate", Color.RED, 1)
-	tween.pause()
+	set_tween()
 
 func delete_collision_children():
 	for n in range(collision_children.size()):
@@ -85,6 +88,7 @@ func delete_collision_children():
 		
 	collision_children = []
 
-func _on_line_timer_timeout():
+func _on_init_line_tween_timer_timeout():
 	if line_is_on_screen:
 		tween.play()
+
