@@ -2,6 +2,9 @@ extends RigidBody2D
 signal draw_ink(amount: float)
 signal reset_ink_meter()
 
+@export var init_tween_time = 2
+@export var tween_time = 2
+
 # Notes:
 # Player_Cursor could be a regular node
 # That dynamically appends a static or rigidbody2d
@@ -16,8 +19,9 @@ var line_is_on_screen = false
 # TODO: (Done) Temporary ink lines (fade to red over time)
 
 func _ready():
-	# Get the reference to the Line2D and CollisionPolygon2D nodes
+	# Get the reference to the Line2D node
 	line_node = get_node("Line2D")
+	$init_line_tween_timer.wait_time = init_tween_time
 	set_tween()
 
 func _input(event):
@@ -68,7 +72,7 @@ func init_line_timer():
 
 func set_tween():
 	tween = get_tree().create_tween()
-	tween.tween_property(line_node, "modulate", Color.RED, 1)
+	tween.tween_property(line_node, "modulate", Color.RED, tween_time)
 	tween.tween_callback(on_line_expires) #.set_delay(1) -> this extends delay
 	tween.pause()
 
