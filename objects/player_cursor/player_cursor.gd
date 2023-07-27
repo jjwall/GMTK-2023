@@ -24,34 +24,47 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and GameplayVars.ink_meter_value > 0:
 			# Add the current mouse position to the line_points array
-			line_points.append(event.position)
-			line_node.points = line_points
+			draw_ink_line(event.position)
 			
 			if line_points.size() > 1:
-				var collision_line = SegmentShape2D.new()
-				collision_line.a = line_points[line_points.size() - 2]
-				collision_line.b = line_points[line_points.size() - 1]
-				var shape = CollisionShape2D.new()
-				shape.shape = collision_line
-				self.add_child(shape)
-				collision_children.append(shape)
+				# Add collision line segment
+				var collision_line = append_line_collision()
+				# Use collision line segment length to reduce ink meter by this amount
 				draw_ink.emit(collision_line.a.distance_to(collision_line.b))
-				init_line()
+				# Initialize timer to start tween and destory line after a time.
+				init_line_timer()
 				
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		# Reset the line_points array when the left mouse button is pressed
-		reset_ink_meter.emit()
-		line_points.clear()
-		line_node.points = line_points
-		reset_tween()
-		delete_collision_children()
-		line_is_on_screen = false
+		reset_line()
 
-func init_line():
+func draw_ink_line(line_point_position: Vector2):
+	line_points.append(line_point_position)
+	line_node.points = line_points
+
+func append_line_collision() -> SegmentShape2D:
+	var collision_line = SegmentShape2D.new()
+	collision_line.a = line_points[line_points.size() - 2]
+	collision_line.b = line_points[line_points.size() - 1]
+	var shape = CollisionShape2D.new()
+	shape.shape = collision_line
+	self.add_child(shape)
+	collision_children.append(shape)
+	return collision_line
+
+func reset_line():
+	reset_ink_meter.emit()
+	line_points.clear()
+	line_node.points = line_points
+	reset_tween()
+	delete_collision_children()
+	line_is_on_screen = false
+
+func init_line_timer():
 	if !line_is_on_screen:
 		line_is_on_screen = true
-#		set_tween()
-		$init_line_timer.start()
+#		set_tween() # not necessary
+		$line_timer.start()
 
 func set_tween():
 	tween = get_tree().create_tween()
@@ -60,7 +73,8 @@ func set_tween():
 
 func reset_tween():
 	line_node.modulate = Color(1, 1, 1, 1)
-	tween.kill()
+	tween.stop()
+#	tween.kill() # kill or stop?
 	tween = get_tree().create_tween()
 	tween.tween_property(line_node, "modulate", Color.RED, 1)
 	tween.pause()
@@ -71,6 +85,6 @@ func delete_collision_children():
 		
 	collision_children = []
 
-func _on_timer_timeout():
+func _on_line_timer_timeout():
 	if line_is_on_screen:
 		tween.play()
