@@ -13,3 +13,7 @@ freeze = true
 script = ExtResource("1_uuwth")
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="init_line_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="init_line_timer" to="." method="_on_timer_timeout"]
