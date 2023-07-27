@@ -10,10 +10,17 @@ signal reset_ink_meter()
 var line_points = PackedVector2Array()
 var collision_children: Array[CollisionShape2D] = []
 var line_node: Line2D
+var tween: Tween
+
+
+# TODO: Temporary ink lines (fade to red over time)
 
 func _ready():
 	# Get the reference to the Line2D and CollisionPolygon2D nodes
 	line_node = get_node("Line2D")
+	tween = get_tree().create_tween()
+	tween.tween_property(line_node, "modulate", Color.RED, 1)
+	tween.pause()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -31,13 +38,24 @@ func _input(event):
 				self.add_child(shape)
 				collision_children.append(shape)
 				draw_ink.emit(collision_line.a.distance_to(collision_line.b))
+#				line_node.default_color = Color(1,1,0,0)
+#				line_node.set
+				tween.play()
 				
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		# Reset the line_points array when the left mouse button is pressed
 		reset_ink_meter.emit()
 		line_points.clear()
 		line_node.points = line_points
+		line_node.modulate = Color(1, 1, 1, 1)
+		tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property(line_node, "modulate", Color.RED, 1)
+		tween.pause()
 		delete_collision_children()
+		
+func reset_tween():
+	pass
 
 func delete_collision_children():
 	for n in range(collision_children.size()):
