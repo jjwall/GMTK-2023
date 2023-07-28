@@ -38,7 +38,11 @@ func create_mission_button(pos: Vector2, text: String):
 	new_mission_button.set_size(Vector2(button_length, button_height))
 	new_mission_button.theme = ui_theme
 	new_mission_button.text = text
+	new_mission_button.pressed.connect(on_mission_button_pressed.bind(text))
 	self.add_child(new_mission_button)
+
+func on_mission_button_pressed(mission_text: String):
+	print(mission_text)
 
 func change_to_scene(scene: String):
 	get_tree().change_scene_to_file(scene)
