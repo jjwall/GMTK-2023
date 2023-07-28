@@ -21,11 +21,22 @@ texture = ExtResource("1_6217p")
 
 [node name="mission_01" type="Button" parent="."]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 85.0
-offset_right = 317.0
-offset_bottom = 298.0
+offset_left = 76.0
+offset_top = 216.0
+offset_right = 309.0
+offset_bottom = 429.0
 theme = ExtResource("3_47f14")
 text = "01"
 
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 49.0
+offset_right = 278.0
+offset_bottom = 134.0
+theme = ExtResource("3_47f14")
+theme_override_font_sizes/font_size = 95
+text = "< Back"
+
 [connection signal="pressed" from="mission_01" to="." method="_on_mission_01_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

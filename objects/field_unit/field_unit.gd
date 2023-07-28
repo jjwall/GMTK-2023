@@ -2,10 +2,10 @@ extends RigidBody2D
 # 07/22 Get To-Do List:
 # TODO: Main Menu (Story / Survival / How-To-Play)
 # -> Story levels UI level 1-30 panels (locked 2-30) 1-3 star rank system UI
-# TODO: Draw Meter UI
+# TODO: (Done) Draw Meter UI
 # -> Progress bar that that allows you to draw a certain length of line
 # before preventing you from drawing anymore
-# TODO: Timer on ink/
+# TODO: (Done) Timer on ink/
 # -> As soon as you start drawing, line has a time limit. Indicated by
 # transitioning from white to red coloring and fading before disappearing
 # TODO: Levels
@@ -19,6 +19,13 @@ extends RigidBody2D
 # TODO: 3D infinite backgrounds (think Maiden & Spell)
 # -> If not this at least an improved version of what we have
 # TODO: Anthropomorphic RPS anime chars b/c why not?
+
+# 07/27 Get To-Do List:
+# TODO: ASCII Level builder (for missions)
+# TODO: Pause functionality / menu for gameplay
+# -> options, restart, main menu
+# TODO: Dynamic mission buttons, lock and star icons
+# -> mock local store for tracking "locked" levels and star progress
 
 # Ideas:
 # Player char unit
