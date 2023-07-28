@@ -4,7 +4,7 @@ extends Node
 var missions := { # what does := vs = do ?
 	"01" = {
 		"locked": false,
-		"stars": 0,
+		"stars": 1,
 		"level": [
 			["_", "_", "r"],
 			["_", "p", "_"], # working idea...

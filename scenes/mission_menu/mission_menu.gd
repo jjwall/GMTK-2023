@@ -1,14 +1,14 @@
 extends Control
 
-var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
-var main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
+const gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
+const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 
-var locked_emoji_texture = preload("res://assets/textures/locked_microsoft_emoji.png")
-var ui_theme = preload("res://assets/themes/ui_theme.tres")
+const locked_emoji_texture = preload("res://assets/textures/locked_microsoft_emoji.png")
+const star_emoji_texture = preload("res://assets/textures/star_microsoft_emoji.png")
+const ui_theme = preload("res://assets/themes/ui_theme.tres")
 
 func _ready():
 	create_mission_buttons()
-	$mission_01.visible = false
 
 func create_mission_buttons():
 	var button_pos_y = -75
@@ -41,19 +41,43 @@ func create_mission_button(pos: Vector2, mission_id: String):
 	new_mission_button.theme = ui_theme
 	new_mission_button.text = mission_id
 	new_mission_button.pressed.connect(on_mission_button_pressed.bind(mission_id))
-	
 	self.add_child(new_mission_button)
 	
-	# Disable button and add lock emoji if locked.
-	if DataStore.missions.has(mission_id) and DataStore.missions[mission_id].locked:
-		new_mission_button.disabled = true
-		var locked_emoji = TextureRect.new()
-		locked_emoji.texture = locked_emoji_texture
-		pos.x -= 25
-		pos.y += 95
-		locked_emoji.set_position(pos)
-		locked_emoji.set_scale(Vector2(0.4, 0.4))
-		self.add_child(locked_emoji)
+	if DataStore.missions.has(mission_id):
+		if DataStore.missions[mission_id].locked:
+			# Disable button and add lock emoji if locked.
+			new_mission_button.disabled = true
+			pos.x -= 25
+			pos.y += 95
+			add_locked_emoji(pos)
+		else: # Mission unlocked and potentially already played.
+			# Render amount of stars earned for mission.
+			var star_count = DataStore.missions[mission_id].stars
+			for s in range(3):
+				if star_count >= s + 1:
+					add_star_emoji(pos)
+				else: # Missing a star
+					add_star_emoji(pos, true)
+				
+				pos.x += 65
+
+func add_star_emoji(pos: Vector2, empty: bool = false):
+	var star_emoji = TextureRect.new()
+	star_emoji.texture = star_emoji_texture
+	star_emoji.set_position(pos)
+	star_emoji.set_scale(Vector2(0.3, 0.3))
+	
+	if empty:
+		star_emoji.modulate = Color(0, 0, 0, 0.5)
+		
+	self.add_child(star_emoji)
+
+func add_locked_emoji(pos: Vector2):
+	var locked_emoji = TextureRect.new()
+	locked_emoji.texture = locked_emoji_texture
+	locked_emoji.set_position(pos)
+	locked_emoji.set_scale(Vector2(0.4, 0.4))
+	self.add_child(locked_emoji)
 
 func on_mission_button_pressed(mission_id: String):
 	if DataStore.missions.has(mission_id):
@@ -65,9 +89,6 @@ func on_mission_button_pressed(mission_id: String):
 
 func change_to_scene(scene: String):
 	get_tree().change_scene_to_file(scene)
-
-func _on_mission_01_pressed():
-	change_to_scene(gameplay_scene)
 
 func _on_back_button_pressed():
 	change_to_scene(main_menu_scene)
