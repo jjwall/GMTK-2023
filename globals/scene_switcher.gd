@@ -1,5 +1,7 @@
 extends Node
 
+var current_scene = null
+
 #func change_to_scene(scene_filename: String) -> Node:
 #	var scene = load(scene_filename).instantiate()
 ##	get_tree().get_root().call_deferred(_change_scene, scene)
@@ -19,11 +21,15 @@ func change_to_scene(scene_filename: String) -> Node:
 
 func _change_scene(scene: Node):
 	var tree := get_tree()
-	tree.current_scene.free()
-	tree.current_scene = scene
+	current_scene.free()
+	current_scene = scene
+#	current_scene = tree.get_child(tree.get_child_count() - 1)
+#	tree.current_scene.free()
+#	tree.current_scene = scene
 	var root := tree.get_root() as Window
 	root.add_child(scene)
-	root.update_mouse_cursor_state()
+	tree.set_current_scene(current_scene)
+	print(tree.current_scene)
 
 #func _change_scene(scene: Node):
 #	get_tree().current_scene.free()
@@ -35,7 +41,8 @@ func change_to_scene_file(scene_file: String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var tree = get_tree().get_root()
+	current_scene = tree.get_child(tree.get_child_count() - 1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
