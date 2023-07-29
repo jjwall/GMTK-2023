@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqj5bolv6rn1t"]
+
+[ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_6217p"]
+[ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_mn1s7"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_47f14"]
+
+[node name="mission_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mn1s7")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6217p")
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 49.0
+offset_right = 278.0
+offset_bottom = 134.0
+theme = ExtResource("3_47f14")
+theme_override_font_sizes/font_size = 95
+text = "< Back"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

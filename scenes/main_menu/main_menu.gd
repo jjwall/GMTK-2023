@@ -18,4 +18,5 @@ func _on_survival_button_pressed():
 	change_to_scene(gameplay_scene)
 
 func _on_missions_button_pressed():
-	change_to_scene(missions_menu_scene)
+	SceneSwitcher.change_to_scene(missions_menu_scene)
+#	change_to_scene(missions_menu_scene)

@@ -24,8 +24,14 @@ extends RigidBody2D
 # TODO: ASCII Level builder (for missions)
 # TODO: Pause functionality / menu for gameplay
 # -> options, restart, main menu
-# TODO: Dynamic mission buttons, lock and star icons
+# TODO: Game over screen options
+# -> Restart, Back (main menu or missions screen depending on game mode)
+# TODO: (Done) Dynamic mission buttons, lock and star icons
 # -> mock local store for tracking "locked" levels and star progress
+# TODO: Star count in top right corner of mission menu
+# TODO: "Ink Meter" label above progress bar
+# TODO: Survival vs missions gameplay modes
+# -> Pass params to gameplay scene (level ascii & game mode)
 
 # Ideas:
 # Player char unit

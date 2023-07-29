@@ -10,6 +10,9 @@ var total_units_count = rock_count + scissors_count + paper_count
 
 const full_ink_meter_value = 1000
 
+# Instantiation vars
+var mission_id = "00"
+
 # vars for seed maniputation
 var rand_rock_x_min = 0
 var rand_rock_x_max = 1080
@@ -31,6 +34,7 @@ const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 func _ready():
+	print(mission_id)
 	reset_game_state()
 
 func spawn_units():
