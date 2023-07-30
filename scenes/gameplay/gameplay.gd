@@ -5,11 +5,15 @@ extends Node2D
 # TODO: Fade in spawning units
 # (Done) ink meter
 
-# Instantiation vars
+# These vars should be set when instatiating the scene.
 var mission_id = "00"
 var game_mode = "survival" # | "mission"
-var level_data = []
+
+# Undetermined when this would be set
 var full_ink_meter_value = 1000
+
+# These get set in the scene implementation
+var target_winning_unit = "rock" # | "paper" | "scissors"
 var total_rock_count: int = 0
 var total_scissors_count: int = 0
 var total_paper_count: int = 0
@@ -113,6 +117,20 @@ func spawn_mission_units(mission_id: String):
 	else:
 		print("error getting level data")
 
+func set_target_winning_unit(mission_id: String):
+	if RefData.mission_level_data.has(mission_id):
+		target_winning_unit = RefData.mission_level_data[mission_id].target_winning_unit
+
+func set_random_target_winning_unit():
+	var dice_roll = randi_range(0, 2)
+	
+	if dice_roll == 0:
+		target_winning_unit = "rock"
+	if dice_roll == 1:
+		target_winning_unit = "paper"
+	if dice_roll == 2:
+		target_winning_unit = "scissors"
+
 func reset_game_state():
 	total_rock_count = 0
 	total_paper_count = 0
@@ -120,8 +138,12 @@ func reset_game_state():
 	
 	if game_mode == "mission":
 		spawn_mission_units(mission_id)
+		set_target_winning_unit(mission_id)
 	if game_mode == "survival":
-		spawn_units(25, 25, 25)
+		spawn_units(25, 25, 25) # these values should be somewhat random
+		set_random_target_winning_unit()
+		
+	print("target winning unit = %s" %[str(target_winning_unit)])
 
 	$ink_meter.value = full_ink_meter_value
 	GameplayVars.ink_meter_value = full_ink_meter_value
