@@ -20,8 +20,8 @@ var mission_level_data := {
 		"level": load_mission_level_data("03")
 	},
 	"04" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "scissors",
+		"level": load_mission_level_data("04")
 	},
 	"05" = {
 		"target_winning_unit": "paper",
