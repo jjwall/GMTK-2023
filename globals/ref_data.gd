@@ -9,31 +9,31 @@ var mission_level_data := {
 		"target_winning_unit": "scissors",
 		"max_ink_meter_amount": 1000,
 		"ink_timer": 4,
-		"level": load_mission_level_data("01")
+		"level": load_mission_level_data("01") # great starter level
 	},
 	"02" = {
 		"target_winning_unit": "scissors",
-		"level": load_mission_level_data("02")
+		"level": load_mission_level_data("02") # meh it's fine
 	},
 	"03" = {
 		"target_winning_unit": "paper",
-		"level": load_mission_level_data("03")
+		"level": load_mission_level_data("03") # not enough units
 	},
 	"04" = {
-		"target_winning_unit": "scissors",
-		"level": load_mission_level_data("04")
+		"target_winning_unit": "rock",
+		"level": load_mission_level_data("04") # rock seems like the right challenge
 	},
 	"05" = {
 		"target_winning_unit": "rock",
-		"level": load_mission_level_data("05")
+		"level": load_mission_level_data("05") # this is a good difficulty / well designed
 	},
 	"06" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "scissors", # hard level
+		"level": load_mission_level_data("06")
 	},
 	"07" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "scissors", # unique, not sure if scissors is right
+		"level": load_mission_level_data("07")
 	},
 	"08" = {
 		"target_winning_unit": "paper",
