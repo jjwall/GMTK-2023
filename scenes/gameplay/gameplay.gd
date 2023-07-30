@@ -1,18 +1,18 @@
 extends Node2D
 
-# Have target win condition (pick a unit to win)
+# TODO: Have target win condition (pick a unit to win)
 # (Done) ink meter
 
-@export var rock_count: int = 25
-@export var scissors_count: int = 25
-@export var paper_count: int = 25
-var total_units_count = rock_count + scissors_count + paper_count
 
-const full_ink_meter_value = 1000
 
 # Instantiation vars
 var mission_id = "00"
 var game_mode = "survival" # | "mission"
+var level_data = []
+var full_ink_meter_value = 1000
+@export var rock_count: int = 25
+@export var scissors_count: int = 25
+@export var paper_count: int = 25
 
 # vars for seed maniputation
 var rand_rock_x_min = 0
@@ -36,9 +36,13 @@ const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 func _ready():
 	print(mission_id)
+	print(game_mode)
 	reset_game_state()
 
-func spawn_units():
+func get_total_units() -> int:
+	return rock_count + scissors_count + paper_count
+
+func spawn_units(level = []):
 	var rng = RandomNumberGenerator.new()
 	for i in range(0, rock_count):
 		create_field_unit('rock', Vector2(rng.randf_range(rand_rock_x_min, rand_rock_x_max), rng.randf_range(rand_rock_y_min, rand_rock_y_max)))
@@ -56,15 +60,15 @@ func create_field_unit(unit_type: String, pos: Vector2):
 	%field_unit_container.call_deferred("add_child", new_field_unit)
 		
 func _on_field_unit_type_update():
-	if GameplayVars.current_scissors_count == total_units_count:
+	if GameplayVars.current_scissors_count == get_total_units():
 		$winning_unit.texture = scissors_texture
 		set_win_state("Scissors Wins")
 	
-	if GameplayVars.current_paper_count == total_units_count:
+	if GameplayVars.current_paper_count == get_total_units():
 		$winning_unit.texture = paper_texture
 		set_win_state("Paper Wins")
 	
-	if GameplayVars.current_rock_count == total_units_count:
+	if GameplayVars.current_rock_count == get_total_units():
 		$winning_unit.texture = rock_texture
 		set_win_state("Rock Wins")
 
@@ -80,7 +84,32 @@ func delete_field_units():
 		$field_unit_container.remove_child(unit)
 		unit.queue_free()
 
+func set_survival_game_state():
+#	spawn_units() # random for survival
+	pass
+	
+func set_mission_game_state():
+#	if level_data.children.count() > 0:
+#		spawn_units(level_data) # mission
+#	else:
+#		spawn_units() # random
+	pass
+
+func set_common_game_state():
+	pass
+
 func reset_game_state():
+#	if game_mode == "mission":
+#		set_mission_game_state()
+#	else:
+#		set_survival_game_state()
+#
+#	set_common_game_state()
+#	if level_data.children.count() > 0 and game_mode == "mission":
+#		spawn_units(level_data) # mission
+#	else:
+#		spawn_units() # random for survival
+
 	spawn_units()
 	$ink_meter.value = full_ink_meter_value
 	GameplayVars.ink_meter_value = full_ink_meter_value

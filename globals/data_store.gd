@@ -5,11 +5,6 @@ var missions := { # what does := vs = do ?
 	"01" = {
 		"locked": false,
 		"stars": 3,
-		"level": [
-			["_", "_", "r"],
-			["_", "p", "_"], # working idea... # Prob wanna store this in a static dict, not data store
-			["s", "_", "_"],
-		]
 	},
 	"02" = {
 		"locked": false,

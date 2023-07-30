@@ -85,14 +85,10 @@ func on_mission_button_pressed(mission_id: String):
 		# TODO: Pass mission level data to scene.
 		var new_gameplay_scene = SceneSwitcher.change_to_scene(gameplay_scene)
 		new_gameplay_scene.mission_id = mission_id
-#		change_to_mission_scene(gameplay_scene)
+		new_gameplay_scene.game_mode = "mission"
 		print(DataStore.missions[mission_id])
 	else:
 		print("Mission %s is not in data store" % mission_id)
-
-func change_to_mission_scene(scene: Node):
-	get_tree().current_scene.queue_free()
-	get_tree().get_root().call_deferred("add_child", scene)
 
 func _on_back_button_pressed():
 	SceneSwitcher.change_to_scene(main_menu_scene)
