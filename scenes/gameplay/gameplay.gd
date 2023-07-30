@@ -10,9 +10,9 @@ var mission_id = "00"
 var game_mode = "survival" # | "mission"
 var level_data = []
 var full_ink_meter_value = 1000
-@export var rock_count: int = 25
-@export var scissors_count: int = 25
-@export var paper_count: int = 25
+var total_rock_count: int = 0
+var total_scissors_count: int = 0
+var total_paper_count: int = 0
 
 # vars for seed maniputation
 var rand_rock_x_min = 0
@@ -40,9 +40,13 @@ func _ready():
 	reset_game_state()
 
 func get_total_units() -> int:
-	return rock_count + scissors_count + paper_count
+	return total_rock_count + total_scissors_count + total_paper_count
 
-func spawn_units(level = []):
+func spawn_units(rock_count: int, scissors_count: int, paper_count: int):
+	total_rock_count = rock_count
+	total_paper_count = paper_count
+	total_scissors_count = scissors_count
+	
 	var rng = RandomNumberGenerator.new()
 	for i in range(0, rock_count):
 		create_field_unit('rock', Vector2(rng.randf_range(rand_rock_x_min, rand_rock_x_max), rng.randf_range(rand_rock_y_min, rand_rock_y_max)))
@@ -87,7 +91,6 @@ func delete_field_units():
 func spawn_mission_units(mission_id: String):
 	if RefData.mission_level_data.has(mission_id):
 		var level_data = RefData.mission_level_data[mission_id].level
-		print(RefData.mission_level_data[mission_id].level)
 		var unit_pos_y = 50
 		var unit_pos_x = 50
 		
@@ -98,26 +101,33 @@ func spawn_mission_units(mission_id: String):
 			for c in range(level_data[r].size()):
 				if level_data[r][c] == "r":
 					create_field_unit("rock", Vector2(unit_pos_x, unit_pos_y))
+					total_rock_count += 1
 				if level_data[r][c] == "p":
 					create_field_unit("paper", Vector2(unit_pos_x, unit_pos_y))
+					total_paper_count += 1
 				if level_data[r][c] == "s":
 					create_field_unit("scissors", Vector2(unit_pos_x, unit_pos_y))
+					total_scissors_count += 1
 					
 				unit_pos_x += 110
 	else:
 		print("error getting level data")
 
 func reset_game_state():
+	total_rock_count = 0
+	total_paper_count = 0
+	total_scissors_count = 0
+	
 	if game_mode == "mission":
 		spawn_mission_units(mission_id)
 	if game_mode == "survival":
-		spawn_units()
+		spawn_units(25, 25, 25)
 
 	$ink_meter.value = full_ink_meter_value
 	GameplayVars.ink_meter_value = full_ink_meter_value
-	GameplayVars.current_rock_count = rock_count
-	GameplayVars.current_paper_count = paper_count
-	GameplayVars.current_scissors_count = scissors_count
+	GameplayVars.current_rock_count = total_rock_count
+	GameplayVars.current_paper_count = total_paper_count
+	GameplayVars.current_scissors_count = total_scissors_count
 	$winning_unit.visible = false
 	$unit_wins_label.visible = false
 	$restart_button.visible = false

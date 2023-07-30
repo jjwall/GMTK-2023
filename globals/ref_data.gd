@@ -24,8 +24,8 @@ var mission_level_data := {
 		"level": load_mission_level_data("04")
 	},
 	"05" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "rock",
+		"level": load_mission_level_data("05")
 	},
 	"06" = {
 		"target_winning_unit": "paper",

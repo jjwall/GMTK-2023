@@ -68,7 +68,7 @@ func _ready():
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
 	sfx = $AudioStreamPlayer
-	process_type_update(unit_type)
+	init_unit(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
 func _physics_process(delta):
@@ -157,8 +157,18 @@ func process_collision(colliding_entity: RigidBody2D):
 		process_type_update('scissors')
 	elif unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
 		process_type_update('rock')
-		
+
+func init_unit(init_unit_type: String):
+	unit_type = init_unit_type
+	target = null
+	locate_target()
 	
+	if unit_type == 'rock':
+		sprite.texture = rock_texture
+	elif unit_type == 'paper':
+		sprite.texture = paper_texture
+	else:
+		sprite.texture = scissors_texture
 
 func process_type_update(new_unit_type: String):
 	unit_type = new_unit_type
