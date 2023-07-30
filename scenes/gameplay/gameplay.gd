@@ -1,9 +1,9 @@
 extends Node2D
 
 # TODO: Have target win condition (pick a unit to win)
+# TODO: 3, 2, 1 counter anim
+# TODO: Fade in spawning units
 # (Done) ink meter
-
-
 
 # Instantiation vars
 var mission_id = "00"
@@ -84,33 +84,35 @@ func delete_field_units():
 		$field_unit_container.remove_child(unit)
 		unit.queue_free()
 
-func set_survival_game_state():
-#	spawn_units() # random for survival
-	pass
-	
-func set_mission_game_state():
-#	if level_data.children.count() > 0:
-#		spawn_units(level_data) # mission
-#	else:
-#		spawn_units() # random
-	pass
-
-func set_common_game_state():
-	pass
+func spawn_mission_units(mission_id: String):
+	if RefData.mission_level_data.has(mission_id):
+		var level_data = RefData.mission_level_data[mission_id].level
+		print(RefData.mission_level_data[mission_id].level)
+		var unit_pos_y = 50
+		var unit_pos_x = 50
+		
+		for r in range(level_data.size()):
+			unit_pos_y += 90
+			unit_pos_x = 50
+			
+			for c in range(level_data[r].size()):
+				if level_data[r][c] == "r":
+					create_field_unit("rock", Vector2(unit_pos_x, unit_pos_y))
+				if level_data[r][c] == "p":
+					create_field_unit("paper", Vector2(unit_pos_x, unit_pos_y))
+				if level_data[r][c] == "s":
+					create_field_unit("scissors", Vector2(unit_pos_x, unit_pos_y))
+					
+				unit_pos_x += 110
+	else:
+		print("error getting level data")
 
 func reset_game_state():
-#	if game_mode == "mission":
-#		set_mission_game_state()
-#	else:
-#		set_survival_game_state()
-#
-#	set_common_game_state()
-#	if level_data.children.count() > 0 and game_mode == "mission":
-#		spawn_units(level_data) # mission
-#	else:
-#		spawn_units() # random for survival
+	if game_mode == "mission":
+		spawn_mission_units(mission_id)
+	if game_mode == "survival":
+		spawn_units()
 
-	spawn_units()
 	$ink_meter.value = full_ink_meter_value
 	GameplayVars.ink_meter_value = full_ink_meter_value
 	GameplayVars.current_rock_count = rock_count
