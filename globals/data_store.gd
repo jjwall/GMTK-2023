@@ -31,7 +31,7 @@ var missions := {
 		"stars": 0,
 	},
 	"08" = {
-		"locked": true,
+		"locked": false,
 		"stars": 0,
 	},
 	"09" = {

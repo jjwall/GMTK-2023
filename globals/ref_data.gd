@@ -8,6 +8,7 @@ var mission_level_data := {
 	"01" = {
 		"target_winning_unit": "scissors",
 		"max_ink_meter_amount": 1000,
+		"next_mission": "02", # display locked if locked
 		"ink_timer": 4,
 		"level": load_mission_level_data("01") # great starter level
 	},
@@ -36,8 +37,8 @@ var mission_level_data := {
 		"level": load_mission_level_data("07")
 	},
 	"08" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "rock",
+		"level": load_mission_level_data("08")
 	},
 	"09" = {
 		"target_winning_unit": "paper",
@@ -117,6 +118,7 @@ var mission_level_data := {
 	},
 	"28" = {
 		"target_winning_unit": "paper",
-		"level": []
+		"level": [],
+		"next_mission": null,
 	},
 }

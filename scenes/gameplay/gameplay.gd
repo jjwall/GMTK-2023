@@ -1,9 +1,15 @@
 extends Node2D
 
-# TODO: Have target win condition (pick a unit to win)
-# TODO: 3, 2, 1 counter anim
+# TODO: (Done) Have target win condition (pick a unit to win)
+# TODO: (Done) ink meter
+# TODO: Lose / Win screens
+# -> Add buttons on each
+# -> Win: Next level, restart, main menu (if mission mode show what the next mission is)
+# -> Lose: Restart, Main Menu (if survival mode, show # of levels beat) [if mission, show next level button, locked or unlocked]
+# -> Repurpose winning_unit TextureRect to display_unit (will also show target winning unit)
+# -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
+# TODO: Add 3, 2, 1 countdown that would go where the restart button is
 # TODO: Fade in spawning units
-# (Done) ink meter
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
