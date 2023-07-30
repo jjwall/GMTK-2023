@@ -24,8 +24,14 @@ extends RigidBody2D
 # TODO: ASCII Level builder (for missions)
 # TODO: Pause functionality / menu for gameplay
 # -> options, restart, main menu
-# TODO: Dynamic mission buttons, lock and star icons
+# TODO: Game over screen options
+# -> Restart, Back (main menu or missions screen depending on game mode)
+# TODO: (Done) Dynamic mission buttons, lock and star icons
 # -> mock local store for tracking "locked" levels and star progress
+# TODO: Star count in top right corner of mission menu
+# TODO: "Ink Meter" label above progress bar
+# TODO: Survival vs missions gameplay modes
+# -> Pass params to gameplay scene (level ascii & game mode)
 
 # Ideas:
 # Player char unit
@@ -62,7 +68,7 @@ func _ready():
 	sprite = $Sprite2D
 	target_search = $TargetSearchArea
 	sfx = $AudioStreamPlayer
-	process_type_update(unit_type)
+	init_unit(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
 func _physics_process(delta):
@@ -151,8 +157,18 @@ func process_collision(colliding_entity: RigidBody2D):
 		process_type_update('scissors')
 	elif unit_type == 'scissors' && colliding_entity.unit_type == 'rock':
 		process_type_update('rock')
-		
+
+func init_unit(init_unit_type: String):
+	unit_type = init_unit_type
+	target = null
+	locate_target()
 	
+	if unit_type == 'rock':
+		sprite.texture = rock_texture
+	elif unit_type == 'paper':
+		sprite.texture = paper_texture
+	else:
+		sprite.texture = scissors_texture
 
 func process_type_update(new_unit_type: String):
 	unit_type = new_unit_type

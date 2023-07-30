@@ -1,6 +1,6 @@
 extends Control
 
-const gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
+var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 
 const locked_emoji_texture = preload("res://assets/textures/locked_microsoft_emoji.png")
@@ -8,6 +8,7 @@ const star_emoji_texture = preload("res://assets/textures/star_microsoft_emoji.p
 const ui_theme = preload("res://assets/themes/ui_theme.tres")
 
 func _ready():
+	# Create mission buttons grid.
 	create_mission_buttons()
 
 func create_mission_buttons():
@@ -82,13 +83,12 @@ func add_locked_emoji(pos: Vector2):
 func on_mission_button_pressed(mission_id: String):
 	if DataStore.missions.has(mission_id):
 		# TODO: Pass mission level data to scene.
-		change_to_scene(gameplay_scene)
+		var new_gameplay_scene = SceneSwitcher.change_to_scene(gameplay_scene)
+		new_gameplay_scene.mission_id = mission_id
+		new_gameplay_scene.game_mode = "mission"
 		print(DataStore.missions[mission_id])
 	else:
 		print("Mission %s is not in data store" % mission_id)
 
-func change_to_scene(scene: String):
-	get_tree().change_scene_to_file(scene)
-
 func _on_back_button_pressed():
-	change_to_scene(main_menu_scene)
+	SceneSwitcher.change_to_scene(main_menu_scene)

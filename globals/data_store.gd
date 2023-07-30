@@ -1,15 +1,10 @@
 extends Node
 
 # Mocking save game functionality for now.
-var missions := { # what does := vs = do ?
+var missions := {
 	"01" = {
 		"locked": false,
 		"stars": 3,
-		"level": [
-			["_", "_", "r"],
-			["_", "p", "_"], # working idea... # Prob wanna store this in a static dict, not data store
-			["s", "_", "_"],
-		]
 	},
 	"02" = {
 		"locked": false,
@@ -28,11 +23,11 @@ var missions := { # what does := vs = do ?
 		"stars": 0,
 	},
 	"06" = {
-		"locked": true,
+		"locked": false,
 		"stars": 0,
 	},
 	"07" = {
-		"locked": true,
+		"locked": false,
 		"stars": 0,
 	},
 	"08" = {
@@ -125,7 +120,6 @@ var missions := { # what does := vs = do ?
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
