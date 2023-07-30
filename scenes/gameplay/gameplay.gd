@@ -12,6 +12,7 @@ const full_ink_meter_value = 1000
 
 # Instantiation vars
 var mission_id = "00"
+var game_mode = "survival" # | "mission"
 
 # vars for seed maniputation
 var rand_rock_x_min = 0

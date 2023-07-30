@@ -11,12 +11,9 @@ func _ready():
 func _process(_delta):
 	pass
 
-func change_to_scene(scene: String):
-	get_tree().change_scene_to_file(scene)
-
 func _on_survival_button_pressed():
-	change_to_scene(gameplay_scene)
+	var gameplay = SceneSwitcher.change_to_scene(gameplay_scene)
+	gameplay.game_mode = "survival" 
 
 func _on_missions_button_pressed():
 	SceneSwitcher.change_to_scene(missions_menu_scene)
-#	change_to_scene(missions_menu_scene)
