@@ -1,7 +1,7 @@
 extends Node
 
 # Mocking save game functionality for now.
-var missions := { # what does := vs = do ?
+var missions := {
 	"01" = {
 		"locked": false,
 		"stars": 3,
