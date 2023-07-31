@@ -1,5 +1,11 @@
 extends Node
 
+var player_records := {
+	player_id: "0001",
+	survival_record: 0,
+	total_stars: 0,
+}
+
 # Mocking save game functionality for now.
 var missions := {
 	"01" = {
