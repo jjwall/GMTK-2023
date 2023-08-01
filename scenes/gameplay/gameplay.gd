@@ -24,6 +24,9 @@ var total_rock_count: int = 0
 var total_scissors_count: int = 0
 var total_paper_count: int = 0
 
+# survival specific
+var survival_win_streak = 0
+
 # vars for seed maniputation
 var rand_rock_x_min = 0
 var rand_rock_x_max = 1080
@@ -38,6 +41,7 @@ var rand_paper_x_max = 1080
 var rand_paper_y_min = 0
 var rand_paper_y_max = 1920
 
+const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 const field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
@@ -96,11 +100,15 @@ func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	$winning_unit.visible = true
 	$unit_wins_label.visible = true
 	$restart_button.visible = true
+	$main_menu_button.visible = true
 	$unit_wins_label.text = unit_wins_text
 	print(unit_wins_text)
 
 func set_win_state():
 	$description_label.text = "Congratulations!"
+	
+	if game_mode == "survival":
+		survival_win_streak += 1
 
 func set_lose_state():
 	$description_label.text = "You failed..."
@@ -171,6 +179,7 @@ func reset_game_state():
 	$winning_unit.visible = false
 	$unit_wins_label.visible = false
 	$description_label.visible = false
+	$main_menu_button.visible = false
 	$restart_button.visible = false
 
 func _on_restart_button_pressed():
@@ -184,3 +193,6 @@ func _on_player_cursor_draw_ink(amount):
 func _on_player_cursor_reset_ink_meter():
 	GameplayVars.ink_meter_value = full_ink_meter_value
 	$ink_meter.value = full_ink_meter_value
+
+func _on_main_menu_button_pressed():
+	SceneSwitcher.change_to_scene(main_menu_scene)
