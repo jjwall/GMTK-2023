@@ -38,12 +38,28 @@ text = "Congratulations!"
 horizontal_alignment = 1
 
 [node name="restart_button" type="Button" parent="."]
-offset_left = 294.0
-offset_top = 1252.0
-offset_right = 799.0
-offset_bottom = 1440.0
+offset_left = 285.0
+offset_top = 1540.0
+offset_right = 790.0
+offset_bottom = 1728.0
 theme = ExtResource("4_amhjt")
 text = "Restart"
+
+[node name="main_menu_button" type="Button" parent="."]
+offset_left = 253.0
+offset_top = 1064.0
+offset_right = 833.0
+offset_bottom = 1238.0
+theme = ExtResource("4_amhjt")
+text = "Main Menu"
+
+[node name="next_button" type="Button" parent="."]
+offset_left = 278.0
+offset_top = 1300.0
+offset_right = 820.0
+offset_bottom = 1475.0
+theme = ExtResource("4_amhjt")
+text = "Next ->"
 
 [node name="winning_unit" type="TextureRect" parent="."]
 offset_left = 402.0
@@ -61,15 +77,8 @@ theme = ExtResource("4_amhjt")
 max_value = 1000.0
 show_percentage = false
 
-[node name="main_menu_button" type="Button" parent="."]
-offset_left = 242.0
-offset_top = 1048.0
-offset_right = 822.0
-offset_bottom = 1222.0
-theme = ExtResource("4_amhjt")
-text = "Main Menu"
-
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]
 [connection signal="reset_ink_meter" from="player_cursor" to="." method="_on_player_cursor_reset_ink_meter"]
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="next_button" to="." method="_on_next_button_pressed"]

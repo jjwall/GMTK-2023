@@ -99,8 +99,8 @@ func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	$description_label.visible = true
 	$winning_unit.visible = true
 	$unit_wins_label.visible = true
-	$restart_button.visible = true
 	$main_menu_button.visible = true
+	$next_button.visible = true
 	$unit_wins_label.text = unit_wins_text
 	print(unit_wins_text)
 
@@ -109,9 +109,24 @@ func set_win_state():
 	
 	if game_mode == "survival":
 		survival_win_streak += 1
+		$restart_button.visible = false
+		$next_button.disabled = false
+		# show survival win streak
+	if game_mode == "mission":
+		$restart_button.visible = true
+		# if level unlocked or exists then:
+		$next_button.disabled = false
+		# show stars achieved
 
 func set_lose_state():
 	$description_label.text = "You failed..."
+	$restart_button.visible = true
+	
+	if game_mode == "survival":
+		$next_button.disabled = true
+#	if game_mode == "mission":
+#		if next level unlocked:
+#			$next_button.disabled = false
 
 func delete_field_units():
 	for unit in $field_unit_container.get_children():
@@ -181,6 +196,7 @@ func reset_game_state():
 	$description_label.visible = false
 	$main_menu_button.visible = false
 	$restart_button.visible = false
+	$next_button.visible = false
 
 func _on_restart_button_pressed():
 	delete_field_units()
@@ -196,3 +212,8 @@ func _on_player_cursor_reset_ink_meter():
 
 func _on_main_menu_button_pressed():
 	SceneSwitcher.change_to_scene(main_menu_scene)
+
+func _on_next_button_pressed():
+	if game_mode == "survival":
+		delete_field_units()
+		reset_game_state()
