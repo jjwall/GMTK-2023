@@ -8,8 +8,8 @@ extends Node2D
 # -> Lose: Restart, Main Menu (if survival mode, show # of levels beat) [if mission, show next level button, locked or unlocked]
 # -> Repurpose winning_unit TextureRect to display_unit (will also show target winning unit)
 # -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
-# TODO: [Focus] Add 3, 2, 1 countdown that would go where the restart button is
-# TODO: [Focus] Fade in spawning units
+# TODO: [Focus] <- Add 3, 2, 1 countdown that would go where the restart button is
+# TODO: [Focus] <- Fade in spawning units
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
@@ -76,17 +76,23 @@ func create_field_unit(unit_type: String, pos: Vector2):
 func _on_field_unit_type_update():
 	if GameplayVars.current_scissors_count == get_total_units():
 		$winning_unit.texture = scissors_texture
-		set_win_state("Scissors Wins")
+		set_endgame_state("Scissors Wins", "scissors")
 	
 	if GameplayVars.current_paper_count == get_total_units():
 		$winning_unit.texture = paper_texture
-		set_win_state("Paper Wins")
+		set_endgame_state("Paper Wins", "paper")
 	
 	if GameplayVars.current_rock_count == get_total_units():
 		$winning_unit.texture = rock_texture
-		set_win_state("Rock Wins")
+		set_endgame_state("Rock Wins", "rock")
 
-func set_win_state(unit_wins_text: String):
+func set_endgame_state(unit_wins_text: String, winning_unit: String):
+	if target_winning_unit == winning_unit:
+		$description_label.text = "Congratulations!"
+	else:
+		$description_label.text = "You failed..."
+		
+	$description_label.visible = true
 	$winning_unit.visible = true
 	$unit_wins_label.visible = true
 	$restart_button.visible = true
@@ -158,6 +164,7 @@ func reset_game_state():
 	GameplayVars.current_scissors_count = total_scissors_count
 	$winning_unit.visible = false
 	$unit_wins_label.visible = false
+	$description_label.visible = false
 	$restart_button.visible = false
 
 func _on_restart_button_pressed():
