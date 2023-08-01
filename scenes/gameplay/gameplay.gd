@@ -88,9 +88,9 @@ func _on_field_unit_type_update():
 
 func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	if target_winning_unit == winning_unit:
-		$description_label.text = "Congratulations!"
+		set_win_state()
 	else:
-		$description_label.text = "You failed..."
+		set_lose_state()
 		
 	$description_label.visible = true
 	$winning_unit.visible = true
@@ -98,6 +98,12 @@ func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	$restart_button.visible = true
 	$unit_wins_label.text = unit_wins_text
 	print(unit_wins_text)
+
+func set_win_state():
+	$description_label.text = "Congratulations!"
+
+func set_lose_state():
+	$description_label.text = "You failed..."
 
 func delete_field_units():
 	for unit in $field_unit_container.get_children():
