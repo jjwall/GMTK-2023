@@ -8,33 +8,39 @@ var mission_level_data := {
 	"01" = {
 		"target_winning_unit": "scissors",
 		"max_ink_meter_amount": 1000,
-		"next_mission": "02", # display locked if locked
+		"next_mission": "02",
 		"ink_timer": 4,
 		"level": load_mission_level_data("01") # great starter level
 	},
 	"02" = {
 		"target_winning_unit": "scissors",
-		"level": load_mission_level_data("02") # meh it's fine
+		"level": load_mission_level_data("02"), # meh it's fine
+		"next_mission": "03"
 	},
 	"03" = {
 		"target_winning_unit": "paper",
-		"level": load_mission_level_data("03") # not enough units
+		"level": load_mission_level_data("03"), # not enough units
+		"next_mission": "04"
 	},
 	"04" = {
 		"target_winning_unit": "rock",
-		"level": load_mission_level_data("04") # rock seems like the right challenge
+		"level": load_mission_level_data("04"), # rock seems like the right challenge
+		"next_mission": "05"
 	},
 	"05" = {
 		"target_winning_unit": "rock",
-		"level": load_mission_level_data("05") # this is a good difficulty / well designed
+		"level": load_mission_level_data("05"), # this is a good difficulty / well designed
+		"next_mission": "06"
 	},
 	"06" = {
 		"target_winning_unit": "scissors", # hard level
-		"level": load_mission_level_data("06")
+		"level": load_mission_level_data("06"),
+		"next_mission": "07"
 	},
 	"07" = {
 		"target_winning_unit": "scissors", # unique, not sure if scissors is right
-		"level": load_mission_level_data("07")
+		"level": load_mission_level_data("07"),
+		"next_mission": "08"
 	},
 	"08" = {
 		"target_winning_unit": "rock",

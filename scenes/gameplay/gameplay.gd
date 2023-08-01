@@ -52,6 +52,7 @@ func _ready():
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
+	print(get_next_mission())
 
 func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count
@@ -114,8 +115,10 @@ func set_win_state():
 		# show survival win streak
 	if game_mode == "mission":
 		$restart_button.visible = true
-		# if level unlocked or exists then:
-		$next_button.disabled = false
+		if get_next_mission():
+			$next_button.disabled = DataStore.missions[get_next_mission()].locked
+		else:
+			$next_button.disabled = true
 		# show stars achieved
 
 func set_lose_state():
@@ -124,9 +127,17 @@ func set_lose_state():
 	
 	if game_mode == "survival":
 		$next_button.disabled = true
-#	if game_mode == "mission":
-#		if next level unlocked:
-#			$next_button.disabled = false
+	if game_mode == "mission":
+		if get_next_mission():
+			$next_button.disabled = DataStore.missions[get_next_mission()].locked
+		else:
+			$next_button.disabled = true
+
+func get_next_mission():
+	if RefData.mission_level_data[mission_id].has("next_mission"):
+		return RefData.mission_level_data[mission_id].next_mission
+	else:
+		return false
 
 func delete_field_units():
 	for unit in $field_unit_container.get_children():
@@ -215,5 +226,9 @@ func _on_main_menu_button_pressed():
 
 func _on_next_button_pressed():
 	if game_mode == "survival":
+		delete_field_units()
+		reset_game_state()
+	if game_mode == "mission":
+		mission_id = get_next_mission()
 		delete_field_units()
 		reset_game_state()
