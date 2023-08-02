@@ -44,6 +44,7 @@ signal field_unit_type_update()
 
 @export var imprecision = 4 #increase this number for more performance
 var check_num = 0
+var paused = true
 
 var SPEED = 50
 var speed_min = 65
@@ -72,29 +73,31 @@ func _ready():
 	init_unit(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 	fade_unit_in()
+	$unit_spawned_timer.start()
 
 func fade_unit_in():
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate:a", 1, 1)
 
 func _physics_process(delta):
-	check_num += 1
-	if check_num == imprecision:
-		locate_target()
-		check_num = 0
-	
-	if target:
-		var direction = global_position.direction_to(target.position)
-		self.linear_velocity = direction * SPEED
-#		position += direction * SPEED * delta
-		move_and_collide(direction * SPEED * delta)
-	else:
-#		position += aimless_direction * SPEED * delta
-#		move_and_collide(aimless_direction * SPEED * delta)
-#		aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
-		self.linear_velocity = aimless_direction * SPEED
-	
-	wrap_position()
+	if !paused:
+		check_num += 1
+		if check_num == imprecision:
+			locate_target()
+			check_num = 0
+		
+		if target:
+			var direction = global_position.direction_to(target.position)
+			self.linear_velocity = direction * SPEED
+	#		position += direction * SPEED * delta
+			move_and_collide(direction * SPEED * delta)
+		else:
+	#		position += aimless_direction * SPEED * delta
+	#		move_and_collide(aimless_direction * SPEED * delta)
+	#		aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
+			self.linear_velocity = aimless_direction * SPEED
+		
+		wrap_position()
 
 func wrap_position():
 	if position.x > resolution_width:
@@ -199,3 +202,6 @@ func process_type_update(new_unit_type: String):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("field_units"):
 		process_collision(body)
+
+func _on_unit_spawned_timer_timeout():
+	paused = false
