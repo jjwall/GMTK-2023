@@ -8,8 +8,9 @@ extends Node2D
 # -> Lose: Restart, Main Menu (if survival mode, show # of levels beat) [if mission, show next level button, locked or unlocked]
 # -> Repurpose winning_unit TextureRect to display_unit (will also show target winning unit)
 # -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
-# TODO: [Focus] <- Add 3, 2, 1 countdown that would go where the restart button is
-# TODO: [Focus] <- Fade in spawning units
+# TODO: [Focus] Add 3, 2, 1 countdown that would go where the restart button is
+# TODO: [Focus] Fade in spawning units
+# TODO: Fade in mission # or survival win streak (level # ?)
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
