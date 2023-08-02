@@ -53,7 +53,6 @@ func _ready():
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
-	print(get_next_mission())
 
 func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count

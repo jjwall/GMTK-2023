@@ -66,10 +66,16 @@ var sfx : AudioStreamPlayer
 func _ready():
 	SPEED = randf_range(speed_min, speed_max)
 	sprite = $Sprite2D
+	sprite.modulate.a = 0
 	target_search = $TargetSearchArea
 	sfx = $AudioStreamPlayer
 	init_unit(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
+	fade_unit_in()
+
+func fade_unit_in():
+	var tween = create_tween()
+	tween.tween_property(sprite, "modulate:a", 1, 1)
 
 func _physics_process(delta):
 	check_num += 1
