@@ -71,8 +71,10 @@ func init_line_timer():
 		$init_line_tween_timer.start()
 
 func set_tween():
-	tween = get_tree().create_tween()
+	tween = create_tween()
 	tween.tween_property(line_node, "modulate", Color.RED, tween_time)
+	tween.tween_property(line_node, "modulate:a", 0, 0.5) # tween_time/4)
+#	tween.tween_property(line_node, "modulate", Color(196/255.0, 30/255.0, 58/255.0, 0), tween_time)
 	tween.tween_callback(on_line_expires) #.set_delay(1) -> this extends delay
 	tween.pause()
 
