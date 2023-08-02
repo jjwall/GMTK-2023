@@ -20,12 +20,12 @@ unique_name_in_owner = true
 [node name="player_cursor" parent="." instance=ExtResource("3_84hl8")]
 
 [node name="unit_wins_label" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 703.0
-offset_right = 964.0
-offset_bottom = 868.0
+offset_left = 42.0
+offset_top = 697.0
+offset_right = 1042.0
+offset_bottom = 862.0
 theme = ExtResource("4_amhjt")
-text = "Scissors Wins!"
+text = "Scissors must win!"
 horizontal_alignment = 1
 
 [node name="description_label" type="Label" parent="."]
@@ -77,8 +77,12 @@ theme = ExtResource("4_amhjt")
 max_value = 1000.0
 show_percentage = false
 
+[node name="game_start_timer" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]
 [connection signal="reset_ink_meter" from="player_cursor" to="." method="_on_player_cursor_reset_ink_meter"]
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="main_menu_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="next_button" to="." method="_on_next_button_pressed"]
+[connection signal="timeout" from="game_start_timer" to="." method="_on_game_start_timer_timeout"]

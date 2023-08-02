@@ -2,15 +2,20 @@ extends Node2D
 
 # TODO: (Done) Have target win condition (pick a unit to win)
 # TODO: (Done) ink meter
-# TODO: Lose / Win screens
+# TODO: (Done) Lose / Win screens
 # -> Add buttons on each
 # -> Win: Next level, restart, main menu (if mission mode show what the next mission is)
 # -> Lose: Restart, Main Menu (if survival mode, show # of levels beat) [if mission, show next level button, locked or unlocked]
 # -> Repurpose winning_unit TextureRect to display_unit (will also show target winning unit)
 # -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
 # TODO: [Focus] Add 3, 2, 1 countdown that would go where the restart button is
-# TODO: [Focus] Fade in spawning units
+# TODO: (Done) Fade in spawning units
 # TODO: Fade in mission # or survival win streak (level # ?)
+# TODO: Options menu
+# -> SFX volume scroller
+# -> Music volume scroller
+# -> Delete User Data w/ "Are you sure?" modal
+# -> Credits
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
@@ -53,6 +58,20 @@ func _ready():
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
+
+func set_pregame_state():
+	$winning_unit.visible = true
+	$unit_wins_label.visible = true
+	
+	if target_winning_unit == "rock":
+		$unit_wins_label.text = "Rock must win!"
+		$winning_unit.texture = rock_texture
+	if target_winning_unit == "paper":
+		$unit_wins_label.text = "Paper must win!"
+		$winning_unit.texture = paper_texture
+	if target_winning_unit == "scissors":
+		$unit_wins_label.text = "Scissors must win!"
+		$winning_unit.texture = scissors_texture
 
 func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count
@@ -103,6 +122,7 @@ func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	$main_menu_button.visible = true
 	$next_button.visible = true
 	$unit_wins_label.text = unit_wins_text
+	$game_start_timer.stop()
 	print(unit_wins_text)
 
 func set_win_state():
@@ -202,12 +222,15 @@ func reset_game_state():
 	GameplayVars.current_rock_count = total_rock_count
 	GameplayVars.current_paper_count = total_paper_count
 	GameplayVars.current_scissors_count = total_scissors_count
-	$winning_unit.visible = false
-	$unit_wins_label.visible = false
+#	$winning_unit.visible = false
+#	$unit_wins_label.visible = false
 	$description_label.visible = false
 	$main_menu_button.visible = false
 	$restart_button.visible = false
 	$next_button.visible = false
+	set_pregame_state()
+	
+	$game_start_timer.start()
 
 func _on_restart_button_pressed():
 	delete_field_units()
@@ -232,3 +255,7 @@ func _on_next_button_pressed():
 		mission_id = get_next_mission()
 		delete_field_units()
 		reset_game_state()
+
+func _on_game_start_timer_timeout():
+	$winning_unit.visible = false
+	$unit_wins_label.visible = false
