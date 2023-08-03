@@ -62,6 +62,8 @@ func _ready():
 func set_pregame_state():
 	$winning_unit.visible = true
 	$unit_wins_label.visible = true
+	$description_label.visible = true
+	$level_label.visible = true
 	
 	if target_winning_unit == "rock":
 		$unit_wins_label.text = "Rock must win!"
@@ -72,6 +74,13 @@ func set_pregame_state():
 	if target_winning_unit == "scissors":
 		$unit_wins_label.text = "Scissors must win!"
 		$winning_unit.texture = scissors_texture
+	
+	if game_mode == "mission":
+		$description_label.text = "MISSION"
+		$level_label.text = mission_id
+	if game_mode == "survival":
+		$description_label.text = "SURVIVAL STREAK"
+		$level_label.text = str(survival_win_streak)
 
 func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count
@@ -233,6 +242,7 @@ func reset_game_state():
 	$game_start_timer.start()
 
 func _on_restart_button_pressed():
+	survival_win_streak = 0
 	delete_field_units()
 	reset_game_state()
 
@@ -259,3 +269,5 @@ func _on_next_button_pressed():
 func _on_game_start_timer_timeout():
 	$winning_unit.visible = false
 	$unit_wins_label.visible = false
+	$description_label.visible = false
+	$level_label.visible = false
