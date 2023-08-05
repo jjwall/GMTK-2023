@@ -70,12 +70,15 @@ func set_pregame_state():
 	if target_winning_unit == "rock":
 		$unit_wins_label.text = "Rock must win!"
 		$winning_unit.texture = rock_texture
+		$target_unit.texture = rock_texture
 	if target_winning_unit == "paper":
 		$unit_wins_label.text = "Paper must win!"
 		$winning_unit.texture = paper_texture
+		$target_unit.texture = paper_texture
 	if target_winning_unit == "scissors":
 		$unit_wins_label.text = "Scissors must win!"
 		$winning_unit.texture = scissors_texture
+		$target_unit.texture = scissors_texture
 	
 	if game_mode == "mission":
 		$description_label.text = "MISSION"
