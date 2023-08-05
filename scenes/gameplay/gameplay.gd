@@ -16,8 +16,10 @@ extends Node2D
 # -> Music volume scroller
 # -> Delete User Data w/ "Are you sure?" modal
 # -> Credits
-# TODO: 50% transparent / enlarged target unit label and text in top right corner
+# TODO: (Done) 50% transparent / enlarged target unit label and text in top right corner
 # TODO: (Done) Label for Ink meter in top left. Just above -> See Sonic Adventure DX for reference
+# TODO: Drop shadow for UI text
+# TODO: (Focus) Background tscn files for cropped and upscaled background images
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"

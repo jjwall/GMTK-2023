@@ -1,37 +1,22 @@
 extends RigidBody2D
-# 07/22 Get To-Do List:
-# TODO: Main Menu (Story / Survival / How-To-Play)
-# -> Story levels UI level 1-30 panels (locked 2-30) 1-3 star rank system UI
-# TODO: (Done) Draw Meter UI
-# -> Progress bar that that allows you to draw a certain length of line
-# before preventing you from drawing anymore
-# TODO: (Done) Timer on ink/
-# -> As soon as you start drawing, line has a time limit. Indicated by
-# transitioning from white to red coloring and fading before disappearing
-# TODO: Levels
-# -> 30 "Story" levels and a survival mode (infinite levels)
-# -> Will be based on a seed system to develop levels, seeds won't change
-# for Story levels, but will be random for infinite survival mode
-# TODO: Local db store for saving player level data
-# TODO: Polish -> win with winning emoji popping up and stars fluttering around
-# -> loss shows winning emoji with angry squigly above (charley brown thing)
-# -> SFX for drawing line, scissors snip, rock crush, paper cover
-# TODO: 3D infinite backgrounds (think Maiden & Spell)
-# -> If not this at least an improved version of what we have
-# TODO: Anthropomorphic RPS anime chars b/c why not?
 
-# 07/27 Get To-Do List:
-# TODO: ASCII Level builder (for missions)
+
+# 08/04 Get To-Do List:
+# TODO: Random Seed for generating more mission levels and / or survival levels
+# TODO: Local db store for saving player level data
+# TODO: 3D infinite backgrounds (think Maiden & Spell)
+# TODO -> OR Bing art gen for background art
+# TODO: Anthropomorphic RPS anime chars b/c why not?
+# TODO: Polish -> win with winning emoji popping up and stars fluttering around
+# -> loss shows winning emoji with angry squigly above (charlie brown thing)
+# -> SFX for drawing line, scissors snip, rock crush, paper cover
 # TODO: Pause functionality / menu for gameplay
 # -> options, restart, main menu
-# TODO: Game over screen options
-# -> Restart, Back (main menu or missions screen depending on game mode)
-# TODO: (Done) Dynamic mission buttons, lock and star icons
-# -> mock local store for tracking "locked" levels and star progress
 # TODO: Star count in top right corner of mission menu
-# TODO: "Ink Meter" label above progress bar
-# TODO: Survival vs missions gameplay modes
-# -> Pass params to gameplay scene (level ascii & game mode)
+# TODO: Music
+# -> Menu
+# -> Mission
+# -> Survival
 
 # Ideas:
 # Player char unit

@@ -1,0 +1,8 @@
+Bing AI art generator:
+https://www.bing.com/create?toWww=1&redig=3C650CC896794589BFDE29242F7E7A4E
+
+This generates 1024x1024px images. Since the game is using a 1920x1080px resolution
+we need to upscale these to reduce artifacts from vertical scaling.
+
+Here is a decent and free upscaler:
+https://www.upscale.media/
