@@ -10,12 +10,14 @@ extends Node2D
 # -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
 # TODO: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
 # TODO: (Done) Fade in spawning units
-# TODO: Fade in mission # or survival win streak (level # ?)
+# TODO: (Done) Fade in mission # or survival win streak (level # ?)
 # TODO: Options menu
 # -> SFX volume scroller
 # -> Music volume scroller
 # -> Delete User Data w/ "Are you sure?" modal
 # -> Credits
+# TODO: 50% transparent / enlarged target unit label and text in top right corner
+# TODO: (Done) Label for Ink meter in top left. Just above -> See Sonic Adventure DX for reference
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"

@@ -78,11 +78,20 @@ offset_right = 642.0
 offset_bottom = 700.0
 texture = ExtResource("5_hdu3p")
 
+[node name="ink_meter_label" type="Label" parent="."]
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 246.0
+offset_bottom = 61.0
+theme = ExtResource("4_amhjt")
+theme_override_font_sizes/font_size = 76
+text = "Ink Meter:"
+
 [node name="ink_meter" type="ProgressBar" parent="."]
-offset_left = 40.0
-offset_top = 29.0
-offset_right = 346.0
-offset_bottom = 56.0
+offset_left = 20.0
+offset_top = 74.0
+offset_right = 326.0
+offset_bottom = 101.0
 theme = ExtResource("4_amhjt")
 max_value = 1000.0
 show_percentage = false
