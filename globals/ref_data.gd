@@ -10,12 +10,14 @@ var mission_level_data := {
 		"max_ink_meter_amount": 1000,
 		"next_mission": "02",
 		"ink_timer": 4,
+		"background": "res://backgrounds/forest/forest.tscn",
 		"level": load_mission_level_data("01") # great starter level
 	},
 	"02" = {
 		"target_winning_unit": "scissors",
-		"level": load_mission_level_data("02"), # meh it's fine
-		"next_mission": "03"
+		"next_mission": "03",
+		"background": "res://backgrounds/starry_night/starry_night.tscn",
+		"level": load_mission_level_data("02") # meh it's fine
 	},
 	"03" = {
 		"target_winning_unit": "paper",

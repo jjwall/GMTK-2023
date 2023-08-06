@@ -85,9 +85,14 @@ func set_pregame_state():
 	if game_mode == "mission":
 		$description_label.text = "MISSION"
 		$level_label.text = mission_id
+		FileUtils.delete_children($background_container)
+		$background_container.add_child(load(get_mission_background()).instantiate())
 	if game_mode == "survival":
 		$description_label.text = "SURVIVAL STREAK"
 		$level_label.text = str(survival_win_streak)
+		FileUtils.delete_children($background_container)
+		# TODO: Random survival backgrounds?
+		$background_container.add_child(load("res://backgrounds/starry_night/starry_night.tscn").instantiate())
 
 func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count
@@ -174,6 +179,12 @@ func get_next_mission():
 		return RefData.mission_level_data[mission_id].next_mission
 	else:
 		return false
+
+func get_mission_background():
+	if RefData.mission_level_data[mission_id].has("background"):
+		return RefData.mission_level_data[mission_id].background
+	else:
+		return "res://backgrounds/starry_night/starry_night.tscn"
 
 func delete_field_units():
 	for unit in $field_unit_container.get_children():

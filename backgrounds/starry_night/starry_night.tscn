@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bffmumq040pxs"]
+
+[ext_resource type="Texture2D" uid="uid://deqelpfx7yu0h" path="res://backgrounds/starry_night/starry_night.jpeg" id="1_oc8ym"]
+
+[node name="starry_night" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -456.0
+offset_right = 1592.0
+offset_bottom = 2048.0
+texture = ExtResource("1_oc8ym")
