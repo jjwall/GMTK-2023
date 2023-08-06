@@ -57,12 +57,16 @@ bg_color = Color(0.286275, 0.0705882, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ouru"]
 
 [resource]
+Button/colors/font_outline_color = Color(0.352941, 0.352941, 0.352941, 1)
+Button/constants/outline_size = 25
 Button/font_sizes/font_size = 190
 Button/fonts/font = ExtResource("1_qqmai")
 Button/styles/focus = SubResource("StyleBoxFlat_3ndf0")
 Button/styles/hover = SubResource("StyleBoxFlat_e38c6")
 Button/styles/normal = SubResource("StyleBoxFlat_3kb1n")
 Button/styles/pressed = SubResource("StyleBoxFlat_xewha")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 25
 Label/font_sizes/font_size = 190
 Label/fonts/font = ExtResource("1_qqmai")
 LineEdit/font_sizes/font_size = 19

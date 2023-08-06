@@ -20,6 +20,7 @@ extends Node2D
 # TODO: (Done) Label for Ink meter in top left. Just above -> See Sonic Adventure DX for reference
 # TODO: Drop shadow for UI text
 # TODO: (Focus) Background tscn files for cropped and upscaled background images
+# TODO: Random survival backgrounds?
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
