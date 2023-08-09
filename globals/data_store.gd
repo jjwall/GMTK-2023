@@ -4,6 +4,8 @@ var player_records := {
 	"player_id": "0001",
 	"survival_record": 0,
 	"total_stars": 0,
+	"sfx_volume": 0,
+	"music_volume": 0
 }
 
 # Mocking save game functionality for now.
