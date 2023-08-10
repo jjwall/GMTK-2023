@@ -21,6 +21,7 @@ extends Node2D
 # TODO: Drop shadow for UI text
 # TODO: (Focus) Background tscn files for cropped and upscaled background images
 # TODO: Random survival backgrounds?
+# TODO: [Focus] Local data store saving
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
