@@ -1,27 +1,5 @@
 extends RigidBody2D
 
-
-# 08/04 Get To-Do List:
-# TODO: Random Seed for generating more mission levels and / or survival levels
-# TODO: Local db store for saving player level data
-# TODO: 3D infinite backgrounds (think Maiden & Spell)
-# TODO -> OR Bing art gen for background art
-# TODO: Anthropomorphic RPS anime chars b/c why not?
-# TODO: Polish -> win with winning emoji popping up and stars fluttering around
-# -> loss shows winning emoji with angry squigly above (charlie brown thing)
-# -> SFX for drawing line, scissors snip, rock crush, paper cover
-# TODO: Pause functionality / menu for gameplay
-# -> options, restart, main menu
-# TODO: Star count in top right corner of mission menu
-# TODO: Music
-# -> Menu
-# -> Mission
-# -> Survival
-
-# Ideas:
-# Player char unit
-# Cool down on lines
-# Tutorial level? -> Level 1?
 signal field_unit_type_update()
 
 @export var unit_type = 'rock' # | 'paper' | 'scissors'

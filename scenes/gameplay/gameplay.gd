@@ -1,27 +1,37 @@
 extends Node2D
 
-# TODO: (Done) Have target win condition (pick a unit to win)
-# TODO: (Done) ink meter
-# TODO: (Done) Lose / Win screens
-# -> Add buttons on each
-# -> Win: Next level, restart, main menu (if mission mode show what the next mission is)
-# -> Lose: Restart, Main Menu (if survival mode, show # of levels beat) [if mission, show next level button, locked or unlocked]
-# -> Repurpose winning_unit TextureRect to display_unit (will also show target winning unit)
-# -> Repurpose unit_wins_label to description_label (will also say, scissors must win!)
+# 08/04 Get To-Do List:
+# TODO: Random Seed for generating more mission levels and / or survival levels
+# TODO: Anthropomorphic RPS anime chars b/c why not?
+# TODO: Polish -> win with winning emoji popping up and stars fluttering around
+# -> loss shows winning emoji with angry squigly above (charlie brown thing)
+# -> SFX for drawing line, scissors snip, rock crush, paper cover
+# TODO: (maybe) Pause functionality / menu for gameplay
+# -> options, restart, main menu
+# TODO: Star count in top right corner of mission menu
+# TODO: Music
+# -> Menu
+# -> Mission
+# -> Survival
 # TODO: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
-# TODO: (Done) Fade in spawning units
-# TODO: (Done) Fade in mission # or survival win streak (level # ?)
+# TODO: (maybe) Missions return option on win / lose mission screen
+
+# TODO: (Done) Background tscn files for cropped and upscaled background images
+# TODO: (Done) Local data store saving
+
+# 08/09 Get To-Do List:
+# TODO: Random survival backgrounds?
 # TODO: Options menu
-# -> SFX volume scroller
-# -> Music volume scroller
+# -> SFX volume scroller (w/ save functionality)
+# -> Music volume scroller (w/ save functionality)
+# -> Purchase Ad Free Mode
 # -> Delete User Data w/ "Are you sure?" modal
 # -> Credits
-# TODO: (Done) 50% transparent / enlarged target unit label and text in top right corner
-# TODO: (Done) Label for Ink meter in top left. Just above -> See Sonic Adventure DX for reference
-# TODO: Drop shadow for UI text
-# TODO: (Focus) Background tscn files for cropped and upscaled background images
-# TODO: Random survival backgrounds?
-# TODO: [Focus] Local data store saving
+# TODO: Research for Godot Ad Banners
+# TODO: [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
+# TODO: [Cleanup] Level designs and difficulty scaling, random seeding?
+# TODO: [Bug] Unit targeting mechanics: sometimes jittery, sometimes does not lock on targets
+# TODO: Tutorial "level" and / or splash screen.
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
