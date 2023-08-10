@@ -148,6 +148,12 @@ func set_endgame_state(unit_wins_text: String, winning_unit: String):
 	$game_start_timer.stop()
 	print(unit_wins_text)
 
+func set_survival_highscore():
+	if DataStore.current.survival_highscore < survival_win_streak:
+		DataStore.current.survival_highscore = survival_win_streak
+	
+	print("survival highscore = %s" %[str(DataStore.current.survival_highscore)])
+
 func set_win_state():
 	$description_label.text = "Congratulations!"
 	
@@ -155,7 +161,8 @@ func set_win_state():
 		survival_win_streak += 1
 		$restart_button.visible = false
 		$next_button.disabled = false
-		# show survival win streak
+		set_survival_highscore()
+		# TODO: show survival highscore
 	if game_mode == "mission":
 		$restart_button.visible = true
 		if get_next_mission():
@@ -170,6 +177,7 @@ func set_lose_state():
 	
 	if game_mode == "survival":
 		$next_button.disabled = true
+		set_survival_highscore()
 	if game_mode == "mission":
 		if get_next_mission():
 			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
