@@ -44,8 +44,8 @@ func create_mission_button(pos: Vector2, mission_id: String):
 	new_mission_button.pressed.connect(on_mission_button_pressed.bind(mission_id))
 	self.add_child(new_mission_button)
 	
-	if DataStore.missions.has(mission_id):
-		if DataStore.missions[mission_id].locked:
+	if DataStore.current.missions.has(mission_id):
+		if DataStore.current.missions[mission_id].locked:
 			# Disable button and add lock emoji if locked.
 			new_mission_button.disabled = true
 			pos.x -= 25
@@ -53,7 +53,7 @@ func create_mission_button(pos: Vector2, mission_id: String):
 			add_locked_emoji(pos)
 		else: # Mission unlocked and potentially already played.
 			# Render amount of stars earned for mission.
-			var star_count = DataStore.missions[mission_id].stars
+			var star_count = DataStore.current.missions[mission_id].stars
 			for s in range(3):
 				if star_count >= s + 1:
 					add_star_emoji(pos)
@@ -81,12 +81,12 @@ func add_locked_emoji(pos: Vector2):
 	self.add_child(locked_emoji)
 
 func on_mission_button_pressed(mission_id: String):
-	if DataStore.missions.has(mission_id):
+	if DataStore.current.missions.has(mission_id):
 		# TODO: Pass mission level data to scene.
 		var new_gameplay_scene = SceneSwitcher.change_to_scene(gameplay_scene)
 		new_gameplay_scene.mission_id = mission_id
 		new_gameplay_scene.game_mode = "mission"
-		print(DataStore.missions[mission_id])
+		print(DataStore.current.missions[mission_id])
 	else:
 		print("Mission %s is not in data store" % mission_id)
 

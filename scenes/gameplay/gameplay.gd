@@ -159,7 +159,7 @@ func set_win_state():
 	if game_mode == "mission":
 		$restart_button.visible = true
 		if get_next_mission():
-			$next_button.disabled = DataStore.missions[get_next_mission()].locked
+			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 		else:
 			$next_button.disabled = true
 		# show stars achieved
@@ -172,7 +172,7 @@ func set_lose_state():
 		$next_button.disabled = true
 	if game_mode == "mission":
 		if get_next_mission():
-			$next_button.disabled = DataStore.missions[get_next_mission()].locked
+			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 		else:
 			$next_button.disabled = true
 
