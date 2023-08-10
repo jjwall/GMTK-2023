@@ -166,10 +166,13 @@ func set_win_state():
 		$restart_button.visible = false
 		$next_button.disabled = false
 		set_survival_highscore()
-		# TODO: show survival highscore
 	if game_mode == "mission":
 		$restart_button.visible = true
 		if get_next_mission():
+			DataStore.current.missions[get_next_mission()].locked = false
+			# TODO Determine star system
+			DataStore.current.missions[mission_id].stars = 3
+			DataStore.save()
 			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 		else:
 			$next_button.disabled = true
@@ -205,9 +208,9 @@ func delete_field_units():
 		$field_unit_container.remove_child(unit)
 		unit.queue_free()
 
-func spawn_mission_units(mission_id: String):
-	if RefData.mission_level_data.has(mission_id):
-		var level_data = RefData.mission_level_data[mission_id].level
+func spawn_mission_units(_mission_id: String):
+	if RefData.mission_level_data.has(_mission_id):
+		var level_data = RefData.mission_level_data[_mission_id].level
 		var unit_pos_y = 50
 		var unit_pos_x = 50
 		
@@ -230,9 +233,9 @@ func spawn_mission_units(mission_id: String):
 	else:
 		print("error getting level data")
 
-func set_target_winning_unit(mission_id: String):
-	if RefData.mission_level_data.has(mission_id):
-		target_winning_unit = RefData.mission_level_data[mission_id].target_winning_unit
+func set_target_winning_unit(_mission_id: String):
+	if RefData.mission_level_data.has(_mission_id):
+		target_winning_unit = RefData.mission_level_data[_mission_id].target_winning_unit
 
 func set_random_target_winning_unit():
 	var dice_roll = randi_range(0, 2)

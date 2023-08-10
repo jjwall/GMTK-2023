@@ -6,7 +6,7 @@ func load_mission_level_data(mission_id: String):
 	
 var mission_level_data := {
 	"01" = {
-		"target_winning_unit": "scissors",
+		"target_winning_unit": "paper",
 		"max_ink_meter_amount": 1000,
 		"next_mission": "02",
 		"ink_timer": 4,
