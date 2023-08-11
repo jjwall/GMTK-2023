@@ -1,5 +1,7 @@
 extends Node
 
+# Save location:
+# C:\Users\cubbi\AppData\Roaming\Godot\app_userdata\GMTK-2023
 const filename = "user://rps_save.json"
 
 var current: Dictionary
@@ -145,7 +147,7 @@ func reload():
 	var data = file.get_as_text()
 	current = JSON.parse_string(data)
 	
-	print("Loaded save game: ", current)
+	print("Loaded found save game")
 
 # Test data:
 #missions = {

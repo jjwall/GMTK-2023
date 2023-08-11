@@ -28,10 +28,12 @@ extends Node2D
 # -> Delete User Data w/ "Are you sure?" modal
 # -> Credits
 # TODO: Research for Godot Ad Banners
-# TODO: [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
-# TODO: [Cleanup] Level designs and difficulty scaling, random seeding?
+# TODO: (Focus) [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
+# TODO: (Focus) [Cleanup] Level designs and difficulty scaling, random seeding?
 # TODO: [Bug] Unit targeting mechanics: sometimes jittery, sometimes does not lock on targets
 # TODO: Tutorial "level" and / or splash screen.
+# TODO: Implement star scoring system - total ink used? - stay conservative!
+# TODO: Stars earned animation/sfx on win state screen
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
