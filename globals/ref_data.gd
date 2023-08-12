@@ -2,7 +2,7 @@ extends Node
 
 func load_mission_level_data(mission_id: String):
 	var json_file = "res://assets/data/mission_levels/%s.json" %[str(mission_id)]
-	return FileUtils.load_json(json_file)
+	return Utils.load_json(json_file)
 	
 var mission_level_data := {
 	"01" = {

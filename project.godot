@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 GameplayVars="*res://globals/gameplay_vars.gd"
 DataStore="*res://globals/data_store.gd"
 SceneSwitcher="*res://globals/scene_switcher.gd"
-FileUtils="*res://globals/file_utils.gd"
+Utils="*res://globals/utils.gd"
 RefData="*res://globals/ref_data.gd"
 
 [display]

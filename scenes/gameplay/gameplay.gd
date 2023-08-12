@@ -100,13 +100,13 @@ func set_pregame_state():
 		$description_label.text = "MISSION"
 		$level_label.text = mission_id
 		$game_mode_label.text = "Mission %s" %[str(mission_id)]
-		FileUtils.delete_children($background_container)
+		Utils.delete_children($background_container)
 		$background_container.add_child(load(get_mission_background()).instantiate())
 	if game_mode == "survival":
 		$description_label.text = "SURVIVAL STREAK"
 		$level_label.text = str(survival_win_streak)
 		$game_mode_label.text = "Highscore: %s" %[str(DataStore.current.survival_highscore)]
-		FileUtils.delete_children($background_container)
+		Utils.delete_children($background_container)
 		# TODO: Random survival backgrounds?
 		$background_container.add_child(load("res://backgrounds/starry_night/starry_night.tscn").instantiate())
 
