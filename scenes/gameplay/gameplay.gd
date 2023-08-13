@@ -21,7 +21,7 @@ extends Node2D
 
 # 08/09 Get To-Do List:
 # TODO: Random survival backgrounds?
-# TODO: Options menu
+# TODO: [Focus] Options menu
 # -> SFX volume scroller (w/ save functionality)
 # -> Music volume scroller (w/ save functionality)
 # -> Purchase Ad Free Mode
