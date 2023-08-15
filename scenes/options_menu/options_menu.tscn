@@ -35,4 +35,23 @@ offset_bottom = 1541.0
 theme = ExtResource("3_qoasq")
 text = "Delete Data"
 
+[node name="sfx_volume_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 623.0
+offset_right = 381.0
+offset_bottom = 653.0
+scale = Vector2(4, 4)
+theme = ExtResource("3_qoasq")
+value = 50.0
+
+[node name="music_volume_slider" type="HSlider" parent="."]
+offset_left = 235.0
+offset_top = 837.0
+offset_right = 391.0
+offset_bottom = 867.0
+scale = Vector2(4, 4)
+theme = ExtResource("3_qoasq")
+value = 50.0
+
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
