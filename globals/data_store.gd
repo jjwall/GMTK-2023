@@ -10,8 +10,8 @@ var _default_values := {
 	survival_highscore = 0,
 	total_stars = 0,
 	ad_free_purchased = false,
-	sfx_volume = 0,
-	music_volume = 0,
+	sfx_volume = 25,
+	music_volume = 25,
 	missions = {
 		"01" = {
 			"locked": false,
@@ -148,6 +148,10 @@ func reload():
 	current = JSON.parse_string(data)
 	
 	print("Loaded found save game")
+
+func delete_data():
+	current = _default_values.duplicate(true)
+	save()
 
 # Test data:
 #missions = {
