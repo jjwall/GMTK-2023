@@ -62,3 +62,6 @@ func _on_credits_button_pressed():
 
 func _on_credits_back_button_pressed():
 	$credits_modal.visible = false
+
+func _on_unlock_button_pressed():
+	DataStore.unlock_all_levels()
