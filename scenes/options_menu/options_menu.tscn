@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo8juxr5em4u0"]
+[gd_scene load_steps=5 format=3 uid="uid://bo8juxr5em4u0"]
 
 [ext_resource type="Script" path="res://scenes/options_menu/options_menu.gd" id="1_7ucfq"]
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="2_pvvku"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_qoasq"]
+[ext_resource type="Texture2D" uid="uid://cchomqxgnmpk0" path="res://assets/textures/unlocked_microsoft_emoji.png" id="4_3idxg"]
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -14,11 +15,13 @@ grow_vertical = 2
 script = ExtResource("1_7ucfq")
 
 [node name="background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_pvvku")
 
 [node name="back_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 49.0
 offset_right = 278.0
@@ -28,6 +31,7 @@ theme_override_font_sizes/font_size = 95
 text = "< Back"
 
 [node name="no_ads_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 934.0
 offset_right = 885.0
@@ -35,7 +39,18 @@ offset_bottom = 1147.0
 theme = ExtResource("3_qoasq")
 text = "No Ads"
 
+[node name="unlock_button" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 29.0
+offset_right = 764.0
+offset_bottom = 307.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_qoasq")
+icon = ExtResource("4_3idxg")
+icon_alignment = 1
+
 [node name="delete_data_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 179.0
 offset_top = 1515.0
 offset_right = 884.0
@@ -45,6 +60,7 @@ theme_type_variation = &"red_button"
 text = "Delete Data"
 
 [node name="credits_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 1222.0
 offset_right = 885.0
@@ -62,6 +78,7 @@ theme = ExtResource("3_qoasq")
 text = "Music Volume:"
 
 [node name="music_volume_slider" type="HSlider" parent="."]
+layout_mode = 0
 offset_left = 215.0
 offset_top = 401.0
 offset_right = 377.0
@@ -70,6 +87,7 @@ scale = Vector2(4, 4)
 theme = ExtResource("3_qoasq")
 
 [node name="sfx_volume_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 230.0
 offset_top = 541.0
 offset_right = 900.0
@@ -107,6 +125,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="delete_button" type="Button" parent="delete_data_modal"]
+layout_mode = 0
 offset_left = 107.0
 offset_top = 800.0
 offset_right = 812.0
@@ -116,6 +135,7 @@ theme_type_variation = &"red_button"
 text = "Delete"
 
 [node name="cancel_button" type="Button" parent="delete_data_modal"]
+layout_mode = 0
 offset_left = 108.0
 offset_top = 1169.0
 offset_right = 813.0
@@ -147,6 +167,7 @@ text = "Data Successfully Deleted!"
 
 [node name="credits_modal" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 76.0
 offset_top = 242.0
 offset_right = 1012.0
@@ -180,6 +201,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="credits_back_button" type="Button" parent="credits_modal"]
+layout_mode = 0
 offset_left = 231.0
 offset_top = 1322.0
 offset_right = 669.0

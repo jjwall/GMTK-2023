@@ -1,16 +1,17 @@
-# TODO: (Done) Credits
-# TODO: Implement sound volume changing
-# TODO: (Done) Save volume slider values on change
-# TODO: (Done) Data deleted banner
+# TODO: [Focus] Implement sound volume changing
+# TODO: Add Music - main menu, gameplay
 # TODO: Implement No Ad purchase
-# TODO: Restore Purchases for iOS
-# TODO: Dev unlock all levels
+# TODO: Restore Purchases for iOS - needs R&D
+# TODO: [Focus] Dev unlock all levels
 
 extends Control
 
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 
 func _ready():
+	# TODO: Remove disabled, implement no ad purchase for iOS & Android.
+	$no_ads_button.disabled = true
+	
 	$credits_modal.visible = false
 	$delete_data_modal.visible = false
 	$data_deleted_banner.visible = false
