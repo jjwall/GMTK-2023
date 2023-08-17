@@ -7,6 +7,8 @@ var missions_menu_scene = "res://scenes/mission_menu/mission_menu.tscn"
 func _ready():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear_to_db(DataStore.current.sfx_volume))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
+	
+	Music.PlayMainMusic()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

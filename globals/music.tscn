@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkcoyufc65rsx"]
+
+[ext_resource type="Script" path="res://globals/music.gd" id="1_xx0lo"]
+[ext_resource type="AudioStream" uid="uid://bhmtdwiv7ege7" path="res://assets/audio/music/Green Pastures.ogg" id="2_2jn57"]
+
+[node name="Music" type="Node2D"]
+script = ExtResource("1_xx0lo")
+
+[node name="Green_Pastures" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2jn57")
+bus = &"Music"

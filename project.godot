@@ -22,6 +22,7 @@ DataStore="*res://globals/data_store.gd"
 SceneSwitcher="*res://globals/scene_switcher.gd"
 Utils="*res://globals/utils.gd"
 RefData="*res://globals/ref_data.gd"
+Music="*res://globals/music.tscn"
 
 [display]
 
