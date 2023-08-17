@@ -40,9 +40,10 @@ theme = ExtResource("3_qoasq")
 text = "No Ads"
 
 [node name="unlock_button" type="Button" parent="."]
-offset_left = 480.0
+modulate = Color(1, 1, 1, 0.25098)
+offset_left = 476.0
 offset_top = 29.0
-offset_right = 764.0
+offset_right = 760.0
 offset_bottom = 307.0
 scale = Vector2(0.5, 0.5)
 theme = ExtResource("3_qoasq")

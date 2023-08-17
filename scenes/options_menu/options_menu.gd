@@ -2,7 +2,7 @@
 # TODO: Add Music - main menu, gameplay
 # TODO: Implement No Ad purchase
 # TODO: Restore Purchases for iOS - needs R&D
-# TODO: [Focus] Dev unlock all levels
+# TODO: (Done) Dev unlock all levels
 
 extends Control
 
