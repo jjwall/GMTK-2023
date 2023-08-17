@@ -32,7 +32,7 @@ func _ready():
 	sprite = $Sprite2D
 	sprite.modulate.a = 0
 	target_search = $TargetSearchArea
-	sfx = $AudioStreamPlayer
+	sfx = $pop_sfx
 	init_unit(unit_type)
 	aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 	fade_unit_in()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo8juxr5em4u0"]
+[gd_scene load_steps=6 format=3 uid="uid://bo8juxr5em4u0"]
 
 [ext_resource type="Script" path="res://scenes/options_menu/options_menu.gd" id="1_7ucfq"]
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="2_pvvku"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_qoasq"]
 [ext_resource type="Texture2D" uid="uid://cchomqxgnmpk0" path="res://assets/textures/unlocked_microsoft_emoji.png" id="4_3idxg"]
+[ext_resource type="AudioStream" uid="uid://vidjbmn6m102" path="res://assets/audio/sfx/ui_menu_popup_01.wav" id="5_5p30u"]
 
 [node name="options_menu" type="Control"]
 layout_mode = 3
@@ -41,6 +42,7 @@ text = "No Ads"
 
 [node name="unlock_button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 0
 offset_left = 476.0
 offset_top = 29.0
 offset_right = 760.0
@@ -86,6 +88,10 @@ offset_right = 377.0
 offset_bottom = 431.0
 scale = Vector2(4, 4)
 theme = ExtResource("3_qoasq")
+
+[node name="pop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5p30u")
+bus = &"Sounds"
 
 [node name="sfx_volume_label" type="Label" parent="."]
 layout_mode = 0

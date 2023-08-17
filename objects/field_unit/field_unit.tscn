@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/field_unit/field_unit.gd" id="1_hm76p"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="1_iijh2"]
 [ext_resource type="PhysicsMaterial" uid="uid://c2swnpbhr7tlw" path="res://assets/physics_materials/ice.tres" id="1_wymvl"]
-[ext_resource type="AudioStream" uid="uid://df8f3okee88wq" path="res://assets/ui_menu_popup_01.wav" id="3_x7yr3"]
+[ext_resource type="AudioStream" uid="uid://vidjbmn6m102" path="res://assets/audio/sfx/ui_menu_popup_01.wav" id="4_e7kmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ilb3"]
 radius = 34.0147
@@ -38,9 +38,10 @@ visible = false
 scale = Vector2(25, 25)
 shape = SubResource("CircleShape2D_60lcc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_x7yr3")
+[node name="pop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e7kmb")
 volume_db = -10.0
+bus = &"Sounds"
 
 [node name="Area2D" type="Area2D" parent="."]
 
