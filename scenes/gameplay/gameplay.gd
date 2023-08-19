@@ -21,13 +21,13 @@ extends Node2D
 
 # 08/09 Get To-Do List:
 # TODO: Random survival backgrounds?
-# TODO: (Done - mostly) -> Options menu
-# -> SFX volume scroller (w/ save functionality)
-# -> Music volume scroller (w/ save functionality)
-# -> Purchase Ad Free Mode
-# -> Delete User Data w/ "Are you sure?" modal
-# -> Credits
-# TODO: Research for Godot Ad Banners
+# TODO: (Done) -> Options menu
+# -> (Done) SFX volume scroller (w/ save functionality)
+# -> (Done) Music volume scroller (w/ save functionality)
+# -> (Maybe) Purchase Ad Free Mode
+# -> (Done) Delete User Data w/ "Are you sure?" modal
+# -> (Done) Credits
+# TODO: Research for Godot Ad Banners - or kofi donations
 # TODO: (Focus) [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
 # TODO: (Focus) [Cleanup] Level designs and difficulty scaling, random seeding?
 # TODO: [Bug] Unit targeting mechanics: sometimes jittery, sometimes does not lock on targets

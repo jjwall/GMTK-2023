@@ -1,7 +1,7 @@
-# TODO: [Focus] Implement sound volume changing
+# TODO: (Done) Implement sound volume changing
 # TODO: Add Music - main menu, gameplay
 # TODO: Implement No Ad purchase
-# TODO: Restore Purchases for iOS - needs R&D
+# TODO: (Maybe) Restore Purchases for iOS - needs R&D
 # TODO: (Done) Dev unlock all levels
 
 extends Control
