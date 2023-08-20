@@ -4,36 +4,24 @@ extends Node2D
 # TODO: Random Seed for generating more mission levels and / or survival levels
 # TODO: Anthropomorphic RPS anime chars b/c why not?
 # TODO: Polish -> win with winning emoji popping up and stars fluttering around
-# -> loss shows winning emoji with angry squigly above (charlie brown thing)
-# -> SFX for drawing line, scissors snip, rock crush, paper cover
 # TODO: (maybe) Pause functionality / menu for gameplay
 # -> options, restart, main menu
-# TODO: Star count in top right corner of mission menu
-# TODO: Music
-# -> Menu
-# -> Mission
-# -> Survival
+
 # TODO: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
 # TODO: (maybe) Missions return option on win / lose mission screen
+# TODO: (maybe) Mission loss shows winning emoji with angry squigly above (charlie brown thing)
 
-# TODO: (Done) Background tscn files for cropped and upscaled background images
-# TODO: (Done) Local data store saving
-
-# 08/09 Get To-Do List:
+# Get To-Do List:
+# TODO: Total star count in top right corner of mission menu
 # TODO: Random survival backgrounds?
-# TODO: (Done) -> Options menu
-# -> (Done) SFX volume scroller (w/ save functionality)
-# -> (Done) Music volume scroller (w/ save functionality)
-# -> (Maybe) Purchase Ad Free Mode
-# -> (Done) Delete User Data w/ "Are you sure?" modal
-# -> (Done) Credits
 # TODO: Research for Godot Ad Banners - or kofi donations
 # TODO: (Focus) [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
 # TODO: (Focus) [Cleanup] Level designs and difficulty scaling, random seeding?
 # TODO: [Bug] Unit targeting mechanics: sometimes jittery, sometimes does not lock on targets
 # TODO: Tutorial "level" and / or splash screen.
-# TODO: Implement star scoring system - total ink used? - stay conservative!
-# TODO: Stars earned animation/sfx on win state screen
+# TODO: (Done) Implement star scoring system - total ink used? - stay conservative!
+# TODO: (Done) Stars earned animation/sfx on win state screen
+# TODO: Finish background tscn file cropping and setting up
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"

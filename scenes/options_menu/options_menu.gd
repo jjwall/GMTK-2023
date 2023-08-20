@@ -1,8 +1,19 @@
-# TODO: (Done) Implement sound volume changing
 # TODO: Add Music - main menu, gameplay
 # TODO: Implement No Ad purchase
-# TODO: (Maybe) Restore Purchases for iOS - needs R&D
-# TODO: (Done) Dev unlock all levels
+# TODO: Restore Purchases for iOS - needs R&D
+# TODO: SFX:
+# -> Drawwing line
+# -> Paper ruffle
+# -> Scissors snip
+# -> Rock crush
+# -> Star twinkle
+# -> Button click
+# -> Succeeded mission sound
+# -> Failed mission sound
+# TODO: Music
+# -> Menu
+# -> Mission
+# -> Survival
 
 extends Control
 
