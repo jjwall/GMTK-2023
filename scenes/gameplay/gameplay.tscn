@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=6 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="4_amhjt"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="5_hdu3p"]
+[ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="5_xlrwe"]
 
 [node name="gameplay" type="Node2D"]
 script = ExtResource("1_u5fet")
@@ -131,6 +132,27 @@ texture = ExtResource("5_hdu3p")
 
 [node name="game_start_timer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="star1" type="TextureRect" parent="."]
+offset_left = 177.0
+offset_top = 205.0
+offset_right = 417.0
+offset_bottom = 445.0
+texture = ExtResource("5_xlrwe")
+
+[node name="star2" type="TextureRect" parent="."]
+offset_left = 408.0
+offset_top = 153.0
+offset_right = 648.0
+offset_bottom = 393.0
+texture = ExtResource("5_xlrwe")
+
+[node name="star3" type="TextureRect" parent="."]
+offset_left = 646.0
+offset_top = 201.0
+offset_right = 886.0
+offset_bottom = 441.0
+texture = ExtResource("5_xlrwe")
 
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]
 [connection signal="reset_ink_meter" from="player_cursor" to="." method="_on_player_cursor_reset_ink_meter"]

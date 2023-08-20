@@ -43,6 +43,7 @@ var game_mode = "survival" # | "mission"
 var full_ink_meter_value = 1000
 var max_star_ink_value = 4000
 var star_ink_value = 4000
+var star_color
 
 # These get set in the scene implementation
 var target_winning_unit = "rock" # | "paper" | "scissors"
@@ -75,6 +76,7 @@ const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
 func _ready():
+	star_color = $star1.modulate
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
@@ -190,8 +192,36 @@ func set_win_state():
 		else:
 			$next_button.disabled = true
 
-# TODO: Show stars achieved anim
+func star2_tween(stars_achieved: int):
+	var tween = create_tween()
+	tween.tween_property($star2, "modulate", star_color, 0.5)
+	tween.tween_property($star2, "modulate:a", 1, 0.5)
+	tween.play()
+	if stars_achieved > 2:
+		tween.tween_callback(star3_tween)
+
+func star3_tween():
+	var tween = create_tween()
+	tween.tween_property($star3, "modulate", star_color, 0.5)
+	tween.tween_property($star3, "modulate:a", 1, 0.5)
+	tween.play()
+
+func stars_anim(stars_achieved: int):
+	var tween = create_tween()
+	tween.tween_property($star1, "modulate", star_color, 0.5)
+	tween.tween_property($star1, "modulate:a", 1, 0.5)
+	tween.play()
+	if stars_achieved > 1:
+		tween.tween_callback(star2_tween.bind(stars_achieved))
+
 func determine_stars_achieved():
+	$star1.visible = true
+	$star1.modulate = Color(0, 0, 0, 0.5)
+	$star2.visible = true
+	$star2.modulate = Color(0, 0, 0, 0.5)
+	$star3.visible = true
+	$star3.modulate = Color(0, 0, 0, 0.5)
+	
 	var previous_stars_achieved = DataStore.current.missions[mission_id].stars
 	var current_stars_achieved = 0
 	
@@ -201,6 +231,8 @@ func determine_stars_achieved():
 		current_stars_achieved = 2
 	else:
 		current_stars_achieved = 1
+	
+	stars_anim(current_stars_achieved)
 	
 	if current_stars_achieved > previous_stars_achieved:
 		DataStore.current.missions[mission_id].stars = current_stars_achieved
@@ -301,6 +333,10 @@ func reset_game_state():
 	$main_menu_button.visible = false
 	$restart_button.visible = false
 	$next_button.visible = false
+	
+	$star1.visible = false
+	$star2.visible = false
+	$star3.visible = false
 	set_pregame_state()
 	
 	$game_start_timer.start()
