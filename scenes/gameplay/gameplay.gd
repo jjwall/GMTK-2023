@@ -1,18 +1,15 @@
 extends Node2D
 
-# 08/04 Get To-Do List:
-# TODO: Random Seed for generating more mission levels and / or survival levels
-# TODO: Anthropomorphic RPS anime chars b/c why not?
-# TODO: Polish -> win with winning emoji popping up and stars fluttering around
-# TODO: (maybe) Pause functionality / menu for gameplay
-# -> options, restart, main menu
-
-# TODO: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
-# TODO: (maybe) Missions return option on win / lose mission screen
-# TODO: (maybe) Mission loss shows winning emoji with angry squigly above (charlie brown thing)
+# Ideas:
+# IDEA: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
+# IDEA: (maybe) Missions return option on win / lose mission screen
+# IDEA: (maybe) Mission loss shows winning emoji with angry squigly above (charlie brown thing)
+# IDEA: (maybe) Pause functionality / menu for gameplay
 
 # Get To-Do List:
 # TODO: Total star count in top right corner of mission menu
+# TODO: Random Seed for generating more mission levels and / or survival levels
+# TODO: Anthropomorphic RPS anime chars b/c why not?
 # TODO: Random survival backgrounds?
 # TODO: Research for Godot Ad Banners - or kofi donations
 # TODO: (Focus) [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?

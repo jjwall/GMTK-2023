@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqj5bolv6rn1t"]
+[gd_scene load_steps=5 format=3 uid="uid://dqj5bolv6rn1t"]
 
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_6217p"]
 [ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_mn1s7"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_47f14"]
+[ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="4_7udow"]
 
 [node name="mission_menu" type="Control"]
 layout_mode = 3
@@ -28,5 +29,44 @@ offset_bottom = 134.0
 theme = ExtResource("3_47f14")
 theme_override_font_sizes/font_size = 95
 text = "< Back"
+
+[node name="total_star_texture2" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 844.0
+offset_top = 21.0
+offset_right = 1084.0
+offset_bottom = 261.0
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("4_7udow")
+
+[node name="total_star_texture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 30.0
+offset_right = 1093.0
+offset_bottom = 270.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_7udow")
+
+[node name="total_star_x" type="Label" parent="."]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 16.0
+offset_right = 970.0
+offset_bottom = 108.0
+theme = ExtResource("3_47f14")
+theme_override_font_sizes/font_size = 105
+text = "x"
+
+[node name="total_star_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 22.0
+offset_right = 1136.0
+offset_bottom = 92.0
+theme = ExtResource("3_47f14")
+theme_override_font_sizes/font_size = 105
+text = "0"
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

@@ -10,6 +10,15 @@ const ui_theme = preload("res://assets/themes/ui_theme.tres")
 func _ready():
 	# Create mission buttons grid.
 	create_mission_buttons()
+	process_total_stars()
+
+func process_total_stars():
+	var total_stars = 0
+	for n in DataStore.current.missions:
+		var current_mission_id = str(n)
+		total_stars += DataStore.current.missions[current_mission_id].stars
+	
+	$total_star_label.text = str(total_stars)
 
 func create_mission_buttons():
 	var button_pos_y = -75
