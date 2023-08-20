@@ -26,8 +26,8 @@ var game_mode = "survival" # | "mission"
 
 # Undetermined when this would be set
 var full_ink_meter_value = 1000
-var max_star_ink_value = 4000
-var star_ink_value = 4000
+var max_star_ink_value = 4000.0
+var star_ink_value = 4000.0
 var star_color
 
 # These get set in the scene implementation

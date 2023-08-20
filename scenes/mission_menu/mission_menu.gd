@@ -16,7 +16,9 @@ func process_total_stars():
 	var total_stars = 0
 	for n in DataStore.current.missions:
 		var current_mission_id = str(n)
-		total_stars += DataStore.current.missions[current_mission_id].stars
+		
+		if DataStore.current.missions.has(current_mission_id):
+			total_stars += DataStore.current.missions[current_mission_id].stars
 	
 	$total_star_label.text = str(total_stars)
 
