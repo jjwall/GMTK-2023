@@ -41,6 +41,8 @@ var game_mode = "survival" # | "mission"
 
 # Undetermined when this would be set
 var full_ink_meter_value = 1000
+var max_star_ink_value = 4000
+var star_ink_value = 4000
 
 # These get set in the scene implementation
 var target_winning_unit = "rock" # | "paper" | "scissors"
@@ -182,13 +184,27 @@ func set_win_state():
 		$restart_button.visible = true
 		if get_next_mission():
 			DataStore.current.missions[get_next_mission()].locked = false
-			# TODO Determine star system
-			DataStore.current.missions[mission_id].stars = 3
+			determine_stars_achieved()
 			DataStore.save()
 			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 		else:
 			$next_button.disabled = true
-		# show stars achieved
+
+# TODO: Show stars achieved anim
+func determine_stars_achieved():
+	var previous_stars_achieved = DataStore.current.missions[mission_id].stars
+	var current_stars_achieved = 0
+	
+	if star_ink_value > max_star_ink_value * 2/3:
+		current_stars_achieved = 3
+	elif star_ink_value > max_star_ink_value * 1/3:
+		current_stars_achieved = 2
+	else:
+		current_stars_achieved = 1
+	
+	if current_stars_achieved > previous_stars_achieved:
+		DataStore.current.missions[mission_id].stars = current_stars_achieved
+		DataStore.save()
 
 func set_lose_state():
 	$description_label.text = "You failed..."
@@ -265,6 +281,7 @@ func reset_game_state():
 	total_scissors_count = 0
 	
 	if game_mode == "mission":
+		star_ink_value = max_star_ink_value
 		spawn_mission_units(mission_id)
 		set_target_winning_unit(mission_id)
 	if game_mode == "survival":
@@ -294,6 +311,7 @@ func _on_restart_button_pressed():
 	reset_game_state()
 
 func _on_player_cursor_draw_ink(amount):
+	star_ink_value -= amount
 	GameplayVars.ink_meter_value -= amount
 	$ink_meter.value -= amount
 
