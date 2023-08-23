@@ -19,6 +19,7 @@ extends Node2D
 # TODO: (Done) Implement star scoring system - total ink used? - stay conservative!
 # TODO: (Done) Stars earned animation/sfx on win state screen
 # TODO: Finish background tscn file cropping and setting up
+# TODO: Figure out deploying to iOS given all the hurdles..
 
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
