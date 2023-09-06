@@ -170,10 +170,10 @@ func set_win_state():
 		set_survival_highscore()
 	if game_mode == "mission":
 		$restart_button.visible = true
+		determine_stars_achieved()
+		DataStore.save()
 		if get_next_mission():
 			DataStore.current.missions[get_next_mission()].locked = false
-			determine_stars_achieved()
-			DataStore.save()
 			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 		else:
 			$next_button.disabled = true

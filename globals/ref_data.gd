@@ -45,12 +45,14 @@ var mission_level_data := {
 		"next_mission": "08"
 	},
 	"08" = {
-		"target_winning_unit": "rock",
-		"level": load_mission_level_data("08")
+		"target_winning_unit": "rock", # hard level should be at end of missions
+		"level": load_mission_level_data("08"),
+		"next_mission": "09"
 	},
 	"09" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "scissors",
+		"level": load_mission_level_data("09"),
+#		"next_mission": "10"
 	},
 	"10" = {
 		"target_winning_unit": "paper",
