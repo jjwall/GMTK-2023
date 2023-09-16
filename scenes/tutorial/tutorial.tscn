@@ -27,9 +27,9 @@ texture = ExtResource("2_jv51w")
 
 [node name="back_button" type="Button" parent="."]
 offset_left = 53.0
-offset_top = 1779.0
+offset_top = 1753.0
 offset_right = 278.0
-offset_bottom = 1864.0
+offset_bottom = 1838.0
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 95
 text = "< Back"
@@ -101,17 +101,15 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_7yak0")
 
 [node name="ink_meter_info" type="Label" parent="."]
-offset_left = 46.0
-offset_top = 393.0
-offset_right = 626.0
-offset_bottom = 630.0
-rotation = -0.311386
+offset_left = 58.0
+offset_top = 394.0
+offset_right = 638.0
+offset_bottom = 631.0
+rotation = -0.411543
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
-text = "This meter indicates how
-much ink you have left
-during your current
-stroke. Don't run out!"
+text = "This meter shows how
+much ink you have left."
 
 [node name="target_arrow" type="TextureRect" parent="."]
 layout_mode = 0
@@ -124,17 +122,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_7yak0")
 
 [node name="target_info" type="Label" parent="."]
-offset_left = 651.0
-offset_top = 349.0
-offset_right = 1143.0
-offset_bottom = 706.0
+offset_left = 671.0
+offset_top = 320.0
+offset_right = 1163.0
+offset_bottom = 435.0
 rotation = 0.384923
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
-text = "This icon represents
-the target unit you
-must help reach the
-the victory condition."
+text = "This represents the
+unit that must win!
+"
 
 [node name="scissors" type="Sprite2D" parent="."]
 position = Vector2(387, 1188)
@@ -188,7 +185,7 @@ theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
 text = "Rock, paper, and scissors
 units will appear on the stage
-before the level begins"
+before the level begins!"
 
 [node name="exclamation_mark" type="Sprite2D" parent="."]
 position = Vector2(75, 988)
@@ -203,33 +200,13 @@ offset_right = 1078.0
 offset_bottom = 1672.0
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
-text = "Paper beats rock beats scissors beats paper.
-Wow! Imagine that. When a winning unit comes
-in contact with it's losing unit, the losing
-unit will convert into it's winning counterpart.
-To beat each level, support the target winning
-unit to take over the rest of the units. This
-is done by drawing lines on the screen to trap
-and block units from colliding with each other."
+text = "Paper beats rock beats scissors beats paper. 
+When a unit hits another, the winning unit
+converts the other.
 
-[node name="back_arrow" type="TextureRect" parent="."]
-offset_left = 283.0
-offset_top = 1874.0
-offset_right = 347.0
-offset_bottom = 1938.0
-rotation = -1.57938
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_7yak0")
-
-[node name="ink_meter_label2" type="Label" parent="."]
-offset_left = 401.0
-offset_top = 1738.0
-offset_right = 1041.0
-offset_bottom = 1891.0
-theme = ExtResource("3_m3jhb")
-theme_override_font_sizes/font_size = 76
-text = "Go back to the main menu and
-select Missions or Survival
-Mode to begin playing!"
+To beat each level, make sure your unit is the
+only unit type remaining. You can help out by 
+drawing walls on the screen to trap and block 
+units from colliding with each other."
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
