@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://3gpxv45khmnx"]
+[gd_scene load_steps=9 format=3 uid="uid://3gpxv45khmnx"]
 
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
-[ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="2_ixd2g"]
+[ext_resource type="Texture2D" uid="uid://11xvgwfub5uh" path="res://backgrounds/training/training.jpeg" id="2_jv51w"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_m3jhb"]
+[ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="4_23h28"]
+[ext_resource type="Texture2D" uid="uid://cfskmdjpaka2m" path="res://assets/textures/tutorial_arrow.png" id="5_7yak0"]
+[ext_resource type="Texture2D" uid="uid://de5cmlpgstwxn" path="res://assets/textures/paper_emoji.png" id="6_h8ldy"]
+[ext_resource type="Texture2D" uid="uid://b7fj1888mbcc0" path="res://assets/textures/rock_emoji.png" id="7_oejvb"]
+[ext_resource type="Texture2D" uid="uid://ckmcy5r30sk1x" path="res://assets/textures/heavy_exclamation_mark_emoji.png" id="8_lrq4i"]
 
 [node name="tutorial" type="Control"]
 layout_mode = 3
@@ -14,17 +19,217 @@ grow_vertical = 2
 script = ExtResource("1_q1a5t")
 
 [node name="background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_ixd2g")
+offset_left = -923.0
+offset_top = -5.0
+offset_right = 1125.0
+offset_bottom = 2043.0
+texture = ExtResource("2_jv51w")
 
 [node name="back_button" type="Button" parent="."]
 offset_left = 53.0
-offset_top = 49.0
+offset_top = 1779.0
 offset_right = 278.0
-offset_bottom = 134.0
+offset_bottom = 1864.0
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 95
 text = "< Back"
+
+[node name="ink_meter_label" type="Label" parent="."]
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 246.0
+offset_bottom = 61.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "Ink Meter:"
+
+[node name="ink_meter" type="ProgressBar" parent="."]
+offset_left = 20.0
+offset_top = 74.0
+offset_right = 326.0
+offset_bottom = 101.0
+theme = ExtResource("3_m3jhb")
+max_value = 1000.0
+value = 750.0
+show_percentage = false
+
+[node name="game_mode_label" type="Label" parent="."]
+offset_left = 333.0
+offset_top = 10.0
+offset_right = 774.0
+offset_bottom = 61.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "MISSION 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="target_panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+offset_left = 920.0
+offset_top = 70.0
+offset_right = 1045.0
+offset_bottom = 195.0
+theme = ExtResource("3_m3jhb")
+
+[node name="target_unit" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+offset_left = 923.0
+offset_top = 73.0
+offset_right = 1163.0
+offset_bottom = 313.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_23h28")
+
+[node name="target_label" type="Label" parent="."]
+offset_left = 912.0
+offset_top = 9.0
+offset_right = 1081.0
+offset_bottom = 60.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "Target:"
+
+[node name="ink_arrow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 190.0
+offset_right = 190.0
+offset_bottom = 254.0
+rotation = -0.453886
+scale = Vector2(2, 2)
+texture = ExtResource("5_7yak0")
+
+[node name="ink_meter_info" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 393.0
+offset_right = 626.0
+offset_bottom = 630.0
+rotation = -0.311386
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "This meter indicates how
+much ink you have left
+during your current
+stroke. Don't run out!"
+
+[node name="target_arrow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 236.0
+offset_right = 956.0
+offset_bottom = 300.0
+rotation = 0.412006
+scale = Vector2(2, 2)
+texture = ExtResource("5_7yak0")
+
+[node name="target_info" type="Label" parent="."]
+offset_left = 651.0
+offset_top = 349.0
+offset_right = 1143.0
+offset_bottom = 706.0
+rotation = 0.384923
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "This icon represents
+the target unit you
+must help reach the
+the victory condition."
+
+[node name="scissors" type="Sprite2D" parent="."]
+position = Vector2(387, 1188)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_23h28")
+
+[node name="paper" type="Sprite2D" parent="."]
+position = Vector2(530, 980)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_h8ldy")
+
+[node name="rock" type="Sprite2D" parent="."]
+position = Vector2(676, 1174)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_oejvb")
+
+[node name="arrow1" type="TextureRect" parent="."]
+offset_left = 670.0
+offset_top = 1091.0
+offset_right = 734.0
+offset_bottom = 1155.0
+rotation = 2.40988
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_7yak0")
+
+[node name="arrow2" type="TextureRect" parent="."]
+offset_left = 482.0
+offset_top = 1236.0
+offset_right = 546.0
+offset_bottom = 1300.0
+rotation = 4.70511
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_7yak0")
+
+[node name="arrow3" type="TextureRect" parent="."]
+offset_left = 444.0
+offset_top = 1009.0
+offset_right = 508.0
+offset_bottom = 1073.0
+rotation = 6.89615
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_7yak0")
+
+[node name="unit_spawn_info" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 880.0
+offset_right = 787.0
+offset_bottom = 1033.0
+rotation = -0.38564
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "Rock, paper, and scissors
+units will appear on the stage
+before the level begins"
+
+[node name="exclamation_mark" type="Sprite2D" parent="."]
+position = Vector2(75, 988)
+rotation = -0.356418
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_lrq4i")
+
+[node name="game_info" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 1264.0
+offset_right = 1078.0
+offset_bottom = 1672.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "Paper beats rock beats scissors beats paper.
+Wow! Imagine that. When a winning unit comes
+in contact with it's losing unit, the losing
+unit will convert into it's winning counterpart.
+To beat each level, support the target winning
+unit to take over the rest of the units. This
+is done by drawing lines on the screen to trap
+and block units from colliding with each other."
+
+[node name="back_arrow" type="TextureRect" parent="."]
+offset_left = 283.0
+offset_top = 1874.0
+offset_right = 347.0
+offset_bottom = 1938.0
+rotation = -1.57938
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_7yak0")
+
+[node name="ink_meter_label2" type="Label" parent="."]
+offset_left = 401.0
+offset_top = 1738.0
+offset_right = 1041.0
+offset_bottom = 1891.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "Go back to the main menu and
+select Missions or Survival
+Mode to begin playing!"
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
