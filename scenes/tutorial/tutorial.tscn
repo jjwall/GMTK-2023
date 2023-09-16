@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://3gpxv45khmnx"]
+
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
+[ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="2_ixd2g"]
+[ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_m3jhb"]
+
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q1a5t")
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ixd2g")
+
+[node name="back_button" type="Button" parent="."]
+offset_left = 53.0
+offset_top = 49.0
+offset_right = 278.0
+offset_bottom = 134.0
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 95
+text = "< Back"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

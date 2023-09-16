@@ -2,6 +2,7 @@ extends Control
 
 var gameplay_scene = "res://scenes/gameplay/gameplay.tscn"
 var missions_menu_scene = "res://scenes/mission_menu/mission_menu.tscn"
+var tutorial_scene = "res://scenes/tutorial/tutorial.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,6 @@ func _on_survival_button_pressed():
 
 func _on_missions_button_pressed():
 	SceneSwitcher.change_to_scene(missions_menu_scene)
+
+func _on_tutorial_button_pressed():
+	SceneSwitcher.change_to_scene(tutorial_scene)

@@ -63,3 +63,4 @@ texture = ExtResource("4_pya1u")
 
 [connection signal="pressed" from="survival_button" to="." method="_on_survival_button_pressed"]
 [connection signal="pressed" from="missions_button" to="." method="_on_missions_button_pressed"]
+[connection signal="pressed" from="tutorial_button" to="." method="_on_tutorial_button_pressed"]
