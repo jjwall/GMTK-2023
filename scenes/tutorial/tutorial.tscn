@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3gpxv45khmnx"]
+[gd_scene load_steps=14 format=3 uid="uid://3gpxv45khmnx"]
 
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
 [ext_resource type="Texture2D" uid="uid://11xvgwfub5uh" path="res://backgrounds/training/training.jpeg" id="2_jv51w"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b7fj1888mbcc0" path="res://assets/textures/rock_emoji.png" id="7_oejvb"]
 [ext_resource type="Texture2D" uid="uid://ckmcy5r30sk1x" path="res://assets/textures/heavy_exclamation_mark_emoji.png" id="8_lrq4i"]
 [ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="8_xc7fq"]
+[ext_resource type="Texture2D" uid="uid://bsu6n5geodk2n" path="res://assets/textures/pointing_finger_emoji.png" id="10_p8yju"]
+[ext_resource type="Texture2D" uid="uid://by3flfjj8l4x6" path="res://assets/textures/tutorial_line.png" id="10_y4ab2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxuv"]
 bg_color = Color(0, 0, 0, 1)
@@ -180,10 +182,10 @@ much ink you have left."
 
 [node name="target_arrow" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 892.0
-offset_top = 236.0
-offset_right = 956.0
-offset_bottom = 300.0
+offset_left = 876.0
+offset_top = 228.0
+offset_right = 940.0
+offset_bottom = 292.0
 rotation = 0.412006
 scale = Vector2(2, 2)
 texture = ExtResource("5_7yak0")
@@ -330,5 +332,30 @@ To beat each level, make sure your unit is the
 only unit type remaining. You can help out by 
 drawing walls on the screen to trap and block 
 units from colliding with each other."
+
+[node name="finger" type="Sprite2D" parent="."]
+position = Vector2(964.999, 1779)
+rotation = -2.17883
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_p8yju")
+
+[node name="paper2" type="Sprite2D" parent="."]
+position = Vector2(695, 1778)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_h8ldy")
+
+[node name="scissors2" type="Sprite2D" parent="."]
+position = Vector2(535, 1810)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_23h28")
+
+[node name="tutorial_line" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 1649.0
+offset_right = 553.0
+offset_bottom = 1713.0
+scale = Vector2(4, 4)
+texture = ExtResource("10_y4ab2")
 
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
