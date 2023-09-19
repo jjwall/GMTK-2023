@@ -41,7 +41,8 @@ var mission_level_data := {
 		"target_winning_unit": "scissors", # hard level
 		"level": load_mission_level_data("06"),
 		"next_mission": "07",
-		"background": "res://backgrounds/desert/desert.tscn"
+#		"background": "res://backgrounds/desert/desert.tscn"
+		"background": "res://backgrounds/castle/castle.tscn"
 	},
 	"07" = {
 		"target_winning_unit": "scissors", # unique, not sure if scissors is right

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds1grbe5qf5nc"]
+
+[ext_resource type="Texture2D" uid="uid://q6vfq8v61sgp" path="res://backgrounds/castle/castle.jpeg" id="1_0kufo"]
+
+[node name="castle" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -841.0
+offset_top = -128.0
+offset_right = 1207.0
+offset_bottom = 1920.0
+texture = ExtResource("1_0kufo")
