@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://davw5qjswn6wr"]
+
+[ext_resource type="Texture2D" uid="uid://cqwjrt6evu6r" path="res://backgrounds/underwater/underwater.jpeg" id="1_carsj"]
+
+[node name="underwater" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -808.0
+offset_top = -120.0
+offset_right = 1240.0
+offset_bottom = 1928.0
+texture = ExtResource("1_carsj")

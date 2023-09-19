@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0d1xoxy0i8"]
+
+[ext_resource type="Texture2D" uid="uid://bg8ldu1fh65kv" path="res://backgrounds/desert/desert.jpeg" id="1_gmv13"]
+
+[node name="desert" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -960.0
+offset_right = 1088.0
+offset_bottom = 2048.0
+texture = ExtResource("1_gmv13")
