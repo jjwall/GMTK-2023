@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b25mavl2rqwd8"]
+
+[ext_resource type="Texture2D" uid="uid://cy4o8k52dl2wq" path="res://backgrounds/tech/tech.jpeg" id="1_osvbt"]
+
+[node name="tech" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -913.0
+offset_right = 1135.0
+offset_bottom = 2048.0
+texture = ExtResource("1_osvbt")

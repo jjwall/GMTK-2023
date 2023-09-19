@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce8cd26el2aec"]
+
+[ext_resource type="Texture2D" uid="uid://e4xibx80w6cs" path="res://backgrounds/mountains/mountains.jpeg" id="1_0la6k"]
+
+[node name="mountains" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -528.0
+offset_top = -120.0
+offset_right = 1520.0
+offset_bottom = 1928.0
+texture = ExtResource("1_0la6k")

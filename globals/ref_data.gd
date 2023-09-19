@@ -47,13 +47,15 @@ var mission_level_data := {
 		"target_winning_unit": "scissors", # unique, not sure if scissors is right
 		"level": load_mission_level_data("07"),
 		"next_mission": "08",
-		"background": "res://backgrounds/desert/desert.tscn"
+#		"background": "res://backgrounds/desert/desert.tscn",
+		"background": "res://backgrounds/tech/tech.tscn",
 	},
 	"08" = {
 		"target_winning_unit": "rock", # hard level should be at end of missions
 		"level": load_mission_level_data("08"),
 		"next_mission": "09",
-		"background": "res://backgrounds/desert/desert.tscn"
+#		"background": "res://backgrounds/desert/desert.tscn",
+		"background": "res://backgrounds/mountains/mountains.tscn"
 	},
 	"09" = {
 		"target_winning_unit": "scissors",
