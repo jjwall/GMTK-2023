@@ -221,8 +221,34 @@ rotation = 6.89615
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_7yak0")
 
-[node name="star" type="Sprite2D" parent="."]
-position = Vector2(852, 788)
+[node name="mission_info" type="Label" parent="."]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 806.0
+offset_right = 1132.0
+offset_bottom = 959.0
+rotation = 0.388913
+theme = ExtResource("3_m3jhb")
+theme_override_font_sizes/font_size = 76
+text = "In Mission mode
+use less ink for
+extra stars!"
+
+[node name="star1" type="Sprite2D" parent="."]
+position = Vector2(975, 806)
+rotation = 0.369414
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_xc7fq")
+
+[node name="star2" type="Sprite2D" parent="."]
+position = Vector2(886, 797)
+rotation = 0.369414
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_xc7fq")
+
+[node name="star3" type="Sprite2D" parent="."]
+position = Vector2(1031, 872)
+rotation = 0.369414
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("8_xc7fq")
 
