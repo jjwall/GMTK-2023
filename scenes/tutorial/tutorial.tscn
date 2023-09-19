@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3gpxv45khmnx"]
+[gd_scene load_steps=12 format=3 uid="uid://3gpxv45khmnx"]
 
 [ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
 [ext_resource type="Texture2D" uid="uid://11xvgwfub5uh" path="res://backgrounds/training/training.jpeg" id="2_jv51w"]
@@ -8,6 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://de5cmlpgstwxn" path="res://assets/textures/paper_emoji.png" id="6_h8ldy"]
 [ext_resource type="Texture2D" uid="uid://b7fj1888mbcc0" path="res://assets/textures/rock_emoji.png" id="7_oejvb"]
 [ext_resource type="Texture2D" uid="uid://ckmcy5r30sk1x" path="res://assets/textures/heavy_exclamation_mark_emoji.png" id="8_lrq4i"]
+[ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="8_xc7fq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxuv"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgvqx"]
+bg_color = Color(0, 0.666667, 0.552941, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="tutorial" type="Control"]
 layout_mode = 3
@@ -19,6 +34,7 @@ grow_vertical = 2
 script = ExtResource("1_q1a5t")
 
 [node name="background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -923.0
 offset_top = -5.0
 offset_right = 1125.0
@@ -26,6 +42,7 @@ offset_bottom = 2043.0
 texture = ExtResource("2_jv51w")
 
 [node name="back_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 1753.0
 offset_right = 278.0
@@ -35,6 +52,7 @@ theme_override_font_sizes/font_size = 95
 text = "< Back"
 
 [node name="ink_meter_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 10.0
 offset_right = 246.0
@@ -44,6 +62,7 @@ theme_override_font_sizes/font_size = 76
 text = "Ink Meter:"
 
 [node name="ink_meter" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 74.0
 offset_right = 326.0
@@ -54,18 +73,20 @@ value = 750.0
 show_percentage = false
 
 [node name="game_mode_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 333.0
 offset_top = 10.0
 offset_right = 774.0
 offset_bottom = 61.0
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
-text = "MISSION 00"
+text = "Mission 00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="target_panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 0
 offset_left = 920.0
 offset_top = 70.0
 offset_right = 1045.0
@@ -74,6 +95,7 @@ theme = ExtResource("3_m3jhb")
 
 [node name="target_unit" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 0
 offset_left = 923.0
 offset_top = 73.0
 offset_right = 1163.0
@@ -82,6 +104,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_23h28")
 
 [node name="target_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 912.0
 offset_top = 9.0
 offset_right = 1081.0
@@ -101,6 +124,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_7yak0")
 
 [node name="ink_meter_info" type="Label" parent="."]
+layout_mode = 0
 offset_left = 58.0
 offset_top = 394.0
 offset_right = 638.0
@@ -122,6 +146,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_7yak0")
 
 [node name="target_info" type="Label" parent="."]
+layout_mode = 0
 offset_left = 671.0
 offset_top = 320.0
 offset_right = 1163.0
@@ -133,53 +158,80 @@ text = "This represents the
 unit that must win!
 "
 
+[node name="rps_panel_shadow" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 856.0
+offset_right = 723.0
+offset_bottom = 1206.0
+theme = ExtResource("3_m3jhb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cdxuv")
+
+[node name="rps_panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 846.0
+offset_right = 733.0
+offset_bottom = 1196.0
+theme = ExtResource("3_m3jhb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pgvqx")
+
 [node name="scissors" type="Sprite2D" parent="."]
-position = Vector2(387, 1188)
-scale = Vector2(0.25, 0.25)
+position = Vector2(396, 1111)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_23h28")
 
 [node name="paper" type="Sprite2D" parent="."]
-position = Vector2(530, 980)
-scale = Vector2(0.25, 0.25)
+position = Vector2(530, 912)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("6_h8ldy")
 
 [node name="rock" type="Sprite2D" parent="."]
-position = Vector2(676, 1174)
-scale = Vector2(0.25, 0.25)
+position = Vector2(667, 1109)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("7_oejvb")
 
 [node name="arrow1" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 670.0
-offset_top = 1091.0
+offset_top = 1021.0
 offset_right = 734.0
-offset_bottom = 1155.0
+offset_bottom = 1085.0
 rotation = 2.40988
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_7yak0")
 
 [node name="arrow2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 482.0
-offset_top = 1236.0
+offset_top = 1166.0
 offset_right = 546.0
-offset_bottom = 1300.0
+offset_bottom = 1230.0
 rotation = 4.70511
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_7yak0")
 
 [node name="arrow3" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 444.0
-offset_top = 1009.0
+offset_top = 939.0
 offset_right = 508.0
-offset_bottom = 1073.0
+offset_bottom = 1003.0
 rotation = 6.89615
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_7yak0")
 
+[node name="star" type="Sprite2D" parent="."]
+position = Vector2(852, 788)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_xc7fq")
+
 [node name="unit_spawn_info" type="Label" parent="."]
+layout_mode = 0
 offset_left = 119.0
-offset_top = 880.0
+offset_top = 784.0
 offset_right = 787.0
-offset_bottom = 1033.0
+offset_bottom = 937.0
 rotation = -0.38564
 theme = ExtResource("3_m3jhb")
 theme_override_font_sizes/font_size = 76
@@ -188,12 +240,13 @@ units will appear on the stage
 before the level begins!"
 
 [node name="exclamation_mark" type="Sprite2D" parent="."]
-position = Vector2(75, 988)
+position = Vector2(75, 892)
 rotation = -0.356418
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_lrq4i")
 
 [node name="game_info" type="Label" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 1264.0
 offset_right = 1078.0
