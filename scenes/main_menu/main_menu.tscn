@@ -56,6 +56,18 @@ offset_right = 1046.0
 offset_bottom = 151.0
 script = ExtResource("4_f8uoi")
 
+[node name="gear_shadow" type="Sprite2D" parent="options_control"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(74, 63)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_pya1u")
+
+[node name="gear_shadow2" type="Sprite2D" parent="options_control"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(74, 63)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_pya1u")
+
 [node name="gear" type="Sprite2D" parent="options_control"]
 position = Vector2(74, 63)
 scale = Vector2(0.5, 0.5)
