@@ -62,11 +62,13 @@ var mission_level_data := {
 		"target_winning_unit": "scissors",
 		"level": load_mission_level_data("09"),
 		"background": "res://backgrounds/underwater/underwater.tscn",
-#		"next_mission": "10"
+		"next_mission": "10"
 	},
 	"10" = {
-		"target_winning_unit": "paper",
-		"level": []
+		"target_winning_unit": "scissors",
+		"level": load_mission_level_data("10"), # very random, based on wave function collapse
+		"background": "res://backgrounds/underwater/underwater.tscn",
+#		"next_mission": "11"
 	},
 	"11" = {
 		"target_winning_unit": "paper",
