@@ -66,6 +66,8 @@ func _ready():
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
+	
+	Music.PlayLevelMusic()
 
 func set_pregame_state():
 	$winning_unit.visible = true

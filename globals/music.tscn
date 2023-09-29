@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkcoyufc65rsx"]
+[gd_scene load_steps=5 format=3 uid="uid://bkcoyufc65rsx"]
 
 [ext_resource type="Script" path="res://globals/music.gd" id="1_xx0lo"]
 [ext_resource type="AudioStream" uid="uid://bhmtdwiv7ege7" path="res://assets/audio/music/Green Pastures.ogg" id="2_2jn57"]
 [ext_resource type="AudioStream" uid="uid://d1elbo420n8lc" path="res://assets/audio/music/Rock Paper Showdown Main.ogg" id="3_bxwqv"]
+[ext_resource type="AudioStream" uid="uid://1vbf7mb43wig" path="res://assets/audio/music/Rock Paper Showdown Level Theme.ogg" id="4_0jlqn"]
 
 [node name="Music" type="Node2D"]
 script = ExtResource("1_xx0lo")
@@ -13,4 +14,10 @@ bus = &"Music"
 
 [node name="Rock_Paper_Showdown_Main" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_bxwqv")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="Rock_Paper_Showdown_Level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0jlqn")
+volume_db = -20.0
 bus = &"Music"

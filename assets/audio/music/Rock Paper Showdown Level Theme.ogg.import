@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1vbf7mb43wig"
+path="res://.godot/imported/Rock Paper Showdown Level Theme.ogg-3d3f0be49c6c87f21da1698c4ad44b72.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Rock Paper Showdown Level Theme.ogg"
+dest_files=["res://.godot/imported/Rock Paper Showdown Level Theme.ogg-3d3f0be49c6c87f21da1698c4ad44b72.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
