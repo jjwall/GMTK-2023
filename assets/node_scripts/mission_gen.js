@@ -1,18 +1,18 @@
 function renderRPSLevelLine() {
     function random() {
-        return Math.floor(Math.random() * 5);
+        return Math.floor(Math.random() * 7);
     }
     let partialPattern1 = [];
     for (let i = 0; i < 5; i++) {
         const randomUnit = random()
         if (randomUnit === 1) {
-            partialPattern1.push('r');
+            partialPattern1.push("r");
         } else if (randomUnit === 2) {
-            partialPattern1.push('p');
+            partialPattern1.push("p");
         } else if (randomUnit === 3) {
-            partialPattern1.push('s');
+            partialPattern1.push("s");
         } else {
-            partialPattern1.push('_');
+            partialPattern1.push("_");
         }
     }
     let numberOfTruths = 0;
