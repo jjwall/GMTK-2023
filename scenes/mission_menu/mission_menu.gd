@@ -35,7 +35,7 @@ func create_mission_buttons():
 			var mission_id = ""
 			mission_number += 1
 			
-			if mission_number < 10:
+			if mission_number < 10: #change with each new level
 				mission_id += "0"
 				mission_id += str(mission_number)
 			else:

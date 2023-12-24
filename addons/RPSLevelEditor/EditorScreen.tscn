@@ -1,0 +1,1075 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0fg6a8kajdql"]
+
+[ext_resource type="Script" path="res://addons/RPSLevelEditor/EditorScreen.gd" id="1_2i5jt"]
+[ext_resource type="Script" path="res://addons/RPSLevelEditor/TestButton.gd" id="1_ukmxu"]
+[ext_resource type="Texture2D" uid="uid://cppwcyifdcgd0" path="res://assets/textures/rock_emoji_smol.png" id="3_a5nav"]
+[ext_resource type="Texture2D" uid="uid://bwx7efm32t77h" path="res://assets/textures/scissors_emoji_smol.png" id="5_welyt"]
+[ext_resource type="Texture2D" uid="uid://byx8vmm28a086" path="res://assets/textures/paper_emoji_smol.png" id="6_kih4w"]
+[ext_resource type="Texture2D" uid="uid://6kyik0kqbfdp" path="res://assets/textures/blank_smol.png" id="6_vmsgo"]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_2i5jt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ImportButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Import"
+script = ExtResource("1_ukmxu")
+
+[node name="ExportButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Export"
+script = ExtResource("1_ukmxu")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "filename"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RockButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+disabled = true
+icon = ExtResource("3_a5nav")
+
+[node name="PaperButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("6_kih4w")
+
+[node name="ScissorButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("5_welyt")
+
+[node name="EmptyButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="ClearButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Clear"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="Button1" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button5" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button6" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button7" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button8" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button9" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button10" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button11" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button12" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button13" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button14" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button15" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button16" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button17" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button18" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button19" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button20" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button21" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button22" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button23" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button24" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button25" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button26" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button27" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button28" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button29" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button30" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button31" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button32" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button33" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button34" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button35" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button36" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button37" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button38" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button39" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button40" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button41" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button42" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button43" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button44" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button45" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button46" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button47" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button48" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button49" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button50" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button51" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button52" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button53" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button54" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button55" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button56" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button57" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button58" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button59" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button60" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button61" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button62" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button63" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button64" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button65" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button66" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button67" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button68" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button69" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button70" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button71" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button72" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button73" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button74" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button75" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button76" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button77" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button78" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button79" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button80" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button81" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button82" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button83" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button84" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button85" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button86" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button87" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button88" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button89" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button90" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button91" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button92" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button93" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button94" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button95" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button96" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button97" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button98" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button99" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button100" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button101" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button102" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button103" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button104" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button105" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button106" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button107" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button108" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button109" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button110" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button111" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button112" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button113" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button114" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button115" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button116" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button117" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button118" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button119" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button120" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button121" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button122" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button123" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button124" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button125" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button126" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button127" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button128" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button129" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button130" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button131" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button132" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button133" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button134" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button135" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button136" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button137" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button138" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button139" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button140" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button141" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button142" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button143" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button144" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button145" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button146" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button147" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button148" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button149" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button150" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button151" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button152" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button153" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button154" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button155" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button156" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button157" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button158" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button159" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button160" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button161" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button162" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button163" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button164" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button165" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button166" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button167" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button168" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button169" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button170" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button171" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button172" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button173" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button174" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button175" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button176" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button177" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button178" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button179" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button180" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button181" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button182" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button183" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button184" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button185" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button186" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button187" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button188" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button189" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button190" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button191" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button192" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button193" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button194" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button195" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button196" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button197" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button198" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button199" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[node name="Button200" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("6_vmsgo")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/RockButton" to="." method="_on_rock_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/PaperButton" to="." method="_on_paper_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ScissorButton" to="." method="_on_scissor_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/EmptyButton" to="." method="_on_empty_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button1" to="." method="_on_grid_button_down" binds= [0]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button2" to="." method="_on_grid_button_down" binds= [1]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button3" to="." method="_on_grid_button_down" binds= [2]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button4" to="." method="_on_grid_button_down" binds= [3]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button5" to="." method="_on_grid_button_down" binds= [4]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button6" to="." method="_on_grid_button_down" binds= [5]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button7" to="." method="_on_grid_button_down" binds= [6]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button8" to="." method="_on_grid_button_down" binds= [7]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button9" to="." method="_on_grid_button_down" binds= [8]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button10" to="." method="_on_grid_button_down" binds= [9]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button11" to="." method="_on_grid_button_down" binds= [10]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button12" to="." method="_on_grid_button_down" binds= [11]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button13" to="." method="_on_grid_button_down" binds= [12]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button14" to="." method="_on_grid_button_down" binds= [13]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button15" to="." method="_on_grid_button_down" binds= [14]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button16" to="." method="_on_grid_button_down" binds= [15]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button17" to="." method="_on_grid_button_down" binds= [16]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button18" to="." method="_on_grid_button_down" binds= [17]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button19" to="." method="_on_grid_button_down" binds= [18]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button20" to="." method="_on_grid_button_down" binds= [19]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button21" to="." method="_on_grid_button_down" binds= [20]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button22" to="." method="_on_grid_button_down" binds= [21]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button23" to="." method="_on_grid_button_down" binds= [22]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button24" to="." method="_on_grid_button_down" binds= [23]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button25" to="." method="_on_grid_button_down" binds= [24]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button26" to="." method="_on_grid_button_down" binds= [25]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button27" to="." method="_on_grid_button_down" binds= [26]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button28" to="." method="_on_grid_button_down" binds= [27]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button29" to="." method="_on_grid_button_down" binds= [28]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button30" to="." method="_on_grid_button_down" binds= [29]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button31" to="." method="_on_grid_button_down" binds= [30]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button32" to="." method="_on_grid_button_down" binds= [31]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button33" to="." method="_on_grid_button_down" binds= [32]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button34" to="." method="_on_grid_button_down" binds= [33]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button35" to="." method="_on_grid_button_down" binds= [34]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button36" to="." method="_on_grid_button_down" binds= [35]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button37" to="." method="_on_grid_button_down" binds= [36]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button38" to="." method="_on_grid_button_down" binds= [37]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button39" to="." method="_on_grid_button_down" binds= [38]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button40" to="." method="_on_grid_button_down" binds= [39]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button41" to="." method="_on_grid_button_down" binds= [40]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button42" to="." method="_on_grid_button_down" binds= [41]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button43" to="." method="_on_grid_button_down" binds= [42]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button44" to="." method="_on_grid_button_down" binds= [43]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button45" to="." method="_on_grid_button_down" binds= [44]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button46" to="." method="_on_grid_button_down" binds= [45]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button47" to="." method="_on_grid_button_down" binds= [46]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button48" to="." method="_on_grid_button_down" binds= [47]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button49" to="." method="_on_grid_button_down" binds= [48]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button50" to="." method="_on_grid_button_down" binds= [49]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button51" to="." method="_on_grid_button_down" binds= [50]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button52" to="." method="_on_grid_button_down" binds= [51]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button53" to="." method="_on_grid_button_down" binds= [52]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button54" to="." method="_on_grid_button_down" binds= [53]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button55" to="." method="_on_grid_button_down" binds= [54]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button56" to="." method="_on_grid_button_down" binds= [55]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button57" to="." method="_on_grid_button_down" binds= [56]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button58" to="." method="_on_grid_button_down" binds= [57]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button59" to="." method="_on_grid_button_down" binds= [58]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button60" to="." method="_on_grid_button_down" binds= [59]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button61" to="." method="_on_grid_button_down" binds= [60]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button62" to="." method="_on_grid_button_down" binds= [61]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button63" to="." method="_on_grid_button_down" binds= [62]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button64" to="." method="_on_grid_button_down" binds= [63]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button65" to="." method="_on_grid_button_down" binds= [64]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button66" to="." method="_on_grid_button_down" binds= [65]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button67" to="." method="_on_grid_button_down" binds= [66]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button68" to="." method="_on_grid_button_down" binds= [67]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button69" to="." method="_on_grid_button_down" binds= [68]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button70" to="." method="_on_grid_button_down" binds= [69]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button71" to="." method="_on_grid_button_down" binds= [70]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button72" to="." method="_on_grid_button_down" binds= [71]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button73" to="." method="_on_grid_button_down" binds= [72]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button74" to="." method="_on_grid_button_down" binds= [73]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button75" to="." method="_on_grid_button_down" binds= [74]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button76" to="." method="_on_grid_button_down" binds= [75]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button77" to="." method="_on_grid_button_down" binds= [76]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button78" to="." method="_on_grid_button_down" binds= [77]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button79" to="." method="_on_grid_button_down" binds= [78]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button80" to="." method="_on_grid_button_down" binds= [79]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button81" to="." method="_on_grid_button_down" binds= [80]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button82" to="." method="_on_grid_button_down" binds= [81]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button83" to="." method="_on_grid_button_down" binds= [82]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button84" to="." method="_on_grid_button_down" binds= [83]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button85" to="." method="_on_grid_button_down" binds= [84]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button86" to="." method="_on_grid_button_down" binds= [85]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button87" to="." method="_on_grid_button_down" binds= [86]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button88" to="." method="_on_grid_button_down" binds= [87]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button89" to="." method="_on_grid_button_down" binds= [88]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button90" to="." method="_on_grid_button_down" binds= [89]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button91" to="." method="_on_grid_button_down" binds= [90]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button92" to="." method="_on_grid_button_down" binds= [91]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button93" to="." method="_on_grid_button_down" binds= [92]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button94" to="." method="_on_grid_button_down" binds= [93]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button95" to="." method="_on_grid_button_down" binds= [94]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button96" to="." method="_on_grid_button_down" binds= [95]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button97" to="." method="_on_grid_button_down" binds= [96]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button98" to="." method="_on_grid_button_down" binds= [97]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button99" to="." method="_on_grid_button_down" binds= [98]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button100" to="." method="_on_grid_button_down" binds= [99]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button101" to="." method="_on_grid_button_down" binds= [100]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button102" to="." method="_on_grid_button_down" binds= [101]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button103" to="." method="_on_grid_button_down" binds= [102]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button104" to="." method="_on_grid_button_down" binds= [103]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button105" to="." method="_on_grid_button_down" binds= [104]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button106" to="." method="_on_grid_button_down" binds= [105]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button107" to="." method="_on_grid_button_down" binds= [106]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button108" to="." method="_on_grid_button_down" binds= [107]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button109" to="." method="_on_grid_button_down" binds= [108]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button110" to="." method="_on_grid_button_down" binds= [109]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button111" to="." method="_on_grid_button_down" binds= [110]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button112" to="." method="_on_grid_button_down" binds= [111]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button113" to="." method="_on_grid_button_down" binds= [112]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button114" to="." method="_on_grid_button_down" binds= [113]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button115" to="." method="_on_grid_button_down" binds= [114]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button116" to="." method="_on_grid_button_down" binds= [115]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button117" to="." method="_on_grid_button_down" binds= [116]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button118" to="." method="_on_grid_button_down" binds= [117]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button119" to="." method="_on_grid_button_down" binds= [118]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button120" to="." method="_on_grid_button_down" binds= [119]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button121" to="." method="_on_grid_button_down" binds= [120]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button122" to="." method="_on_grid_button_down" binds= [121]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button123" to="." method="_on_grid_button_down" binds= [122]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button124" to="." method="_on_grid_button_down" binds= [123]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button125" to="." method="_on_grid_button_down" binds= [124]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button126" to="." method="_on_grid_button_down" binds= [125]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button127" to="." method="_on_grid_button_down" binds= [126]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button128" to="." method="_on_grid_button_down" binds= [127]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button129" to="." method="_on_grid_button_down" binds= [128]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button130" to="." method="_on_grid_button_down" binds= [129]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button131" to="." method="_on_grid_button_down" binds= [130]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button132" to="." method="_on_grid_button_down" binds= [131]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button133" to="." method="_on_grid_button_down" binds= [132]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button134" to="." method="_on_grid_button_down" binds= [133]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button135" to="." method="_on_grid_button_down" binds= [134]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button136" to="." method="_on_grid_button_down" binds= [135]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button137" to="." method="_on_grid_button_down" binds= [136]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button138" to="." method="_on_grid_button_down" binds= [137]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button139" to="." method="_on_grid_button_down" binds= [138]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button140" to="." method="_on_grid_button_down" binds= [139]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button141" to="." method="_on_grid_button_down" binds= [140]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button142" to="." method="_on_grid_button_down" binds= [141]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button143" to="." method="_on_grid_button_down" binds= [142]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button144" to="." method="_on_grid_button_down" binds= [143]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button145" to="." method="_on_grid_button_down" binds= [144]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button146" to="." method="_on_grid_button_down" binds= [145]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button147" to="." method="_on_grid_button_down" binds= [146]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button148" to="." method="_on_grid_button_down" binds= [147]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button149" to="." method="_on_grid_button_down" binds= [148]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button150" to="." method="_on_grid_button_down" binds= [149]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button151" to="." method="_on_grid_button_down" binds= [150]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button152" to="." method="_on_grid_button_down" binds= [151]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button153" to="." method="_on_grid_button_down" binds= [152]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button154" to="." method="_on_grid_button_down" binds= [153]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button155" to="." method="_on_grid_button_down" binds= [154]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button156" to="." method="_on_grid_button_down" binds= [155]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button157" to="." method="_on_grid_button_down" binds= [156]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button158" to="." method="_on_grid_button_down" binds= [157]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button159" to="." method="_on_grid_button_down" binds= [158]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button160" to="." method="_on_grid_button_down" binds= [159]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button161" to="." method="_on_grid_button_down" binds= [160]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button162" to="." method="_on_grid_button_down" binds= [161]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button163" to="." method="_on_grid_button_down" binds= [162]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button164" to="." method="_on_grid_button_down" binds= [163]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button165" to="." method="_on_grid_button_down" binds= [164]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button166" to="." method="_on_grid_button_down" binds= [165]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button167" to="." method="_on_grid_button_down" binds= [166]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button168" to="." method="_on_grid_button_down" binds= [167]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button169" to="." method="_on_grid_button_down" binds= [168]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button170" to="." method="_on_grid_button_down" binds= [169]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button171" to="." method="_on_grid_button_down" binds= [170]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button172" to="." method="_on_grid_button_down" binds= [171]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button173" to="." method="_on_grid_button_down" binds= [172]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button174" to="." method="_on_grid_button_down" binds= [173]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button175" to="." method="_on_grid_button_down" binds= [174]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button176" to="." method="_on_grid_button_down" binds= [175]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button177" to="." method="_on_grid_button_down" binds= [176]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button178" to="." method="_on_grid_button_down" binds= [177]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button179" to="." method="_on_grid_button_down" binds= [178]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button180" to="." method="_on_grid_button_down" binds= [179]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button181" to="." method="_on_grid_button_down" binds= [180]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button182" to="." method="_on_grid_button_down" binds= [181]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button183" to="." method="_on_grid_button_down" binds= [182]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button184" to="." method="_on_grid_button_down" binds= [183]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button185" to="." method="_on_grid_button_down" binds= [184]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button186" to="." method="_on_grid_button_down" binds= [185]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button187" to="." method="_on_grid_button_down" binds= [186]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button188" to="." method="_on_grid_button_down" binds= [187]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button189" to="." method="_on_grid_button_down" binds= [188]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button190" to="." method="_on_grid_button_down" binds= [189]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button191" to="." method="_on_grid_button_down" binds= [190]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button192" to="." method="_on_grid_button_down" binds= [191]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button193" to="." method="_on_grid_button_down" binds= [192]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button194" to="." method="_on_grid_button_down" binds= [193]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button195" to="." method="_on_grid_button_down" binds= [194]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button196" to="." method="_on_grid_button_down" binds= [195]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button197" to="." method="_on_grid_button_down" binds= [196]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button198" to="." method="_on_grid_button_down" binds= [197]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button199" to="." method="_on_grid_button_down" binds= [198]]
+[connection signal="button_down" from="VBoxContainer/GridContainer/Button200" to="." method="_on_grid_button_down" binds= [199]]

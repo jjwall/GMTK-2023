@@ -170,7 +170,7 @@ var _all_missions_unlocked_values := {
 		"stars": 0,
 	},
 	"11" = {
-		"locked": true,
+		"locked": false,
 		"stars": 0,
 	},
 	"12" = {
