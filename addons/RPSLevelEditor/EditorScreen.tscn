@@ -1,11 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0fg6a8kajdql"]
 
 [ext_resource type="Script" path="res://addons/RPSLevelEditor/EditorScreen.gd" id="1_2i5jt"]
-[ext_resource type="Script" path="res://addons/RPSLevelEditor/TestButton.gd" id="1_ukmxu"]
 [ext_resource type="Texture2D" uid="uid://cppwcyifdcgd0" path="res://assets/textures/rock_emoji_smol.png" id="3_a5nav"]
 [ext_resource type="Texture2D" uid="uid://bwx7efm32t77h" path="res://assets/textures/scissors_emoji_smol.png" id="5_welyt"]
 [ext_resource type="Texture2D" uid="uid://byx8vmm28a086" path="res://assets/textures/paper_emoji_smol.png" id="6_kih4w"]
 [ext_resource type="Texture2D" uid="uid://6kyik0kqbfdp" path="res://assets/textures/blank_smol.png" id="6_vmsgo"]
+
+[sub_resource type="GDScript" id="GDScript_5is2w"]
+script/source = "@tool
+extends Button
+
+
+func _on_pressed():
+	print(\"Hello from the main screen plugin!\")
+"
 
 [node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 15
@@ -26,12 +34,12 @@ alignment = 1
 [node name="ImportButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Import"
-script = ExtResource("1_ukmxu")
+script = SubResource("GDScript_5is2w")
 
 [node name="ExportButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Export"
-script = ExtResource("1_ukmxu")
+script = SubResource("GDScript_5is2w")
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

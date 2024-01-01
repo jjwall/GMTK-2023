@@ -61,6 +61,8 @@ const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
+var rng_seed
+
 func _ready():
 	star_color = $star1.modulate
 	print(mission_id)
@@ -173,7 +175,7 @@ func set_win_state():
 	if game_mode == "mission":
 		$restart_button.visible = true
 		determine_stars_achieved()
-		DataStore.save()
+		DataStore.save() # Need to save new proc gen level stars here
 		if get_next_mission():
 			DataStore.current.missions[get_next_mission()].locked = false
 			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
@@ -239,7 +241,7 @@ func set_lose_state():
 		else:
 			$next_button.disabled = true
 
-func get_next_mission():
+func get_next_mission(): # REMOVE WITH PROC GEN LEVELS
 	if RefData.mission_level_data[mission_id].has("next_mission"):
 		return RefData.mission_level_data[mission_id].next_mission
 	else:
@@ -249,6 +251,16 @@ func get_mission_background():
 	if RefData.mission_level_data[mission_id].has("background"):
 		return RefData.mission_level_data[mission_id].background
 	else:
+		var dirs := DirAccess.get_directories_at("res://backgrounds/")
+		var dirName = dirs[int(mission_id) % dirs.size()]
+		var dir := DirAccess.open("res://backgrounds/" + dirName)
+		dir.list_dir_begin()
+		var fileName = dir.get_next()
+		while fileName != "":
+			if fileName.ends_with(".tscn"):
+				return "res://backgrounds/" + dirName + "/" + fileName
+			fileName = dir.get_next()
+		
 		return "res://backgrounds/starry_night/starry_night.tscn"
 
 func delete_field_units():
@@ -279,11 +291,38 @@ func spawn_mission_units(_mission_id: String):
 					
 				unit_pos_x += 110
 	else:
-		print("error getting level data")
+		#fancy proc gen here
+		for i in 10: #completely temp
+			for j in 3:
+				match j:
+					0:
+						create_field_unit("rock", Vector2(
+							seeded_rng() % 1040,
+							seeded_rng() % 1760,))
+						total_rock_count += 1
+					1:
+						create_field_unit("paper", Vector2(
+							seeded_rng() % 1040,
+							seeded_rng() % 1760,))
+						total_paper_count += 1
+					2:
+						create_field_unit("scissors", Vector2(
+							seeded_rng() % 1040,
+							seeded_rng() % 1760,))
+						total_scissors_count += 1
+			
 
 func set_target_winning_unit(_mission_id: String):
 	if RefData.mission_level_data.has(_mission_id):
 		target_winning_unit = RefData.mission_level_data[_mission_id].target_winning_unit
+	else:
+		match(int(mission_id) % 3):
+			0:
+				target_winning_unit = "rock"
+			1:
+				target_winning_unit = "paper"
+			2:
+				target_winning_unit = "scissors"
 
 func set_random_target_winning_unit():
 	var dice_roll = randi_range(0, 2)
@@ -299,6 +338,7 @@ func reset_game_state():
 	total_rock_count = 0
 	total_paper_count = 0
 	total_scissors_count = 0
+	rng_seed = int(mission_id)
 	
 	if game_mode == "mission":
 		star_ink_value = max_star_ink_value
@@ -351,7 +391,7 @@ func _on_next_button_pressed():
 		delete_field_units()
 		reset_game_state()
 	if game_mode == "mission":
-		mission_id = get_next_mission()
+		mission_id = get_next_mission() # REMOVE WITH PROC GEN LEVELS
 		delete_field_units()
 		reset_game_state()
 
@@ -360,3 +400,7 @@ func _on_game_start_timer_timeout():
 	$unit_wins_label.visible = false
 	$description_label.visible = false
 	$level_label.visible = false
+
+func seeded_rng():
+	rng_seed = rand_from_seed(rng_seed)[0]
+	return rng_seed

@@ -69,4 +69,9 @@ theme = ExtResource("3_47f14")
 theme_override_font_sizes/font_size = 105
 text = "0"
 
+[node name="LevelContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
