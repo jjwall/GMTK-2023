@@ -241,14 +241,16 @@ func set_lose_state():
 		else:
 			$next_button.disabled = true
 
-func get_next_mission(): # REMOVE WITH PROC GEN LEVELS
-	if RefData.mission_level_data[mission_id].has("next_mission"):
-		return RefData.mission_level_data[mission_id].next_mission
-	else:
-		return false
+func get_next_mission():
+	var mission_number := int(mission_id) + 1
+	var next_mission = ""
+	if mission_number < 10:
+		next_mission += "0"
+	next_mission += str(mission_number)
+	return next_mission
 
 func get_mission_background():
-	if RefData.mission_level_data[mission_id].has("background"):
+	if RefData.mission_level_data.has(mission_id) && RefData.mission_level_data[mission_id].has("background"):
 		return RefData.mission_level_data[mission_id].background
 	else:
 		var dirs := DirAccess.get_directories_at("res://backgrounds/")
@@ -292,6 +294,10 @@ func spawn_mission_units(_mission_id: String):
 				unit_pos_x += 110
 	else:
 		#fancy proc gen here
+		#stamp circles, squares, lines, and outlines onto the board
+		#maybe occassionally mirror the board after gen?
+		#rare star stamp
+		#rarer stick figure stamp
 		for i in 10: #completely temp
 			for j in 3:
 				match j:
@@ -391,7 +397,7 @@ func _on_next_button_pressed():
 		delete_field_units()
 		reset_game_state()
 	if game_mode == "mission":
-		mission_id = get_next_mission() # REMOVE WITH PROC GEN LEVELS
+		mission_id = get_next_mission()
 		delete_field_units()
 		reset_game_state()
 
