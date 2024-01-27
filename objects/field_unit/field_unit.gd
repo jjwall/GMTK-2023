@@ -15,6 +15,12 @@ var speed_max = 115
 var target : RigidBody2D = null
 var aimless_direction: Vector2 = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 
+var gridPosition : Vector2 :
+	get:
+		return Vector2((position.x - 50) / 110, (position.y -50) / 90)
+	set(value):
+		position = Vector2(50 + (value.x * 110), 50 + (value.y * 90))
+
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")

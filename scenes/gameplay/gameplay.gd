@@ -54,6 +54,8 @@ var rand_paper_x_max = 1080
 var rand_paper_y_min = 0
 var rand_paper_y_max = 1920
 
+@onready var field_unit_container := %field_unit_container
+
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 const field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
 
@@ -61,7 +63,9 @@ const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
-var rng_seed
+var rng_seed: int
+
+var position_dict = {}
 
 func _ready():
 	star_color = $star1.modulate
@@ -108,10 +112,6 @@ func get_total_units() -> int:
 	return total_rock_count + total_scissors_count + total_paper_count
 
 func spawn_units(rock_count: int, scissors_count: int, paper_count: int):
-	total_rock_count = rock_count
-	total_paper_count = paper_count
-	total_scissors_count = scissors_count
-	
 	var rng = RandomNumberGenerator.new()
 	for i in range(0, rock_count):
 		create_field_unit('rock', Vector2(rng.randf_range(rand_rock_x_min, rand_rock_x_max), rng.randf_range(rand_rock_y_min, rand_rock_y_max)))
@@ -120,14 +120,34 @@ func spawn_units(rock_count: int, scissors_count: int, paper_count: int):
 	for i in range(0, paper_count):
 		create_field_unit('paper', Vector2(rng.randf_range(rand_paper_x_min, rand_paper_x_max), rng.randf_range(rand_paper_y_min, rand_paper_y_max)))
 
-func create_field_unit(unit_type: String, pos: Vector2):
+func create_field_unit(unit_type: String, pos: Vector2) -> RigidBody2D:
+	if unit_type == "rock":
+		total_rock_count += 1
+	if unit_type == "paper":
+		total_paper_count += 1
+	if unit_type == "scissors":
+		total_scissors_count += 1
 	var new_field_unit = field_unit_scene.instantiate()
 	new_field_unit.unit_type = unit_type
-	new_field_unit.field_units_group = %field_unit_container
+	new_field_unit.field_units_group = field_unit_container
 	new_field_unit.position = pos
 	new_field_unit.field_unit_type_update.connect(_on_field_unit_type_update)
-	%field_unit_container.call_deferred("add_child", new_field_unit)
-		
+	#%field_unit_container.call_deferred("add_child", new_field_unit)
+	
+	if position_dict.has(new_field_unit.position):
+		if position_dict[new_field_unit.position].unit_type == "rock":
+			total_rock_count -= 1
+		if position_dict[new_field_unit.position].unit_type == "paper":
+			total_paper_count -= 1
+		if position_dict[new_field_unit.position].unit_type == "scissors":
+			total_scissors_count -= 1
+		field_unit_container.remove_child(position_dict[new_field_unit.position])
+		position_dict[new_field_unit.position].queue_free()
+	position_dict[new_field_unit.position] = new_field_unit
+	
+	field_unit_container.add_child(new_field_unit)
+	return new_field_unit
+
 func _on_field_unit_type_update():
 	if GameplayVars.current_scissors_count == get_total_units():
 		$winning_unit.texture = scissors_texture
@@ -266,9 +286,10 @@ func get_mission_background():
 		return "res://backgrounds/starry_night/starry_night.tscn"
 
 func delete_field_units():
-	for unit in $field_unit_container.get_children():
-		$field_unit_container.remove_child(unit)
+	for unit in field_unit_container.get_children():
+		field_unit_container.remove_child(unit)
 		unit.queue_free()
+	position_dict = {}
 
 func spawn_mission_units(_mission_id: String):
 	if RefData.mission_level_data.has(_mission_id):
@@ -283,40 +304,14 @@ func spawn_mission_units(_mission_id: String):
 			for c in range(level_data[r].size()):
 				if level_data[r][c] == "r":
 					create_field_unit("rock", Vector2(unit_pos_x, unit_pos_y))
-					total_rock_count += 1
 				if level_data[r][c] == "p":
 					create_field_unit("paper", Vector2(unit_pos_x, unit_pos_y))
-					total_paper_count += 1
 				if level_data[r][c] == "s":
 					create_field_unit("scissors", Vector2(unit_pos_x, unit_pos_y))
-					total_scissors_count += 1
 					
 				unit_pos_x += 110
 	else:
-		#fancy proc gen here
-		#stamp circles, squares, lines, and outlines onto the board
-		#maybe occassionally mirror the board after gen?
-		#rare star stamp
-		#rarer stick figure stamp
-		for i in 10: #completely temp
-			for j in 3:
-				match j:
-					0:
-						create_field_unit("rock", Vector2(
-							seeded_rng() % 1040,
-							seeded_rng() % 1760,))
-						total_rock_count += 1
-					1:
-						create_field_unit("paper", Vector2(
-							seeded_rng() % 1040,
-							seeded_rng() % 1760,))
-						total_paper_count += 1
-					2:
-						create_field_unit("scissors", Vector2(
-							seeded_rng() % 1040,
-							seeded_rng() % 1760,))
-						total_scissors_count += 1
-			
+		mission_procgen()
 
 func set_target_winning_unit(_mission_id: String):
 	if RefData.mission_level_data.has(_mission_id):
@@ -348,8 +343,8 @@ func reset_game_state():
 	
 	if game_mode == "mission":
 		star_ink_value = max_star_ink_value
-		spawn_mission_units(mission_id)
 		set_target_winning_unit(mission_id)
+		spawn_mission_units(mission_id)
 	if game_mode == "survival":
 		spawn_units(25, 25, 25) # these values should be somewhat random
 		set_random_target_winning_unit()
@@ -407,6 +402,206 @@ func _on_game_start_timer_timeout():
 	$description_label.visible = false
 	$level_label.visible = false
 
-func seeded_rng():
+func seeded_rng() -> int:
 	rng_seed = rand_from_seed(rng_seed)[0]
 	return rng_seed
+
+func get_random_unit_type() -> String:
+	match seeded_rng() % 3:
+		0:
+			return "rock"
+		1:
+			return "paper"
+		_:
+			return "scissors"
+
+func rotate_unit(unit: String) -> String:
+	match unit:
+		"rock":
+			return "paper"
+		"paper":
+			return "scissors"
+		_:
+			return "rock"
+
+func mission_procgen():
+	#fancy proc gen here
+	#stamp circles, squares, lines, and outlines onto the board
+	#maybe occassionally mirror the board after gen?
+	#rare star stamp
+	#rarer stick figure stamp
+	
+	
+	var mirrorX := true#(seeded_rng() % 3) == 0
+	var mirrorY := true#(seeded_rng() % 3) == 0
+	var overlapAllowed := (seeded_rng() % 3) == 0
+	var stripeFill := (seeded_rng() % 6) == 0
+	
+	var unitType = target_winning_unit
+	var success = true
+	while success && total_rock_count + total_paper_count + total_scissors_count < 30: # unit softcap
+		match seeded_rng() % 10: # individual patterns
+			_: # diamond
+				var radius = seeded_rng() % 3
+				success = spawn_diamond(unitType, radius, overlapAllowed, stripeFill, (seeded_rng() % 3) == 0)
+				
+		unitType = rotate_unit(unitType)
+	
+	if mirrorX || mirrorY:
+		mirror_board(mirrorX, mirrorY)
+
+
+func spawn_diamond(unit: String, radius: int, overlapAllowed, stripeFill, withOutline):
+	var coord := Vector2(
+		(seeded_rng() % (10 - (radius * 2))) + radius,
+		(seeded_rng() % (20 - (radius * 2))) + radius)
+	var translatedCoord := Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+	if !overlapAllowed:
+		var diamondArea: ShapeCast2D = $unit_spawner/DiamondShape
+		diamondArea.position = translatedCoord
+		diamondArea.scale = Vector2(radius, radius)
+		diamondArea.force_shapecast_update()
+		var loopNum = 0
+		while diamondArea.is_colliding():
+			coord = Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
+			translatedCoord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+			diamondArea.position = translatedCoord
+			diamondArea.force_shapecast_update()
+			loopNum += 1
+			if loopNum > 20:
+				print("Couldn't find empty spawn location")
+				return false
+	
+	var width
+	var offset
+	for x in range(2 if withOutline else 1):
+		width = 1
+		offset = 0
+		for i in range((radius * 2) + 1):
+			for j in range(width):
+				create_field_unit(unit, Vector2(
+					50 + ((coord.x - i + j + offset) * 110), 
+					50 + ((coord.y - radius + i) * 90)))
+			if i < radius:
+				width += 2
+			else:
+				width -= 2
+				offset += 2
+			if stripeFill:
+				unit = get_random_unit_type()
+		radius -= 1
+		unit = rotate_unit(unit)
+	
+	return true
+
+func spawn_square(unit: String, overlapAllowed, stripeFill):
+	var coord := Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
+	var translatedCoord := Vector2(50 + (coord.x * 50), 50 + (coord.y * 90))
+	if !overlapAllowed:
+		var diamondArea: Area2D = $unit_spawner/DiamondArea
+		diamondArea.position = translatedCoord
+		var loopNum = 0
+		while diamondArea.has_overlapping_bodies():
+			coord = Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
+			translatedCoord = Vector2(50 + (coord.x * 50), 50 + (coord.y * 90))
+			diamondArea.position = translatedCoord
+			loopNum += 1
+			if loopNum > 5:
+				return 0
+		
+	create_field_unit(unit, Vector2(coord.x, coord.y+2))
+	create_field_unit(unit, Vector2(coord.x, coord.y+1))
+	create_field_unit(unit, Vector2(coord.x, coord.y))
+	create_field_unit(unit, Vector2(coord.x, coord.y-1))
+	create_field_unit(unit, Vector2(coord.x, coord.y-2))
+	if stripeFill:
+		unit = get_random_unit_type()
+	create_field_unit(unit, Vector2(coord.x-1, coord.y+1))
+	create_field_unit(unit, Vector2(coord.x-1, coord.y))
+	create_field_unit(unit, Vector2(coord.x-1, coord.y-1))
+	if stripeFill:
+		unit = get_random_unit_type()
+	create_field_unit(unit, Vector2(coord.x+1, coord.y+1))
+	create_field_unit(unit, Vector2(coord.x+1, coord.y))
+	create_field_unit(unit, Vector2(coord.x+1, coord.y-1))
+	if stripeFill:
+		unit = get_random_unit_type()
+	create_field_unit(unit, Vector2(coord.x-2, coord.y))
+	if stripeFill:
+		unit = get_random_unit_type()
+	create_field_unit(unit, Vector2(coord.x+2, coord.y))
+	return 13
+
+func mirror_board(mirror_x, mirror_y):#-coord + width
+	var container = %field_unit_container
+	var chosen_units := container.get_children()
+	if mirror_x:
+		for unit in container.get_children():
+			if unit.position.x < 550:
+				position_dict.erase(unit.position)
+				if unit.unit_type == "rock":
+					total_rock_count -= 1
+				elif unit.unit_type == "paper":
+					total_paper_count -= 1
+				elif unit.unit_type == "scissors":
+					total_scissors_count -= 1
+				chosen_units.erase(unit)
+				unit.queue_free()
+	if mirror_y:
+		var chosen_units_copy = chosen_units.duplicate()
+		for unit in chosen_units_copy:
+			if unit.position.y < 970:
+				position_dict.erase(unit.position)
+				if unit.unit_type == "rock":
+					total_rock_count -= 1
+				elif unit.unit_type == "paper":
+					total_paper_count -= 1
+				elif unit.unit_type == "scissors":
+					total_scissors_count -= 1
+				chosen_units.erase(unit)
+				unit.queue_free()
+	
+	#playability check after purge
+	var unit_type = "rock"
+	while chosen_units.size() < 3:
+		var pos = Vector2(50 + (((seeded_rng() % 5) + 5) * 110), 50 + (((seeded_rng() % 10) + 10) * 90))
+		if !position_dict.has(pos):
+			chosen_units.append(create_field_unit(unit_type, pos))
+			unit_type = rotate_unit(unit_type)
+	
+	var dominant_unit
+	if total_rock_count > total_paper_count && total_rock_count > total_scissors_count:
+		dominant_unit = "rock"
+	elif total_paper_count > total_scissors_count:
+		dominant_unit = "paper"
+	else:
+		dominant_unit = "scissors"
+	var filtered_list = chosen_units.filter(func(x): return x.unit_type == dominant_unit)
+	var replaced_unit
+	
+	if total_rock_count < 1:
+		replaced_unit = filtered_list[seeded_rng() % filtered_list.size()]
+		filtered_list.erase(replaced_unit)
+		chosen_units.erase(replaced_unit)
+		chosen_units.append(create_field_unit("rock", replaced_unit.position))
+	if total_paper_count < 1:
+		replaced_unit = filtered_list[seeded_rng() % filtered_list.size()]
+		filtered_list.erase(replaced_unit)
+		chosen_units.erase(replaced_unit)
+		chosen_units.append(create_field_unit("paper", replaced_unit.position))
+	if total_scissors_count < 1:
+		replaced_unit = filtered_list[seeded_rng() % filtered_list.size()]
+		filtered_list.erase(replaced_unit)
+		chosen_units.erase(replaced_unit)
+		chosen_units.append(create_field_unit("scissors", replaced_unit.position))
+	
+	
+	var chosen_units_copy = chosen_units.duplicate()
+	if mirror_x:
+		for unit in chosen_units:
+			chosen_units_copy.append(
+				create_field_unit(unit.unit_type, Vector2(-unit.position.x + 1080, unit.position.y)))
+	if mirror_y:
+		for unit in chosen_units_copy:
+			create_field_unit(unit.unit_type, Vector2(unit.position.x, -unit.position.y + 1920))
+	return

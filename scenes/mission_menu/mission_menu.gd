@@ -11,6 +11,10 @@ var levelContainer: Node
 var page = 0
 var pageScore = 0
 
+var backButton
+var forwardButton
+const LEVELCOUNT = 6 * 4
+
 func _ready():
 	levelContainer = $LevelContainer
 	# Create mission buttons grid.
@@ -31,7 +35,7 @@ func process_total_stars():
 func create_mission_buttons():
 	var button_pos_y = -75
 	var button_pos_x = 65
-	var mission_number = page * 24
+	var mission_number = page * LEVELCOUNT
 	
 	for r in range(6): #chopped off a row for page buttons
 		button_pos_y += 250
@@ -61,7 +65,7 @@ func create_mission_button(pos: Vector2, mission_id: String):
 	new_mission_button.pressed.connect(on_mission_button_pressed.bind(mission_id))
 	levelContainer.add_child(new_mission_button)
 	
-	if pageScore < (int(mission_id) - 1) * 2:
+	if pageScore < (int(mission_id) - (page * LEVELCOUNT) - 1) * 2:
 			# Disable button and add lock emoji if locked.
 			new_mission_button.disabled = true
 			pos.x -= 25
@@ -113,27 +117,41 @@ func _on_back_button_pressed():
 func create_page_buttons():
 	const button_height = 200
 	const button_length = 200
-	var page_button = Button.new()
-	page_button.set_position(Vector2(65, 1675))
-	page_button.set_size(Vector2(button_length, button_height))
-	page_button.theme = ui_theme
-	page_button.text = "<"
-	page_button.pressed.connect(_on_page_button_pressed.bind(false))
-	self.add_child(page_button)
+	backButton = Button.new()
+	backButton.set_position(Vector2(65, 1675))
+	backButton.set_size(Vector2(button_length, button_height))
+	backButton.theme = ui_theme
+	backButton.text = "<"
+	backButton.pressed.connect(_on_page_button_pressed.bind(false))
+	if page == 0:
+		backButton.disabled = true
+	self.add_child(backButton)
 	
-	page_button = Button.new()
-	page_button.set_position(Vector2(815, 1675))
-	page_button.set_size(Vector2(button_length, button_height))
-	page_button.theme = ui_theme
-	page_button.text = ">"
-	page_button.pressed.connect(_on_page_button_pressed.bind(true))
-	if(pageScore < 28):
-		page_button.disabled = true
-	self.add_child(page_button)
+	forwardButton = Button.new()
+	forwardButton.set_position(Vector2(815, 1675))
+	forwardButton.set_size(Vector2(button_length, button_height))
+	forwardButton.theme = ui_theme
+	forwardButton.text = ">"
+	forwardButton.pressed.connect(_on_page_button_pressed.bind(true))
+	if(pageScore < LEVELCOUNT * 2):
+		forwardButton.disabled = true
+	self.add_child(forwardButton)
 
 func _on_page_button_pressed(forward: bool):
-	page += 1
+	if forward:
+		page += 1
+	else:
+		page -= 1
 	pageScore = 0
 	Utils.delete_children(levelContainer)
 	create_mission_buttons()
 	process_total_stars()
+	if page == 0:
+		backButton.disabled = true
+	else:
+		backButton.disabled = false
+	if(pageScore < LEVELCOUNT * 2):
+		forwardButton.disabled = true
+	else:
+		forwardButton.disabled = false
+	
