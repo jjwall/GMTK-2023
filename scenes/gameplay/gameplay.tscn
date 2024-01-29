@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=8 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_at2n8"]
 points = PackedVector2Array(0, -90, 110, 0, 0, 90, -110, 0)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_nr1ya"]
+points = PackedVector2Array(0, 0, 110, 0, 110, 90, 0, 90)
 
 [node name="gameplay" type="Node2D"]
 script = ExtResource("1_u5fet")
@@ -159,15 +162,12 @@ texture = ExtResource("5_xlrwe")
 
 [node name="unit_spawner" type="Node" parent="."]
 
-[node name="SquareArea" type="Area2D" parent="unit_spawner"]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="unit_spawner/SquareArea"]
-build_mode = 1
-polygon = PackedVector2Array(0, 0, 110, 0, 110, 90, 0, 90)
-
 [node name="DiamondShape" type="ShapeCast2D" parent="unit_spawner"]
 shape = SubResource("ConvexPolygonShape2D_at2n8")
+target_position = Vector2(0, 0)
+
+[node name="SquareShape" type="ShapeCast2D" parent="unit_spawner"]
+shape = SubResource("ConvexPolygonShape2D_nr1ya")
 target_position = Vector2(0, 0)
 
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]

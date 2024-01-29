@@ -425,26 +425,32 @@ func rotate_unit(unit: String) -> String:
 			return "rock"
 
 func mission_procgen():
-	#fancy proc gen here
-	#stamp circles, squares, lines, and outlines onto the board
-	#maybe occassionally mirror the board after gen?
 	#rare star stamp
 	#rarer stick figure stamp
 	
 	
-	var mirrorX := true#(seeded_rng() % 3) == 0
-	var mirrorY := true#(seeded_rng() % 3) == 0
+	var mirrorX := (seeded_rng() % 3) == 0
+	var mirrorY := (seeded_rng() % 3) == 0
 	var overlapAllowed := (seeded_rng() % 3) == 0
 	var stripeFill := (seeded_rng() % 6) == 0
+	print("mirror x axis? " + str(mirrorX))
+	print("mirror y axis? " + str(mirrorY))
+	print("overlap allowed? " + str(overlapAllowed))
+	print("stripe fill? " + str(stripeFill))
 	
 	var unitType = target_winning_unit
 	var success = true
-	while success && total_rock_count + total_paper_count + total_scissors_count < 30: # unit softcap
+	while success && total_rock_count + total_paper_count + total_scissors_count < 40: # unit softcap
 		match seeded_rng() % 10: # individual patterns
-			_: # diamond
+			0, 1, 2: # square
+				var width = (seeded_rng() % 3) + 2
+				var outline = false if width == 2 else (true if width == 4 else (seeded_rng() % 2) == 0)
+				success = spawn_square(unitType, width, overlapAllowed, stripeFill, outline)
+			3, 4, 5: # diamond
 				var radius = seeded_rng() % 3
 				success = spawn_diamond(unitType, radius, overlapAllowed, stripeFill, (seeded_rng() % 3) == 0)
-				
+			_: # line
+				success = spawn_line(unitType, false)
 		unitType = rotate_unit(unitType)
 	
 	if mirrorX || mirrorY:
@@ -463,7 +469,9 @@ func spawn_diamond(unit: String, radius: int, overlapAllowed, stripeFill, withOu
 		diamondArea.force_shapecast_update()
 		var loopNum = 0
 		while diamondArea.is_colliding():
-			coord = Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
+			coord = Vector2(
+				(seeded_rng() % (10 - (radius * 2))) + radius,
+				(seeded_rng() % (20 - (radius * 2))) + radius)
 			translatedCoord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
 			diamondArea.position = translatedCoord
 			diamondArea.force_shapecast_update()
@@ -490,47 +498,74 @@ func spawn_diamond(unit: String, radius: int, overlapAllowed, stripeFill, withOu
 			if stripeFill:
 				unit = get_random_unit_type()
 		radius -= 1
-		unit = rotate_unit(unit)
+		if withOutline && x == 0:
+			unit = rotate_unit(unit)
 	
 	return true
 
-func spawn_square(unit: String, overlapAllowed, stripeFill):
-	var coord := Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
-	var translatedCoord := Vector2(50 + (coord.x * 50), 50 + (coord.y * 90))
+func spawn_square(unit: String, width: int, overlapAllowed, stripeFill, withOutline):
+	var coord := Vector2(
+		seeded_rng() % (10 - (width - 1)),
+		seeded_rng() % (20 - (width - 1)))
+	var translatedCoord := Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
 	if !overlapAllowed:
-		var diamondArea: Area2D = $unit_spawner/DiamondArea
-		diamondArea.position = translatedCoord
+		var squareArea: ShapeCast2D = $unit_spawner/SquareShape
+		squareArea.position = translatedCoord
+		squareArea.scale = Vector2(width - 1, width - 1)
+		squareArea.force_shapecast_update()
 		var loopNum = 0
-		while diamondArea.has_overlapping_bodies():
-			coord = Vector2((seeded_rng() % 6) + 2, (seeded_rng() % 16) + 2)
-			translatedCoord = Vector2(50 + (coord.x * 50), 50 + (coord.y * 90))
-			diamondArea.position = translatedCoord
+		while squareArea.is_colliding():
+			coord = Vector2(
+				seeded_rng() % (10 - (width - 1)),
+				seeded_rng() % (20 - (width - 1)))
+			translatedCoord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+			squareArea.position = translatedCoord
+			squareArea.force_shapecast_update()
 			loopNum += 1
-			if loopNum > 5:
-				return 0
+			if loopNum > 20:
+				print("Couldn't find empty spawn location")
+				return false
+	
+	for x in range(2 if withOutline else 1):
+		for i in range(width):
+			for j in range(width):
+				create_field_unit(unit, Vector2(
+					50 + ((coord.x + j) * 110),
+					50 + ((coord.y + i) * 90)))
+			if stripeFill:
+				unit = get_random_unit_type()
 		
-	create_field_unit(unit, Vector2(coord.x, coord.y+2))
-	create_field_unit(unit, Vector2(coord.x, coord.y+1))
-	create_field_unit(unit, Vector2(coord.x, coord.y))
-	create_field_unit(unit, Vector2(coord.x, coord.y-1))
-	create_field_unit(unit, Vector2(coord.x, coord.y-2))
-	if stripeFill:
-		unit = get_random_unit_type()
-	create_field_unit(unit, Vector2(coord.x-1, coord.y+1))
-	create_field_unit(unit, Vector2(coord.x-1, coord.y))
-	create_field_unit(unit, Vector2(coord.x-1, coord.y-1))
-	if stripeFill:
-		unit = get_random_unit_type()
-	create_field_unit(unit, Vector2(coord.x+1, coord.y+1))
-	create_field_unit(unit, Vector2(coord.x+1, coord.y))
-	create_field_unit(unit, Vector2(coord.x+1, coord.y-1))
-	if stripeFill:
-		unit = get_random_unit_type()
-	create_field_unit(unit, Vector2(coord.x-2, coord.y))
-	if stripeFill:
-		unit = get_random_unit_type()
-	create_field_unit(unit, Vector2(coord.x+2, coord.y))
-	return 13
+		width -= 2
+		coord += Vector2(1, 1)
+		if withOutline && x == 0:
+			unit = rotate_unit(unit)
+	
+	return true
+
+func spawn_line(unit: String, overlapAllowed):
+	var origin_coord := Vector2(seeded_rng() % 10, seeded_rng() % 20)
+	var coord = origin_coord
+	var translated_coord := Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+	var direction := Vector2((seeded_rng() % 3) - 1, (seeded_rng() % 3) - 1)
+	if direction == Vector2(0, 0):
+		direction = Vector2(1, 1)
+	
+	while coord.x > 0 && coord.x < 10 && coord.y > 0 && coord.y < 20:
+		if overlapAllowed || !position_dict.has(translated_coord):
+			create_field_unit(unit, translated_coord)
+		coord += direction
+		translated_coord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+	
+	coord = origin_coord
+	direction = -direction
+	
+	while coord.x > 0 && coord.x < 10 && coord.y > 0 && coord.y < 20:
+		if overlapAllowed || !position_dict.has(translated_coord):
+			create_field_unit(unit, translated_coord)
+		coord += direction
+		translated_coord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))
+	
+	return true
 
 func mirror_board(mirror_x, mirror_y):#-coord + width
 	var container = %field_unit_container
