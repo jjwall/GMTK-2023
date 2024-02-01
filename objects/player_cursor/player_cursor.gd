@@ -15,6 +15,7 @@ var collision_children: Array[CollisionShape2D] = []
 var line_node: Line2D
 var tween: Tween
 var line_is_on_screen = false
+var paused = false
 
 # TODO: (Done) Temporary ink lines (fade to red over time)
 
@@ -25,22 +26,23 @@ func _ready():
 	set_tween()
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and GameplayVars.ink_meter_value > 0:
-			# Add the current mouse position to the line_points array
-			draw_ink_line(event.position)
-			
-			if line_points.size() > 1:
-				# Add collision line segment
-				var collision_line = append_line_collision()
-				# Use collision line segment length to reduce ink meter by this amount
-				draw_ink.emit(collision_line.a.distance_to(collision_line.b))
-				# Initialize timer to start tween and destory line after a time.
-				init_line_timer()
+	if !paused:
+		if event is InputEventMouseMotion:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and GameplayVars.ink_meter_value > 0:
+				# Add the current mouse position to the line_points array
+				draw_ink_line(event.position)
 				
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		# Reset the line_points array when the left mouse button is pressed
-		reset_line()
+				if line_points.size() > 1:
+					# Add collision line segment
+					var collision_line = append_line_collision()
+					# Use collision line segment length to reduce ink meter by this amount
+					draw_ink.emit(collision_line.a.distance_to(collision_line.b))
+					# Initialize timer to start tween and destory line after a time.
+					init_line_timer()
+					
+		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			# Reset the line_points array when the left mouse button is pressed
+			reset_line()
 
 func draw_ink_line(line_point_position: Vector2):
 	line_points.append(line_point_position)

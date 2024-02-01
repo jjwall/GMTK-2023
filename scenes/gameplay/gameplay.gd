@@ -24,6 +24,7 @@ extends Node2D
 # These vars should be set when instatiating the scene.
 var mission_id = "00"
 var game_mode = "survival" # | "mission"
+var muted := false
 
 # Undetermined when this would be set
 var full_ink_meter_value = 1000
@@ -640,3 +641,26 @@ func mirror_board(mirror_x, mirror_y):#-coord + width
 		for unit in chosen_units_copy:
 			create_field_unit(unit.unit_type, Vector2(unit.position.x, -unit.position.y + 1920))
 	return
+
+
+func _on_texture_button_pressed() -> void:
+	$PauseMenu.visible = true
+	for unit in field_unit_container.get_children():
+		unit.paused = true
+	$player_cursor.paused = true
+
+func _on_play_button_pressed() -> void:
+	$PauseMenu.visible = false
+	for unit in field_unit_container.get_children():
+		unit.paused = false
+	$player_cursor.paused = false
+
+func _on_mute_button_pressed() -> void:
+	if muted:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear_to_db(DataStore.current.sfx_volume))
+		muted = false
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), 0)
+		muted = true

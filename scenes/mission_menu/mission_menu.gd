@@ -37,7 +37,7 @@ func create_mission_buttons():
 	var button_pos_x = 65
 	var mission_number = page * LEVELCOUNT
 	
-	for r in range(6): #chopped off a row for page buttons
+	for r in range(6):
 		button_pos_y += 250
 		button_pos_x = 65
 		
