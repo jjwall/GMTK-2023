@@ -136,3 +136,5 @@ var mission_level_data := {
 		#"next_mission": null,
 	#},
 }
+
+var pageScore = 0

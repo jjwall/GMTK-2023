@@ -9,7 +9,6 @@ const ui_theme = preload("res://assets/themes/ui_theme.tres")
 var levelContainer: Node
 
 var page = 0
-var pageScore = 0
 
 var backButton
 var forwardButton
@@ -17,6 +16,7 @@ const LEVELCOUNT = 6 * 4
 
 func _ready():
 	levelContainer = $LevelContainer
+	RefData.pageScore = 0
 	# Create mission buttons grid.
 	create_mission_buttons()
 	process_total_stars()
@@ -65,7 +65,7 @@ func create_mission_button(pos: Vector2, mission_id: String):
 	new_mission_button.pressed.connect(on_mission_button_pressed.bind(mission_id))
 	levelContainer.add_child(new_mission_button)
 	
-	if pageScore < (int(mission_id) - (page * LEVELCOUNT) - 1) * 2 && !GameplayVars.dev_unlock:
+	if RefData.pageScore < (int(mission_id) - (page * LEVELCOUNT) - 1) * 2 && !GameplayVars.dev_unlock:
 			# Disable button and add lock emoji if locked.
 			new_mission_button.disabled = true
 			pos.x -= 25
@@ -77,7 +77,7 @@ func create_mission_button(pos: Vector2, mission_id: String):
 		for s in range(3):
 			if star_count >= s + 1:
 				add_star_emoji(pos)
-				pageScore += 1
+				RefData.pageScore += 1
 			else: # Missing a star
 				add_star_emoji(pos, true)
 			
@@ -102,14 +102,9 @@ func add_locked_emoji(pos: Vector2):
 	levelContainer.add_child(locked_emoji)
 
 func on_mission_button_pressed(mission_id: String):
-	if DataStore.current.missions.has(mission_id):
-		# TODO: Pass mission level data to scene.
-		var new_gameplay_scene = SceneSwitcher.change_to_scene(gameplay_scene)
-		new_gameplay_scene.mission_id = mission_id
-		new_gameplay_scene.game_mode = "mission"
-		print(DataStore.current.missions[mission_id])
-	else:
-		print("Mission %s is not in data store" % mission_id)
+	var new_gameplay_scene = SceneSwitcher.change_to_scene(gameplay_scene)
+	new_gameplay_scene.mission_id = mission_id
+	new_gameplay_scene.game_mode = "mission"
 
 func _on_back_button_pressed():
 	SceneSwitcher.change_to_scene(main_menu_scene)
@@ -133,7 +128,7 @@ func create_page_buttons():
 	forwardButton.theme = ui_theme
 	forwardButton.text = ">"
 	forwardButton.pressed.connect(_on_page_button_pressed.bind(true))
-	if(pageScore < LEVELCOUNT * 2):
+	if(RefData.pageScore < LEVELCOUNT * 2):
 		forwardButton.disabled = true
 	self.add_child(forwardButton)
 
@@ -142,7 +137,7 @@ func _on_page_button_pressed(forward: bool):
 		page += 1
 	else:
 		page -= 1
-	pageScore = 0
+	RefData.pageScore = 0
 	Utils.delete_children(levelContainer)
 	create_mission_buttons()
 	process_total_stars()
@@ -150,7 +145,7 @@ func _on_page_button_pressed(forward: bool):
 		backButton.disabled = true
 	else:
 		backButton.disabled = false
-	if(pageScore < LEVELCOUNT * 2):
+	if(RefData.pageScore < LEVELCOUNT * 2):
 		forwardButton.disabled = true
 	else:
 		forwardButton.disabled = false

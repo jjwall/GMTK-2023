@@ -198,8 +198,9 @@ func set_win_state():
 		determine_stars_achieved()
 		DataStore.save() # Need to save new proc gen level stars here
 		if get_next_mission():
-			DataStore.current.missions[get_next_mission()].locked = false
-			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
+			#DataStore.current.missions[get_next_mission()].locked = false
+			#$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
+			$next_button.disabled = RefData.pageScore < (int(mission_id) - ((int(mission_id) / 24) * 24) - 1) * 2
 		else:
 			$next_button.disabled = true
 
@@ -233,7 +234,8 @@ func determine_stars_achieved():
 	$star3.visible = true
 	$star3.modulate = Color(0, 0, 0, 0.5)
 	
-	var previous_stars_achieved = DataStore.current.missions[mission_id].stars
+	var previous_stars_achieved = (
+		DataStore.current.missions[mission_id].stars if DataStore.current.missions.has(mission_id) else 0)
 	var current_stars_achieved = 0
 	
 	if star_ink_value > max_star_ink_value * 2/3:
@@ -246,6 +248,9 @@ func determine_stars_achieved():
 	stars_anim(current_stars_achieved)
 	
 	if current_stars_achieved > previous_stars_achieved:
+		if !DataStore.current.missions.has(mission_id):
+			DataStore.current.missions[mission_id] = {}
+		
 		DataStore.current.missions[mission_id].stars = current_stars_achieved
 		DataStore.save()
 
@@ -258,11 +263,12 @@ func set_lose_state():
 		set_survival_highscore()
 	if game_mode == "mission":
 		if get_next_mission():
-			$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
+			#$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
+			$next_button.disabled = RefData.pageScore < (int(mission_id) - ((int(mission_id) / 24) * 24) - 1) * 2
 		else:
 			$next_button.disabled = true
 
-func get_next_mission():
+func get_next_mission() -> String:
 	var mission_number := int(mission_id) + 1
 	var next_mission = ""
 	if mission_number < 10:
