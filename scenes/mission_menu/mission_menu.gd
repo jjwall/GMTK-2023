@@ -65,7 +65,7 @@ func create_mission_button(pos: Vector2, mission_id: String):
 	new_mission_button.pressed.connect(on_mission_button_pressed.bind(mission_id))
 	levelContainer.add_child(new_mission_button)
 	
-	if pageScore < (int(mission_id) - (page * LEVELCOUNT) - 1) * 2:
+	if pageScore < (int(mission_id) - (page * LEVELCOUNT) - 1) * 2 && !GameplayVars.dev_unlock:
 			# Disable button and add lock emoji if locked.
 			new_mission_button.disabled = true
 			pos.x -= 25

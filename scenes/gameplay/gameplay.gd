@@ -430,8 +430,8 @@ func mission_procgen():
 	#rarer stick figure stamp
 	
 	
-	var mirrorX := (seeded_rng() % 3) == 0
-	var mirrorY := (seeded_rng() % 3) == 0
+	var mirrorX := (seeded_rng() % 2) == 0
+	var mirrorY := (seeded_rng() % 2) == 0
 	var overlapAllowed := (seeded_rng() % 3) == 0
 	var stripeFill := (seeded_rng() % 6) == 0
 	print("mirror x axis? " + str(mirrorX))

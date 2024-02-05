@@ -270,5 +270,6 @@ func delete_data():
 
 # For QA testing only. Should not be exposed in production.
 func unlock_all_levels():
-	current.missions = _all_missions_unlocked_values.duplicate(true)
-	save()
+	#current.missions = _all_missions_unlocked_values.duplicate(true)
+	#save()
+	GameplayVars.dev_unlock = true
