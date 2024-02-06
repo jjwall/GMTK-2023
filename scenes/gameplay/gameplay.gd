@@ -369,6 +369,7 @@ func reset_game_state():
 	$main_menu_button.visible = false
 	$restart_button.visible = false
 	$next_button.visible = false
+	$PauseMenu.visible = false
 	
 	$star1.visible = false
 	$star2.visible = false
