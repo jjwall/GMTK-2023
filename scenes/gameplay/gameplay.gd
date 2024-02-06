@@ -64,6 +64,9 @@ const paper_texture = preload("res://assets/textures/paper_emoji.png")
 const rock_texture = preload("res://assets/textures/rock_emoji.png")
 const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 
+const audio_icon = preload("res://assets/textures/tempAudio.png")
+const audio_icon_no_sound = preload("res://assets/textures/tempAudioNoSound.png")
+
 var rng_seed: int
 
 var position_dict = {}
@@ -664,10 +667,12 @@ func _on_play_button_pressed() -> void:
 
 func _on_mute_button_pressed() -> void:
 	if muted:
+		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear_to_db(DataStore.current.sfx_volume))
 		muted = false
 	else:
+		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon_no_sound
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0)
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), 0)
 		muted = true

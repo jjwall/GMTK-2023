@@ -194,7 +194,6 @@ shape = SubResource("ConvexPolygonShape2D_nr1ya")
 target_position = Vector2(0, 0)
 
 [node name="PauseMenu" type="Node2D" parent="."]
-visible = false
 
 [node name="ColorRect2" type="ColorRect" parent="PauseMenu"]
 offset_right = 1080.0
