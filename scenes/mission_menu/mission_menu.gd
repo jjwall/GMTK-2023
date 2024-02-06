@@ -128,7 +128,7 @@ func create_page_buttons():
 	forwardButton.theme = ui_theme
 	forwardButton.text = ">"
 	forwardButton.pressed.connect(_on_page_button_pressed.bind(true))
-	if(RefData.pageScore < LEVELCOUNT * 2):
+	if(RefData.pageScore < LEVELCOUNT * 2 && !GameplayVars.dev_unlock):
 		forwardButton.disabled = true
 	self.add_child(forwardButton)
 
@@ -145,7 +145,7 @@ func _on_page_button_pressed(forward: bool):
 		backButton.disabled = true
 	else:
 		backButton.disabled = false
-	if(RefData.pageScore < LEVELCOUNT * 2):
+	if(RefData.pageScore < LEVELCOUNT * 2 && !GameplayVars.dev_unlock):
 		forwardButton.disabled = true
 	else:
 		forwardButton.disabled = false
