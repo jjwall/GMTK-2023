@@ -118,23 +118,6 @@ var mission_level_data := {
 		#"target_winning_unit": "rock",
 		#"level": load_mission_level_data("24"),
 	#},
-	#"25" = {
-		#"target_winning_unit": "rock",
-		#"level": load_mission_level_data("25"),
-	#},
-	#"26" = {
-		#"target_winning_unit": "paper",
-		#"level": load_mission_level_data("26"),
-	#},
-	#"27" = {
-		#"target_winning_unit": "paper",
-		#"level": load_mission_level_data("27"),
-	#},
-	#"28" = {
-		#"target_winning_unit": "rock",
-		#"level": load_mission_level_data("28"),
-		#"next_mission": null,
-	#},
 }
 
 var pageScore = 0

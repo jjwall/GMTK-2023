@@ -38,7 +38,7 @@ offset_top = 934.0
 offset_right = 885.0
 offset_bottom = 1147.0
 theme = ExtResource("3_qoasq")
-text = "No Ads"
+text = "Buy Premium"
 
 [node name="unlock_button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.25098)

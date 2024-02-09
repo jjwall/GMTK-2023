@@ -74,4 +74,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="LockPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="Banner" type="ColorRect" parent="LockPanel"]
+layout_mode = 0
+offset_left = -371.0
+offset_top = 1260.0
+offset_right = 1629.0
+offset_bottom = 1660.0
+rotation = -0.523599
+scale = Vector2(0.95, 0.95)
+color = Color(1, 1, 1, 0.498039)
+
+[node name="Label" type="Label" parent="LockPanel/Banner"]
+layout_mode = 0
+offset_right = 2000.0
+offset_bottom = 350.0
+theme = ExtResource("3_47f14")
+text = "Buy Premium To Unlock!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

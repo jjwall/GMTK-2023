@@ -373,6 +373,7 @@ func reset_game_state():
 	$restart_button.visible = false
 	$next_button.visible = false
 	$PauseMenu.visible = false
+	$player_cursor.paused = false
 	
 	$star1.visible = false
 	$star2.visible = false
@@ -654,10 +655,11 @@ func mirror_board(mirror_x, mirror_y):#-coord + width
 
 
 func _on_texture_button_pressed() -> void:
-	$PauseMenu.visible = true
-	for unit in field_unit_container.get_children():
-		unit.paused = true
-	$player_cursor.paused = true
+	if $game_start_timer.is_stopped():
+		$PauseMenu.visible = true
+		for unit in field_unit_container.get_children():
+			unit.paused = true
+		$player_cursor.paused = true
 
 func _on_play_button_pressed() -> void:
 	$PauseMenu.visible = false
