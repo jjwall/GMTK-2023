@@ -562,7 +562,7 @@ func spawn_line(unit: String, overlapAllowed):
 	if direction == Vector2(0, 0):
 		direction = Vector2(1, 1)
 	
-	while coord.x > 0 && coord.x < 10 && coord.y > 0 && coord.y < 20:
+	while coord.x >= 0 && coord.x < 10 && coord.y >= 0 && coord.y < 20:
 		if overlapAllowed || !position_dict.has(translated_coord):
 			create_field_unit(unit, translated_coord)
 		coord += direction
@@ -570,8 +570,10 @@ func spawn_line(unit: String, overlapAllowed):
 	
 	coord = origin_coord
 	direction = -direction
+	coord += direction
+	translated_coord = Vector2(50 + (coord.x * 110), 50 + (coord.y * 90))	
 	
-	while coord.x > 0 && coord.x < 10 && coord.y > 0 && coord.y < 20:
+	while coord.x >= 0 && coord.x < 10 && coord.y >= 0 && coord.y < 20:
 		if overlapAllowed || !position_dict.has(translated_coord):
 			create_field_unit(unit, translated_coord)
 		coord += direction
