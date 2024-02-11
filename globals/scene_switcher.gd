@@ -10,7 +10,7 @@ func change_to_scene(scene_filename: String) -> Node:
 func _change_scene(scene: Node):
 	var tree := get_tree()
 	var root := tree.get_root() as Window
-	current_scene.free()
+	tree.unload_current_scene()
 	current_scene = scene
 	root.add_child(scene)
 	tree.set_current_scene(current_scene)
