@@ -20,11 +20,15 @@ extends Control
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 
 var sfx_test_sound : AudioStreamPlayer
+var payment
+
+enum PurchaseState {
+	UNSPECIFIED,
+	PURCHASED,
+	PENDING,
+}
 
 func _ready():
-	# TODO: Remove disabled, implement no ad purchase for iOS & Android.
-	$no_ads_button.disabled = true
-	
 	sfx_test_sound = $pop_sfx
 	$credits_modal.visible = false
 	$delete_data_modal.visible = false
@@ -32,6 +36,17 @@ func _ready():
 	$data_deleted_banner.modulate.a = 0
 	$sfx_volume_slider.value = DataStore.current.sfx_volume
 	$music_volume_slider.value = DataStore.current.music_volume
+	
+	if DataStore.current.ad_free_purchased:
+		$premium_button.disabled = true
+	
+	if Engine.has_singleton("GodotGooglePlayBilling"):
+		payment = Engine.get_singleton("GodotGooglePlayBilling")
+		payment.connected.connect(_on_connected)
+		payment.purchases_updated.connect(_on_purchases_updated)
+		payment.startConnection()
+	else:
+		print("whoopsies")
 
 func _on_back_button_pressed():
 	SceneSwitcher.change_to_scene(main_menu_scene)
@@ -82,3 +97,18 @@ func _on_credits_back_button_pressed():
 
 func _on_unlock_button_pressed():
 	DataStore.unlock_all_levels()
+
+func _on_connected(): # should match the SKU product id defined in the Google Play Console entry
+	payment.querySkuDetails(["premium_purchase"], "inapp")
+
+func _on_purchases_updated(purchases):
+	for purchase in purchases:
+		if purchase.purchase_state == PurchaseState.PURCHASED && !purchase.is_acknowledged:
+			DataStore.current.ad_free_purchased = true
+			DataStore.save()
+			$premium_button.disabled = true
+			payment.acknowledgePurchase(purchase.purchase_token)
+
+func _on_premium_button_pressed() -> void:
+	if payment.isReady():
+		payment.purchase("premium_purchase")
