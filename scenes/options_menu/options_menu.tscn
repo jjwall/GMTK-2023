@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo8juxr5em4u0"]
+[gd_scene load_steps=7 format=3 uid="uid://bo8juxr5em4u0"]
 
 [ext_resource type="Script" path="res://scenes/options_menu/options_menu.gd" id="1_7ucfq"]
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="2_pvvku"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_qoasq"]
+[ext_resource type="PackedScene" uid="uid://d0cwjqw713v1d" path="res://objects/checkered_background/checkered_background.tscn" id="3_vwfd1"]
 [ext_resource type="Texture2D" uid="uid://cchomqxgnmpk0" path="res://assets/textures/unlocked_microsoft_emoji.png" id="4_3idxg"]
 [ext_resource type="AudioStream" uid="uid://vidjbmn6m102" path="res://assets/audio/sfx/ui_menu_popup_01.wav" id="5_5p30u"]
 
@@ -20,6 +21,8 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_pvvku")
+
+[node name="CheckeredBackground" parent="." instance=ExtResource("3_vwfd1")]
 
 [node name="back_button" type="Button" parent="."]
 layout_mode = 0
