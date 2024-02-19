@@ -199,7 +199,7 @@ func set_win_state():
 	if game_mode == "mission":
 		$restart_button.visible = true
 		determine_stars_achieved()
-		DataStore.save() # Need to save new proc gen level stars here
+		DataStore.save()
 		if get_next_mission():
 			#DataStore.current.missions[get_next_mission()].locked = false
 			#$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
@@ -256,6 +256,7 @@ func determine_stars_achieved():
 		
 		DataStore.current.missions[mission_id].stars = current_stars_achieved
 		DataStore.save()
+		RefData.pageScore += current_stars_achieved - previous_stars_achieved
 
 func set_lose_state():
 	$description_label.text = "You failed..."
