@@ -67,12 +67,15 @@ const scissors_texture = preload("res://assets/textures/scissors_emoji.png")
 const audio_icon = preload("res://assets/textures/tempAudio.png")
 const audio_icon_no_sound = preload("res://assets/textures/tempAudioNoSound.png")
 
+var star_earned_sfx : AudioStreamPlayer
+
 var rng_seed: int
 
 var position_dict = {}
 
 func _ready():
 	star_color = $star1.modulate
+	star_earned_sfx = $star_earned_sfx
 	print(mission_id)
 	print(game_mode)
 	reset_game_state()
@@ -215,6 +218,7 @@ func star2_tween(stars_achieved: int):
 	tween.tween_property($star2, "modulate", star_color, 0.5)
 	tween.tween_property($star2, "modulate:a", 1, 0.5)
 	tween.play()
+	star_earned_sfx.play()
 	if stars_achieved > 2:
 		tween.tween_callback(star3_tween)
 
@@ -223,12 +227,14 @@ func star3_tween():
 	tween.tween_property($star3, "modulate", star_color, 0.5)
 	tween.tween_property($star3, "modulate:a", 1, 0.5)
 	tween.play()
+	star_earned_sfx.play()
 
 func stars_anim(stars_achieved: int):
 	var tween = create_tween()
 	tween.tween_property($star1, "modulate", star_color, 0.5)
 	tween.tween_property($star1, "modulate:a", 1, 0.5)
 	tween.play()
+	star_earned_sfx.play()
 	if stars_achieved > 1:
 		tween.tween_callback(star2_tween.bind(stars_achieved))
 

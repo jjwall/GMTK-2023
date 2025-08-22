@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=14 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Script" uid="uid://ny74otbvsaow" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://1cka7dqrl3e7" path="res://assets/textures/tempRestart.png" id="8_sv7v8"]
 [ext_resource type="Texture2D" uid="uid://dbe4xevn71y1j" path="res://assets/textures/tempHome.png" id="9_l0cah"]
 [ext_resource type="Texture2D" uid="uid://cgagkrln4d1rg" path="res://assets/textures/tempAudio.png" id="10_cw276"]
+[ext_resource type="AudioStream" uid="uid://b1sh2xvv0ca0x" path="res://assets/audio/sfx/star_earned.wav" id="11_bhb63"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_at2n8"]
 points = PackedVector2Array(0, -90, 110, 0, 0, 90, -110, 0)
@@ -252,6 +253,9 @@ theme = ExtResource("4_amhjt")
 icon = ExtResource("10_cw276")
 icon_alignment = 1
 expand_icon = true
+
+[node name="star_earned_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bhb63")
 
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]
 [connection signal="reset_ink_meter" from="player_cursor" to="." method="_on_player_cursor_reset_ink_meter"]
