@@ -30,7 +30,7 @@ func process_total_stars():
 		if DataStore.current.missions.has(current_mission_id):
 			total_stars += DataStore.current.missions[current_mission_id].stars
 	
-	$total_star_label.text = str(total_stars)
+	$total_star_label.text = str(int(total_stars))
 
 func create_mission_buttons():
 	var button_pos_y = -75
