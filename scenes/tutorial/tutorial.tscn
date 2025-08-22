@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://3gpxv45khmnx"]
 
-[ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
+[ext_resource type="Script" uid="uid://yxh5xfcxpi71" path="res://scenes/tutorial/tutorial.gd" id="1_q1a5t"]
 [ext_resource type="Texture2D" uid="uid://11xvgwfub5uh" path="res://backgrounds/training/training.jpeg" id="2_jv51w"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_m3jhb"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="4_23h28"]

@@ -21,14 +21,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fc1pn"]
 _data = {
-"bg": SubResource("Animation_056ky")
+&"bg": SubResource("Animation_056ky")
 }
 
 [node name="CheckeredBackground" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fc1pn")
+&"": SubResource("AnimationLibrary_fc1pn")
 }
 autoplay = "bg"
 

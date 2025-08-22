@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqj5bolv6rn1t"]
 
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_6217p"]
-[ext_resource type="Script" path="res://scenes/mission_menu/mission_menu.gd" id="1_mn1s7"]
+[ext_resource type="Script" uid="uid://kn6cl54miupy" path="res://scenes/mission_menu/mission_menu.gd" id="1_mn1s7"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="3_47f14"]
 [ext_resource type="PackedScene" uid="uid://d0cwjqw713v1d" path="res://objects/checkered_background/checkered_background.tscn" id="3_eklyf"]
 [ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="4_7udow"]

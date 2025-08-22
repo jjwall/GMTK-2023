@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0fg6a8kajdql"]
 
-[ext_resource type="Script" path="res://addons/RPSLevelEditor/EditorScreen.gd" id="1_2i5jt"]
+[ext_resource type="Script" uid="uid://dbtpihvxq0y3k" path="res://addons/RPSLevelEditor/EditorScreen.gd" id="1_2i5jt"]
 [ext_resource type="Texture2D" uid="uid://cppwcyifdcgd0" path="res://assets/textures/rock_emoji_smol.png" id="3_a5nav"]
 [ext_resource type="Texture2D" uid="uid://bwx7efm32t77h" path="res://assets/textures/scissors_emoji_smol.png" id="5_welyt"]
 [ext_resource type="Texture2D" uid="uid://byx8vmm28a086" path="res://assets/textures/paper_emoji_smol.png" id="6_kih4w"]

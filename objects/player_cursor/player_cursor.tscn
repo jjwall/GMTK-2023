@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4c1qvlq6een6"]
 
-[ext_resource type="Script" path="res://objects/player_cursor/player_cursor.gd" id="1_uuwth"]
+[ext_resource type="Script" uid="uid://clcb53y11o0cn" path="res://objects/player_cursor/player_cursor.gd" id="1_uuwth"]
 [ext_resource type="PhysicsMaterial" uid="uid://c2swnpbhr7tlw" path="res://assets/physics_materials/ice.tres" id="1_yoejj"]
 
 [node name="player_cursor" type="RigidBody2D"]

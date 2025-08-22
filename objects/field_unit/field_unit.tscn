@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dl5ohr5jenewt"]
 
-[ext_resource type="Script" path="res://objects/field_unit/field_unit.gd" id="1_hm76p"]
+[ext_resource type="Script" uid="uid://bjfwwrdet715d" path="res://objects/field_unit/field_unit.gd" id="1_hm76p"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="1_iijh2"]
 [ext_resource type="PhysicsMaterial" uid="uid://c2swnpbhr7tlw" path="res://assets/physics_materials/ice.tres" id="1_wymvl"]
 [ext_resource type="AudioStream" uid="uid://vidjbmn6m102" path="res://assets/audio/sfx/ui_menu_popup_01.wav" id="4_e7kmb"]

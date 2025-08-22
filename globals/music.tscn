@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkcoyufc65rsx"]
 
-[ext_resource type="Script" path="res://globals/music.gd" id="1_xx0lo"]
+[ext_resource type="Script" uid="uid://hmdbfa4qpale" path="res://globals/music.gd" id="1_xx0lo"]
 [ext_resource type="AudioStream" uid="uid://bhmtdwiv7ege7" path="res://assets/audio/music/Green Pastures.ogg" id="2_2jn57"]
 [ext_resource type="AudioStream" uid="uid://d1elbo420n8lc" path="res://assets/audio/music/Rock Paper Showdown Main.ogg" id="3_bxwqv"]
 [ext_resource type="AudioStream" uid="uid://1vbf7mb43wig" path="res://assets/audio/music/Rock Paper Showdown Level Theme.ogg" id="4_0jlqn"]

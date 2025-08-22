@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://r2i2viuuqc1o"]
 
-[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_d0c8q"]
+[ext_resource type="Script" uid="uid://dwqbgtpy4hdf3" path="res://scenes/main_menu/main_menu.gd" id="1_d0c8q"]
 [ext_resource type="Texture2D" uid="uid://6lkdsfrbavnk" path="res://assets/textures/background-vertical.png" id="1_e4b4u"]
 [ext_resource type="Theme" uid="uid://b4i4qyx8hd1tk" path="res://assets/themes/ui_theme.tres" id="2_w36fx"]
 [ext_resource type="Texture2D" uid="uid://d2l6vhdhcwx1q" path="res://assets/textures/Rock_Paper_Showdown_logo1.png" id="3_rxbex"]
 [ext_resource type="PackedScene" uid="uid://d0cwjqw713v1d" path="res://objects/checkered_background/checkered_background.tscn" id="3_wxf80"]
-[ext_resource type="Script" path="res://scenes/main_menu/options_control.gd" id="4_f8uoi"]
+[ext_resource type="Script" uid="uid://cw7bqb5jcvotn" path="res://scenes/main_menu/options_control.gd" id="4_f8uoi"]
 [ext_resource type="Texture2D" uid="uid://d3mjl0cs2sbjx" path="res://assets/textures/gear_microsoft_emoji.png" id="4_pya1u"]
 
 [node name="main_menu" type="Control"]
