@@ -159,7 +159,8 @@ func process_type_update(new_unit_type: String):
 	unit_type = new_unit_type
 	target = null
 	locate_target()
-	sfx.play()
+	SfxDeconflicter.play(sfx)
+	#sfx.play()
 	if unit_type == 'rock':
 		GameplayVars.current_rock_count += 1
 		GameplayVars.current_scissors_count -= 1

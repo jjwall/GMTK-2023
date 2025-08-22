@@ -23,6 +23,7 @@ SceneSwitcher="*res://globals/scene_switcher.gd"
 Utils="*res://globals/utils.gd"
 RefData="*res://globals/ref_data.gd"
 Music="*res://globals/music.tscn"
+SfxDeconflicter="*res://globals/sfx_deconflicter.gd"
 
 [display]
 
