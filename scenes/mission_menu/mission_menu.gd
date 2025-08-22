@@ -146,8 +146,8 @@ func _on_page_button_pressed(forward: bool):
 		$LockPanel.visible = false
 	else:
 		backButton.disabled = false
-		if !DataStore.current.ad_free_purchased:
-			$LockPanel.visible = true
+		#if !DataStore.current.ad_free_purchased:
+			#$LockPanel.visible = true
 	if(RefData.pageScore < LEVELCOUNT * 2 && !GameplayVars.dev_unlock):
 		forwardButton.disabled = true
 	else:
