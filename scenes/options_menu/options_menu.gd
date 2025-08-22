@@ -1,4 +1,4 @@
-# TODO: Add Music - main menu, gameplay
+# TODO: (Done) Add Music - main menu, gameplay
 # TODO: Implement No Ad purchase
 # TODO: Restore Purchases for iOS - needs R&D
 # TODO: SFX:
@@ -6,14 +6,20 @@
 # -> Paper ruffle
 # -> Scissors snip
 # -> Rock crush
-# -> Star twinkle
+# -> (Done) Star twinkle
 # -> Button click
 # -> Succeeded mission sound
 # -> Failed mission sound
 # TODO: Music
-# -> Menu
-# -> Mission
-# -> Survival
+# -> (Done) Menu
+# -> (Done) Mission
+# -> (Done) Survival
+
+# From 08/22/2025:
+# TODO: Consider not using star count i.e. "RefData.PageCount" for mission unlocks.
+# -> This instead could just be if you beat previous level unlock next level.
+# TODO: Set up mission page DataStore variable so you don't have to scroll through everytime you open the mission menu
+# TODO: Main Menu button on mission mode should instead be Mission Menu and take you to that saved mission page.
 
 extends Control
 
