@@ -3,3 +3,4 @@
 .exports/
 *.tmp
 .DS_Store
+builds
