@@ -41,6 +41,7 @@ offset_top = 934.0
 offset_right = 885.0
 offset_bottom = 1147.0
 theme = ExtResource("3_qoasq")
+disabled = true
 text = "Buy Premium"
 
 [node name="unlock_button" type="Button" parent="."]
@@ -176,6 +177,7 @@ text = "Data Successfully Deleted!"
 [node name="banner_timer" type="Timer" parent="."]
 
 [node name="credits_modal" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 76.0
 offset_top = 242.0
