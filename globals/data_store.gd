@@ -152,6 +152,7 @@ func reload():
 
 func delete_data():
 	current = _default_values.duplicate(true)
+	GameplayVars.dev_unlock = false
 	save()
 
 # For QA testing only. Should not be exposed in production.
