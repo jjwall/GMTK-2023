@@ -99,4 +99,3 @@ func delete_collision_children():
 func _on_init_line_tween_timer_timeout():
 	if line_is_on_screen:
 		tween.play()
-

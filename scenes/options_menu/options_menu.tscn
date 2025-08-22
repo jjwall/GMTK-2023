@@ -176,7 +176,6 @@ text = "Data Successfully Deleted!"
 [node name="banner_timer" type="Timer" parent="."]
 
 [node name="credits_modal" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 76.0
 offset_top = 242.0
@@ -192,21 +191,21 @@ offset_right = 896.0
 offset_bottom = 1514.0
 theme = ExtResource("3_qoasq")
 theme_override_font_sizes/font_size = 124
-text = "Production
-Boardhouse Studios
+text = "Production:
+Peligro Labs, LLC
 
-Game Design
+Game Design:
 Jake Wallace
 
-Development
+Development:
 Jake Wallace
 Michael Hodges
 
-Background Art
-Bing AI
+Music:
+Michael Rechen
 
-Level Generator
-ChatGPT"
+Background Art:
+Bing AI"
 horizontal_alignment = 1
 autowrap_mode = 3
 
