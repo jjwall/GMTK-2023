@@ -670,6 +670,9 @@ func mirror_board(mirror_x, mirror_y):#-coord + width
 	return
 
 func _on_play_button_pressed() -> void:
+	resume_game()
+
+func resume_game() -> void:
 	$PauseMenu.visible = false
 	for unit in field_unit_container.get_children():
 		unit.paused = false
