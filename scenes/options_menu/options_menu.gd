@@ -24,8 +24,12 @@
 
 extends Control
 
+const audio_icon = preload("res://assets/textures/tempAudio.png")
+const audio_icon_no_sound = preload("res://assets/textures/tempAudioNoSound.png")
+
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
 
+var muted = false
 var sfx_test_sound : AudioStreamPlayer
 var payment
 
@@ -43,6 +47,12 @@ func _ready():
 	$data_deleted_banner.modulate.a = 0
 	$sfx_volume_slider.value = DataStore.current.sfx_volume
 	$music_volume_slider.value = DataStore.current.music_volume
+	
+	muted = DataStore.current.mute_sound
+	if muted:
+		$mute_button.icon = audio_icon_no_sound
+	else:
+		$mute_button.icon = audio_icon
 	
 	if DataStore.current.ad_free_purchased:
 		$premium_button.disabled = true
@@ -119,3 +129,21 @@ func _on_purchases_updated(purchases):
 func _on_premium_button_pressed() -> void:
 	if payment.isReady():
 		payment.purchase("premium_purchase")
+
+
+func _on_mute_button_pressed() -> void:
+	process_mute()
+	DataStore.current.mute_sound = muted
+	DataStore.save()
+	
+func process_mute():
+	if muted:
+		$mute_button.icon = audio_icon
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear_to_db(DataStore.current.sfx_volume))
+		muted = false
+	else:
+		$mute_button.icon = audio_icon_no_sound
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), -80)
+		muted = true

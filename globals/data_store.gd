@@ -12,6 +12,7 @@ var _default_values := {
 	ad_free_purchased = false,
 	sfx_volume = 25,
 	music_volume = 25,
+	mute_sound = false,
 	mission_page = 0,
 	missions = {
 		"01" = {

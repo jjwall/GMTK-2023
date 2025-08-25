@@ -80,6 +80,17 @@ func _ready():
 	print(game_mode)
 	reset_game_state()
 	
+	muted = DataStore.current.mute_sound
+	
+	if DataStore.current.mute_sound:
+		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon_no_sound
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), -80)
+	else:
+		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear_to_db(DataStore.current.sfx_volume))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
+	
 	Music.PlayLevelMusic()
 
 func set_pregame_state():
@@ -683,6 +694,11 @@ func resume_game() -> void:
 	$player_cursor.paused = false
 
 func _on_mute_button_pressed() -> void:
+	process_mute()
+	DataStore.current.mute_sound = muted
+	DataStore.save()
+
+func process_mute():
 	if muted:
 		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(DataStore.current.music_volume))
