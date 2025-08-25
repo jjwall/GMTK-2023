@@ -103,7 +103,7 @@ offset_left = 460.0
 offset_top = 1888.0
 offset_right = 599.0
 offset_bottom = 1911.0
-text = "Version 0.1.1-beta"
+text = "Version 0.1.2-beta"
 
 [connection signal="pressed" from="survival_button" to="." method="_on_survival_button_pressed"]
 [connection signal="pressed" from="missions_button" to="." method="_on_missions_button_pressed"]
