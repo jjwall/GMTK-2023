@@ -6,4 +6,6 @@ var current_paper_count = 0
 
 var ink_meter_value = 0
 
+var speedup = false
+
 var dev_unlock = false

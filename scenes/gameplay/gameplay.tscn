@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c66nnqc8bybv8"]
+[gd_scene load_steps=15 format=3 uid="uid://c66nnqc8bybv8"]
 
 [ext_resource type="Script" uid="uid://ny74otbvsaow" path="res://scenes/gameplay/gameplay.gd" id="1_u5fet"]
 [ext_resource type="PackedScene" uid="uid://b4c1qvlq6een6" path="res://objects/player_cursor/player_cursor.tscn" id="3_84hl8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bt1lgukctobqb" path="res://assets/textures/tempPause.png" id="5_8x5s3"]
 [ext_resource type="Texture2D" uid="uid://ot2vcfsbn3f8" path="res://assets/textures/scissors_emoji.png" id="5_hdu3p"]
 [ext_resource type="Texture2D" uid="uid://by5rb6j7xyciq" path="res://assets/textures/star_microsoft_emoji.png" id="5_xlrwe"]
+[ext_resource type="Texture2D" uid="uid://cpw6xefkynk2s" path="res://assets/textures/speedup.png" id="6_i6m2i"]
 [ext_resource type="Texture2D" uid="uid://b8axm1soc6ud5" path="res://assets/textures/tempPlay.png" id="7_e7bc8"]
 [ext_resource type="Texture2D" uid="uid://1cka7dqrl3e7" path="res://assets/textures/tempRestart.png" id="8_sv7v8"]
 [ext_resource type="Texture2D" uid="uid://dbe4xevn71y1j" path="res://assets/textures/tempHome.png" id="9_l0cah"]
@@ -150,13 +151,42 @@ offset_right = 885.0
 offset_bottom = 195.0
 theme = ExtResource("4_amhjt")
 
-[node name="TextureButton" type="TextureButton" parent="pause_panel"]
+[node name="PauseButton" type="TextureButton" parent="pause_panel"]
 texture_filter = 1
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 125.0
 texture_normal = ExtResource("5_8x5s3")
 stretch_mode = 0
+
+[node name="speedup_panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+offset_left = 921.0
+offset_top = 225.0
+offset_right = 1046.0
+offset_bottom = 350.0
+theme = ExtResource("4_amhjt")
+
+[node name="SpeedupButton" type="TextureButton" parent="speedup_panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 130.0
+offset_bottom = 131.0
+texture_normal = ExtResource("6_i6m2i")
+stretch_mode = 0
+
+[node name="speedup_label" type="Label" parent="speedup_panel"]
+offset_left = 76.0
+offset_top = 91.0
+offset_right = 150.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.226707, 0.226707, 0.226707, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 75
+text = "x1"
 
 [node name="game_start_timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -198,6 +228,7 @@ target_position = Vector2(0, 0)
 [node name="PauseMenu" type="Node2D" parent="."]
 
 [node name="ColorRect2" type="ColorRect" parent="PauseMenu"]
+visible = false
 offset_right = 1080.0
 offset_bottom = 1920.0
 color = Color(0, 0, 0, 0.247059)
@@ -262,7 +293,8 @@ stream = ExtResource("11_bhb63")
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="main_menu_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="next_button" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="pause_panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="pause_panel/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="speedup_panel/SpeedupButton" to="." method="_on_speedup_button_pressed"]
 [connection signal="timeout" from="game_start_timer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ColorRect/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PauseMenu/ColorRect/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

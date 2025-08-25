@@ -2,8 +2,8 @@ extends RigidBody2D
 signal draw_ink(amount: float)
 signal reset_ink_meter()
 
-@export var init_tween_time = 2
-@export var tween_time = 2
+@export var init_tween_time = 2.0
+@export var tween_time = 2.0
 
 # Notes:
 # Player_Cursor could be a regular node
@@ -70,12 +70,20 @@ func init_line_timer():
 	if !line_is_on_screen:
 		line_is_on_screen = true
 #		set_tween() # not necessary
+		if GameplayVars.speedup:
+			$init_line_tween_timer.wait_time = init_tween_time/2
+		else:
+			$init_line_tween_timer.wait_time = init_tween_time
 		$init_line_tween_timer.start()
 
 func set_tween():
 	tween = create_tween()
-	tween.tween_property(line_node, "modulate", Color.RED, tween_time)
-	tween.tween_property(line_node, "modulate:a", 0, 0.5) # tween_time/4)
+	if GameplayVars.speedup:
+		tween.tween_property(line_node, "modulate", Color.RED, tween_time/2)
+		tween.tween_property(line_node, "modulate:a", 0, tween_time/8)
+	else:
+		tween.tween_property(line_node, "modulate", Color.RED, tween_time)
+		tween.tween_property(line_node, "modulate:a", 0, tween_time/4)
 #	tween.tween_property(line_node, "modulate", Color(196/255.0, 30/255.0, 58/255.0, 0), tween_time)
 	tween.tween_callback(on_line_expires) #.set_delay(1) -> this extends delay
 	tween.pause()

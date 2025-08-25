@@ -83,6 +83,7 @@ func _ready():
 	Music.PlayLevelMusic()
 
 func set_pregame_state():
+	set_speedup_to_false()
 	$winning_unit.visible = true
 	$unit_wins_label.visible = true
 	$description_label.visible = true
@@ -668,14 +669,6 @@ func mirror_board(mirror_x, mirror_y):#-coord + width
 			create_field_unit(unit.unit_type, Vector2(unit.position.x, -unit.position.y + 1920))
 	return
 
-
-func _on_texture_button_pressed() -> void:
-	if $game_start_timer.is_stopped():
-		$PauseMenu.visible = true
-		for unit in field_unit_container.get_children():
-			unit.paused = true
-		$player_cursor.paused = true
-
 func _on_play_button_pressed() -> void:
 	$PauseMenu.visible = false
 	for unit in field_unit_container.get_children():
@@ -693,3 +686,24 @@ func _on_mute_button_pressed() -> void:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0)
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), 0)
 		muted = true
+
+func _on_pause_button_pressed() -> void:
+	if $game_start_timer.is_stopped():
+		$PauseMenu.visible = true
+		for unit in field_unit_container.get_children():
+			unit.paused = true
+		$player_cursor.paused = true
+
+func set_speedup_to_true() -> void:
+	GameplayVars.speedup = true
+	$speedup_panel/speedup_label.text = "x2"
+	
+func set_speedup_to_false() -> void:
+	GameplayVars.speedup = false
+	$speedup_panel/speedup_label.text = "x1"
+
+func _on_speedup_button_pressed() -> void:
+	if GameplayVars.speedup:
+		set_speedup_to_false()
+	else:
+		set_speedup_to_true()

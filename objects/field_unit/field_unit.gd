@@ -65,10 +65,16 @@ func _physics_process(delta):
 			var direction = global_position.direction_to(target.position)
 			#self.linear_velocity = direction * SPEED
 	#		position += direction * SPEED * delta
-			move_and_collide(direction * 100 * delta) # should discuss random speed
+			if GameplayVars.speedup:
+				move_and_collide(direction * 200 * delta)
+			else:
+				move_and_collide(direction * 100 * delta) # should discuss random speed
 		else:
 	#		position += aimless_direction * SPEED * delta
-			move_and_collide(aimless_direction * 60 * delta)
+			if GameplayVars.speedup:
+				move_and_collide(aimless_direction * 120 * delta)
+			else:
+				move_and_collide(aimless_direction * 60 * delta)
 	#		aimless_direction = Vector2((randf() * 2) - 1, (randf() * 2) - 1)
 			#self.linear_velocity = aimless_direction * SPEED
 		
