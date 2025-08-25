@@ -118,9 +118,9 @@ max_value = 1000.0
 show_percentage = false
 
 [node name="target_label" type="Label" parent="."]
-offset_left = 912.0
+offset_left = 902.0
 offset_top = 9.0
-offset_right = 1081.0
+offset_right = 1071.0
 offset_bottom = 60.0
 theme = ExtResource("4_amhjt")
 theme_override_font_sizes/font_size = 76
@@ -161,10 +161,10 @@ stretch_mode = 0
 
 [node name="speedup_panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
-offset_left = 921.0
-offset_top = 225.0
-offset_right = 1046.0
-offset_bottom = 350.0
+offset_left = 920.0
+offset_top = 229.0
+offset_right = 1045.0
+offset_bottom = 354.0
 theme = ExtResource("4_amhjt")
 
 [node name="SpeedupButton" type="TextureButton" parent="speedup_panel"]
@@ -178,10 +178,11 @@ texture_normal = ExtResource("6_i6m2i")
 stretch_mode = 0
 
 [node name="speedup_label" type="Label" parent="speedup_panel"]
+layout_mode = 0
 offset_left = 76.0
-offset_top = 91.0
+offset_top = 89.0
 offset_right = 150.0
-offset_bottom = 145.0
+offset_bottom = 143.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.226707, 0.226707, 0.226707, 1)
 theme_override_constants/outline_size = 15
