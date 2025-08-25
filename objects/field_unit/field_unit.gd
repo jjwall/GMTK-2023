@@ -33,7 +33,7 @@ var target_search : Area2D
 var sfx : AudioStreamPlayer
 var collisionArea : Area2D
 
-var maxCollisionCheckDepth := 19
+var maxCollisionCheckDepth := 3 # was 19
 var currentCollisionCheckDepth := 0
 
 # Called when the node enters the scene tree for the first time.
@@ -80,6 +80,8 @@ func _physics_process(delta):
 		
 		wrap_position()
 		currentCollisionCheckDepth = 0
+		
+		check_overlap() # -> this could be very inefficient. Testing on mobile 08/25/2025
 
 func wrap_position():
 	if position.x > resolution_width:
@@ -181,11 +183,15 @@ func process_type_update(new_unit_type: String):
 		sprite.texture = scissors_texture
 		
 	field_unit_type_update.emit()
-	check_overlap()
+	#check_overlap() # commented out w/ 08-25-2025 changes
+
+
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("field_units"):
-		process_collision(body)
+	pass
+	# commented out w/ 08-25-2025 changes
+	#if body.is_in_group("field_units"):
+		#process_collision(body)
 
 func _on_unit_spawned_timer_timeout():
 	paused = false
