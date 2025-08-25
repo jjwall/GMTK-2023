@@ -690,8 +690,8 @@ func _on_mute_button_pressed() -> void:
 		muted = false
 	else:
 		$PauseMenu/ColorRect/HBoxContainer/MuteButton.icon = audio_icon_no_sound
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0)
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), 0)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), -80)
 		muted = true
 
 func _on_pause_button_pressed() -> void:

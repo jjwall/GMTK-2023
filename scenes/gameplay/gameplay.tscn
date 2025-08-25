@@ -287,6 +287,7 @@ expand_icon = true
 
 [node name="star_earned_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_bhb63")
+bus = &"Sounds"
 
 [connection signal="draw_ink" from="player_cursor" to="." method="_on_player_cursor_draw_ink"]
 [connection signal="reset_ink_meter" from="player_cursor" to="." method="_on_player_cursor_reset_ink_meter"]
