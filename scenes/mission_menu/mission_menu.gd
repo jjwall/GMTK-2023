@@ -8,7 +8,7 @@ const star_emoji_texture = preload("res://assets/textures/star_microsoft_emoji.p
 const ui_theme = preload("res://assets/themes/ui_theme.tres")
 var levelContainer: Node
 
-var page = 0
+var page = DataStore.current.mission_page
 
 var backButton
 var forwardButton
@@ -35,7 +35,7 @@ func process_total_stars():
 func create_mission_buttons():
 	var button_pos_y = -75
 	var button_pos_x = 65
-	var mission_number = page * LEVELCOUNT
+	var mission_number = int(page * LEVELCOUNT)
 	
 	for r in range(6):
 		button_pos_y += 250
@@ -137,6 +137,8 @@ func _on_page_button_pressed(forward: bool):
 		page += 1
 	else:
 		page -= 1
+	DataStore.current.mission_page = page
+	DataStore.save()
 	RefData.pageScore = 0
 	Utils.delete_children(levelContainer)
 	create_mission_buttons()
