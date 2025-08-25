@@ -16,10 +16,11 @@
 # -> (Done) Survival
 
 # From 08/22/2025:
-# TODO: Consider not using star count i.e. "RefData.PageCount" for mission unlocks.
+# TODO: (It seems fine b/c you can unlock multiple levels at once) Consider not using star count i.e. "RefData.PageCount" for mission unlocks.
 # -> This instead could just be if you beat previous level unlock next level.
-# TODO: Set up mission page DataStore variable so you don't have to scroll through everytime you open the mission menu
-# TODO: Main Menu button on mission mode should instead be Mission Menu and take you to that saved mission page.
+# TODO: (Done) Set up mission page DataStore variable so you don't have to scroll through everytime you open the mission menu
+# TODO: (Done) Main Menu button on mission mode should instead be Mission Menu and take you to that saved mission page.
+# TODO: (Done) Fast forward button
 
 extends Control
 

@@ -2,23 +2,22 @@ extends Node2D
 
 # Ideas:
 # IDEA: (maybe) Add 3, 2, 1 countdown that would go where the restart button is
-# IDEA: (maybe) Missions return option on win / lose mission screen
 # IDEA: (maybe) Mission loss shows winning emoji with angry squigly above (charlie brown thing)
-# IDEA: (maybe) Pause functionality / menu for gameplay
 
 # Get To-Do List:
-# TODO: Total star count in top right corner of mission menu
-# TODO: Random Seed for generating more mission levels and / or survival levels
+# TODO: (Done) Missions return option on win / lose mission screen
+# TODO: (Done) Pause functionality / menu for gameplay
+# TODO: (Done) Total star count in top right corner of mission menu
+# TODO: (Done) Random Seed for generating more mission levels and / or survival levels
 # TODO: Anthropomorphic RPS anime chars b/c why not?
 # TODO: Random survival backgrounds?
 # TODO: Research for Godot Ad Banners - or kofi donations
 # TODO: (Focus) [Cleanup] Backgrounds, 1-4, 5-7, 8-11 specific patterns?
 # TODO: (Focus) [Cleanup] Level designs and difficulty scaling, random seeding?
 # TODO: [Bug] Unit targeting mechanics: sometimes jittery, sometimes does not lock on targets
-# TODO: Tutorial "level" and / or splash screen.
+# TODO: (Done) Tutorial "level" and / or splash screen.
 # TODO: (Done) Implement star scoring system - total ink used? - stay conservative!
 # TODO: (Done) Stars earned animation/sfx on win state screen
-# TODO: Finish background tscn file cropping and setting up
 # TODO: Figure out deploying to iOS given all the hurdles..
 
 # These vars should be set when instatiating the scene.
