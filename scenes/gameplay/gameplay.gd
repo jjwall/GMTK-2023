@@ -58,6 +58,7 @@ var rand_paper_y_max = 1920
 @onready var field_unit_container := %field_unit_container
 
 const main_menu_scene = "res://scenes/main_menu/main_menu.tscn"
+const mission_menu_scene = "res://scenes/mission_menu/mission_menu.tscn"
 const field_unit_scene = preload("res://objects/field_unit/field_unit.tscn")
 
 const paper_texture = preload("res://assets/textures/paper_emoji.png")
@@ -103,6 +104,7 @@ func set_pregame_state():
 		$target_unit.texture = scissors_texture
 	
 	if game_mode == "mission":
+		$main_menu_button.text = "Missions"
 		$description_label.text = "MISSION"
 		$level_label.text = mission_id
 		$game_mode_label.text = "Mission %s" %[str(mission_id)]
@@ -411,7 +413,10 @@ func _on_player_cursor_reset_ink_meter():
 	$ink_meter.value = full_ink_meter_value
 
 func _on_main_menu_button_pressed():
-	SceneSwitcher.change_to_scene(main_menu_scene)
+	if game_mode == "survival":
+		SceneSwitcher.change_to_scene(main_menu_scene)
+	if game_mode == "mission":
+		SceneSwitcher.change_to_scene(mission_menu_scene)
 
 func _on_next_button_pressed():
 	if game_mode == "survival":
