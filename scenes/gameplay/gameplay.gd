@@ -292,8 +292,8 @@ func set_lose_state():
 			#$next_button.disabled = DataStore.current.missions[get_next_mission()].locked
 			$next_button.disabled = RefData.pageScore < ((int(mission_id) + 1) - (((int(mission_id) + 1) / 24) * 24) - 1) * 2
 			
-		if GameplayVars.dev_unlock:
-			$next_button.disabled = false
+			if GameplayVars.dev_unlock:
+				$next_button.disabled = false
 		else:
 			$next_button.disabled = true
 
